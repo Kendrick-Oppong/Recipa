@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;400;500;600;700;800;900&display=swap");
 
 @layer base {
   :root {
@@ -52,7 +52,95 @@
 }
 
 @layer components {
- 
+  .text-green {
+    @apply text-green-600;
+  }
+  .bg-grey {
+    @apply bg-[#e8fcf1];
+  }
+  .auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .transition {
+    @apply hover:scale-105  transition-all duration-300;
+  }
+
+  .active {
+    @apply bg-green-300 rounded-sm px-3 py-1 shadow-sm;
+  }
+
+  .on-dark-shadow {
+    box-shadow: 0 10px 15px -3px rgb(255 255 255 / 5%);
+  }
+
+  .spin-image {
+    animation: spin 100s linear infinite;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 3px solid;
+    border-color: #26de4b #26de4b transparent transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after,
+  .loader::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-color: transparent transparent #ff3d00 #ff3d00;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotationBack 0.5s linear infinite;
+    transform-origin: center center;
+  }
+  .loader::before {
+    width: 32px;
+    height: 32px;
+    border-color: #26de4b #26de4b transparent transparent;
+    animation: rotation 1.5s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+
+  /* HomePage Image spin */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @layer base {
@@ -61,14 +149,41 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Archivo', sans-serif;
+    font-family: "Archivo", sans-serif;
   }
 
   li {
-    @apply  hover:text-green-600 list-none;
+    @apply hover:text-green-600 list-none;
   }
-  
+
+  main {
+    @apply mt-20;
+  }
+
+  span {
+    @apply text-green-600 inline-flex;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-4xl font-extrabold my-6;
+  }
+
+  h3 {
+    @apply font-semibold text-lg my-3 underline;
+  }
+
+  header {
+    @apply fixed top-0 w-full z-[200]  !bg-background !text-foreground;
+  }
+
+  section {
+    @apply my-10 !bg-background !text-foreground dark:on-dark-shadow dark:px-4 dark:rounded-lg;
+  }
+
+  footer {
+    @apply !bg-background !text-foreground;
+  }
 }
- .active {
-    @apply bg-green-300 rounded-sm px-3 py-1 shadow-sm
-  }
+.active {
+  @apply bg-green-300 rounded-sm px-3 py-1 shadow-sm;
+}

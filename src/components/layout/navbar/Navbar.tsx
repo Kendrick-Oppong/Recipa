@@ -6,14 +6,14 @@ import { ShoppingCart } from "lucide-react";
 export const Navbar = () => {
   return (
     <header className="text-lg">
-      <nav className="flex justify-between items-center px-6 py-4">
+      <nav className="flex justify-between items-center px-6 py-4 shadow-lg dark:on-dark-shadow">
         <Logo />
 
         <div className="flex items-center gap-5">
           <NavLink to="/" end>
             <li>Home</li>
           </NavLink>
-          <NavLink to="/recipes">
+          <NavLink to="/categories">
             <li> Categories</li>
           </NavLink>
           <NavLink to="/featured">
@@ -23,7 +23,11 @@ export const Navbar = () => {
         </div>
 
         <div className="flex gap-5">
-          <Input type="search" placeholder="Search for recipe" className="text-base" />
+          <Input
+            type="search"
+            placeholder="Search for recipe"
+            className="text-base"
+          />
         </div>
 
         <div className="flex gap-5">
