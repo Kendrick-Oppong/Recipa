@@ -4,7 +4,7 @@ export const ButtonLink = ({
   className,
 }: {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }) => {
   return (
     <Button

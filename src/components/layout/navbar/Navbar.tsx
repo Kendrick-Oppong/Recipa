@@ -13,11 +13,14 @@ export const Navbar = () => {
           <NavLink to="/" end>
             <li>Home</li>
           </NavLink>
-          <NavLink to="/categories">
-            <li> Categories</li>
+          <NavLink to="/recipes">
+            <li> Recipes</li>
           </NavLink>
-          <NavLink to="/featured">
-            <li> Featured</li>
+          <NavLink to="/shop">
+            <li> Shop</li>
+          </NavLink>
+          <NavLink to="/hot-sales">
+            <li> Hot Sales</li>
           </NavLink>
           {/* <DropDownMenu /> */}
         </div>
