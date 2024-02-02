@@ -33,7 +33,7 @@ export const Footer = () => {
                 <li
                   className={`text-base gap-2 hover:text-green-700 cursor-pointer`}
                 >
-                  <Image
+                  <img
                     src={category.icon}
                     alt={category.icon}
                     width={30}

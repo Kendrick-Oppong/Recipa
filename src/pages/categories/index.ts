@@ -1,2 +1,4 @@
-export { Categories } from "./Categories";
+export { CategoryMealDetail } from "./CategoryMealDetail";
+
+export { CategoryPage } from "./Categories";
 

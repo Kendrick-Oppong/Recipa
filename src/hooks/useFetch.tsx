@@ -4,14 +4,16 @@ import axios from "axios";
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export const useFetch = <T,>(
-  url: string
+  url: string,
+  queryKey: string,
+  id?: string
 ): {
   data: T | undefined;
   isLoading: boolean;
   error: Error | null;
 } => {
   const { isLoading, error, data } = useQuery<T>({
-    queryKey: ["data"],
+    queryKey: [queryKey, id],
     queryFn: () => fetcher(url),
   });
 
