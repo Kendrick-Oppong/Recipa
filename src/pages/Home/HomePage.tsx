@@ -2,13 +2,14 @@ import { ButtonLink } from "@/components/ui/shared";
 import { featuredCategories, overview } from "@/constants/links";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { FeaturedCategories, FeaturedRecipes } from ".";
+import { FeaturedCategories, FeaturedRecipes, TestimonyCarousel } from ".";
+
 
 export const HomePage = () => {
   return (
     <main className="relative">
       <div className="bg-[url('/wave_menu.svg')] z-50 w-full h-36 bg-repeat-x bg-scroll absolute bg-cover"></div>
-      <section className="dark:px-0 relative flex bg-[#f4f2f0] min-h-[40rem] overflow-hidden my-0">
+      <section className="dark:px-0 relative flex bg-[#f4f2f0] min-h-[40rem] overflow-hidden my-0 shadow-md">
         <img
           src="/hero-food-3.png"
           width={200}
@@ -49,9 +50,16 @@ export const HomePage = () => {
           </Link>
         </div>
       </section>
-      <section className="grid auto-fit gap-5 max-w-[90%] mx-auto my-20">
-        {overview.map((el) => (
-          <div key={el.title} className="px-5 text-center ">
+      <section className="grid auto-fit gap-5 max-w-[90%] mx-auto my-20 shadow-md py-16 rounded-lg">
+        {overview.map((el, index) => (
+          <div
+            key={el.title}
+            className={`px-5 text-center ${
+              index !== overview.length - 1
+                ? "border-r-2 border-r-gray-300"
+                : ""
+            }`}
+          >
             <img src={el.src} alt={el.title} className="mx-auto" />
             <h3 className="text-green no-underline font-semibold">
               {el.title}
@@ -98,13 +106,35 @@ export const HomePage = () => {
                 <img src="/twirl-layered.svg" alt="" width={30} height={30} />
               </span>
             </h2>
-            <Link to="/recipes" rel="preload" >
+            <Link to="/recipes" rel="preload">
               <ButtonLink>
                 All Recipes <ArrowUpRight className="ml-2" />
               </ButtonLink>
             </Link>
           </div>
           <FeaturedRecipes />
+        </section>
+        <section className="dark:pb-20  text-center">
+          <li className="flex items-center justify-center sm:text-lg">
+            <svg
+              className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+            </svg>
+            Testimonials
+          </li>
+          <h2>
+            Stories from {""}
+            <span>
+              our clients.
+              <img src="/twirl-layered.svg" alt="" width={30} height={30} />
+            </span>
+          </h2>
+          <TestimonyCarousel/>
         </section>
       </div>
     </main>

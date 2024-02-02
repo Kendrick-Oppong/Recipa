@@ -22,7 +22,7 @@ export const ErrorMessage = ({ message }: { message: string }) => {
   return (
     <div className="flex justify-center items-center text-lg gap-3 text-red-600">
       <AlertTriangle />
-      <h1 className="text-center">Oops! {message} recipe</h1>
+      <h1 className="text-center">Oops! {message}</h1>
     </div>
   );
 };

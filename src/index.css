@@ -61,7 +61,7 @@
     @apply bg-[#e8fcf1];
   }
   .auto-fit {
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   }
 
   .transition {

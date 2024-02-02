@@ -3,7 +3,7 @@ import { Logo } from "../navbar";
 
 export const Footer = () => {
   return (
-    <footer className="dark:on-dark-shadow sm:grid sm:grid-cols-2 lg:grid-cols-3 p-10 text-lg  shadow-2xl !bg-[#aeafb42b] dark:!bg-[#030c22c9]">
+    <footer className="dark:on-dark-shadow sm:grid sm:grid-cols-2 lg:grid-cols-3 p-10 mt-28 text-lg  shadow-2xl !bg-[#aeafb42b] dark:!bg-[#030c22c9]">
       <div>
         <Logo />
         <p className="mt-3">

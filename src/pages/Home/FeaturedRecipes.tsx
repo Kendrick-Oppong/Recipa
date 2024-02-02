@@ -12,7 +12,7 @@ export const FeaturedRecipes: React.FC = () => {
     "featuredRecipes"
   );
 
-  const slicedData = data?.categories.slice(0, 6);
+  const slicedData = data?.categories.slice(0, 4);
 
   if (isLoading) return <LoadingSkeleton />;
   if (error) return <ErrorMessage message={error?.message} />;
