@@ -2,7 +2,7 @@ import { ButtonLink } from "@/components/ui/shared";
 import { featuredCategories, overview } from "@/constants/links";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { FeaturedCategories } from ".";
+import { FeaturedCategories, FeaturedRecipes } from ".";
 
 export const HomePage = () => {
   return (
@@ -104,7 +104,7 @@ export const HomePage = () => {
               </ButtonLink>
             </Link>
           </div>
-          {/* <FeaturedRecipes /> */}
+          <FeaturedRecipes />
         </section>
       </div>
     </main>
