@@ -1,3 +1,5 @@
+export { ScrollToTop } from "./ScrollToTop";
+
 export { ModalWindow } from "./ModalWindow";
 
 export { CategoryCard } from "./CategoryCard";
