@@ -1,3 +1,5 @@
+export { ShoppingPage } from "./shop";
+
 export { CategoryMealDetail } from "./categories";
 
 export { CategoryPage } from "./categories";

@@ -43,7 +43,7 @@ export const HomePage = () => {
           <div className="text-xl leading-normal my-4 text-gray-600">
             <p> Savour the goodness of nutritious food</p>
           </div>
-          <Link to="/categories">
+          <Link to="/recipes">
             <ButtonLink className="!text-xl px-8 sm:px-7 py-6 sm:py-5">
               All Categories <ArrowUpRight className="ml-2" />
             </ButtonLink>

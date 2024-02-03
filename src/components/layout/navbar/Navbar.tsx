@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { Logo } from ".";
+import { AllRecipesDropDownLinks, Logo } from ".";
 import { Input } from "@/components/ui/input";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
+import { ModeToggle } from "@/components/theme";
 
 export const Navbar = () => {
   return (
@@ -13,9 +14,7 @@ export const Navbar = () => {
           <NavLink to="/" end>
             <li>Home</li>
           </NavLink>
-          <NavLink to="/recipes">
-            <li> Recipes</li>
-          </NavLink>
+          <AllRecipesDropDownLinks />
           <NavLink to="/shop">
             <li> Shop</li>
           </NavLink>
@@ -40,7 +39,11 @@ export const Navbar = () => {
             </li>
           </NavLink>
           <NavLink to="/account">
-            <li> Account</li>
+            <li>
+          
+              <User />
+            
+            </li>
           </NavLink>
 
           <li> Language</li>
@@ -48,7 +51,9 @@ export const Navbar = () => {
           {/* <DropDownMenu /> */}
         </div>
 
-        {/* <div><ModeToggle /></div> */}
+        <div>
+          <ModeToggle />
+        </div>
         {/* <div><Hamburger /></div> */}
 
         <div className="flex items-center  gap-5">

@@ -1,0 +1,2 @@
+export { ShoppingPage } from "./ShoppingPage";
+

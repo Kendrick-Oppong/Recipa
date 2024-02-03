@@ -92,14 +92,14 @@ export const CategoryMealDetail = () => {
             </>
           )}
         </div>
-        <section className="mb-0">
+        <div className="mb-0">
           <h2 className="my-8">
             <span>
               Ingredients.
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
           </h2>
-        </section>
+        </div>
         <ul className="text-green-600 text-lg font-medium !list-disc border-green-600 rounded-lg border shadow-2xl p-4">
           {mealDetail &&
             Object.keys(mealDetail).map((key) => {

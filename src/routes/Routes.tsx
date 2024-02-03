@@ -4,6 +4,7 @@ import {
   CategoryPage,
   HomePage,
   RecipesPage,
+  ShoppingPage,
 } from "@/pages";
 
 import { RecipeCategory } from "@/pages/recipes";
@@ -22,7 +23,7 @@ export const AllRoutes = () => {
           path="/categories/:category/:id"
           element={<CategoryMealDetail />}
         />
-        <Route />
+        <Route path="/shop" element={<ShoppingPage/> } />
       </Route>
     </Routes>
   );
