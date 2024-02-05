@@ -5,8 +5,7 @@ import { DollarSign, Heart, ShoppingBasket } from "lucide-react";
 
 export const FeaturedMenu = (url: string, queryKey: string) => {
   const { data, isLoading, error } = useFetch<MenuProps>(url, queryKey);
-  console.log(data?.data);
-
+  console.log(error);
   if (isLoading)
     return (
       <div className="mt-10 m-10">
@@ -104,9 +103,12 @@ export const FeaturedMenu = (url: string, queryKey: string) => {
           <div className="flex justify-between items-center ">
             <p className="text-2xl ml-3 font-extrabold text-red-500">
               {menu.price}
-              <DollarSign strokeWidth={2} className="inline-block -translate-y-[2px]" />
+              <DollarSign
+                strokeWidth={2}
+                className="inline-block -translate-y-[2px]"
+              />
             </p>
-            <div className="hover:bg-green-700 bg-green-500 p-2 rounded-lg">
+            <div className="hover:bg-red-500 bg-green-500 p-2 rounded-lg">
               <ShoppingBasket className="text-white h-8 w-8 cursor-pointer" />
             </div>
           </div>

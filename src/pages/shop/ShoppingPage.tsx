@@ -15,7 +15,6 @@ export const ShoppingPage = () => {
           alt="food"
           className="absolute -top-5 left-40 hidden md:inline-flex"
         />
-
         <img
           src="/food-image-02.png"
           width={400}
@@ -41,7 +40,7 @@ export const ShoppingPage = () => {
           <div className="text-xl leading-normal my-4 text-gray-600">
             <p> Juicy and crispy taste</p>
           </div>
-          <Link to="/recipes">
+          <Link to="/all-menus">
             <ButtonLink className="!text-xl px-8 sm:px-7 py-6 sm:py-5">
               All Menu <ArrowUpRight className="ml-2" />
             </ButtonLink>
@@ -69,9 +68,13 @@ export const ShoppingPage = () => {
           </span>
         </h2>
         <PopularMenus />
+        <Link to="/all-menus">
+          <ButtonLink className="!text-xl px-8 sm:px-7 py-6 sm:py-5 mt-10">
+            See All Menu <ArrowUpRight className="ml-2" />
+          </ButtonLink>
+        </Link>
       </section>
-      <section>
-      </section>
+      <section></section>
     </main>
   );
 };

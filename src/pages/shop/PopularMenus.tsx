@@ -1,9 +1,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FeaturedMenu } from ".";
 
+
 export function PopularMenus() {
   return (
-    <Tabs defaultValue="burger" >
+    <Tabs defaultValue="burger">
       <TabsList className="grid auto-fit-tabs gap-5 max-w-full  sm:max-w-[95%] mx-auto border border-green-600">
         <TabsTrigger value="burger">Burger</TabsTrigger>
         <TabsTrigger value="pizza">Pizza</TabsTrigger>
@@ -23,9 +24,13 @@ export function PopularMenus() {
             "http://localhost:5000/api/specialBurger",
             "specialBurger"
           )}
+      
         </TabsContent>
         <TabsContent value="pizza">
-          {FeaturedMenu("http://localhost:5000/api/specialPizza", "specialPizza")}
+          {FeaturedMenu(
+            "http://localhost:5000/api/specialPizza",
+            "specialPizza"
+          )}
         </TabsContent>
         <TabsContent value="sushi">Sushi 1</TabsContent>
         <TabsContent value="salad">Salad 1</TabsContent>

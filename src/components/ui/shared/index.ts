@@ -1,3 +1,5 @@
+export { ToolTip } from "./ToolTip";
+
 export { ScrollToTop } from "./ScrollToTop";
 
 export { ModalWindow } from "./ModalWindow";

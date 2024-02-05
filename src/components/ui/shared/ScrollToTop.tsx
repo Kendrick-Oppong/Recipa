@@ -1,10 +1,4 @@
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { ToolTip } from ".";
 
 export const ScrollToTop = () => {
   const handleScroll = () => {
@@ -15,24 +9,16 @@ export const ScrollToTop = () => {
   };
 
   return (
-    <TooltipProvider delayDuration={400}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div role="button" className="fixed bottom-3 right-3 cursor-pointer">
-            <img
-              src="/upload.png"
-              alt="arrow"
-              width={50}
-              height={50}
-              onClick={handleScroll}
-            />
-          </div>
-        </TooltipTrigger>
-        <TooltipContent className="mr-2">
-          <p>Scroll To Top</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <ToolTip tooltip="Scroll to top">
+      <div role="button" className="fixed bottom-3 right-3 cursor-pointer">
+        <img
+          src="/upload.png"
+          alt="arrow"
+          width={50}
+          height={50}
+          onClick={handleScroll}
+        />
+      </div>
+    </ToolTip>
   );
 };
-
