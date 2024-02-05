@@ -10,6 +10,7 @@ export const CategoryCard: React.FC<CategoryName> = ({ meal, categoryName }) => 
         src={categoryName.strMealThumb}
         width={400}
         height={400}
+        loading="lazy"
         alt={categoryName.strMealThumb}
         className="rounded-lg object-scale-down"
       />

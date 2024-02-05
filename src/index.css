@@ -66,6 +66,10 @@
     grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
   }
 
+  .auto-fit-menu {
+     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+
   .transition {
     @apply hover:scale-105  transition-all duration-300;
   }

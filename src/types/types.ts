@@ -23,8 +23,6 @@ export interface CategoryName {
   meal: string;
 }
 
-
-
 export interface CategoryProp {
   meals: Category[];
 }
@@ -88,4 +86,26 @@ interface Meal {
 
 export interface Meal_ID_Prop {
   meals: Meal[];
+}
+
+//Page.tsx
+export interface MenuProps {
+  count: number;
+  data: {
+    _id?: string;
+    title?: string;
+    rating?: number;
+    image?: string;
+    description?: string;
+    price?: number;
+    details?: {
+      fullDescription?: string;
+      category?: string;
+      tag?: string;
+      weight?: string;
+      dimension?: string;
+      quantityInStock?: number;
+      _id?: string;
+    };
+  }[];
 }

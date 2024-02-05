@@ -1,8 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FeaturedMenu } from ".";
 
 export function PopularMenus() {
   return (
-    <Tabs defaultValue="burger" className=" ">
+    <Tabs defaultValue="burger" >
       <TabsList className="grid auto-fit-tabs gap-5 max-w-full  sm:max-w-[95%] mx-auto border border-green-600">
         <TabsTrigger value="burger">Burger</TabsTrigger>
         <TabsTrigger value="pizza">Pizza</TabsTrigger>
@@ -16,14 +17,23 @@ export function PopularMenus() {
           Fast Food
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="burger">Burger 1</TabsContent>
-      <TabsContent value="pizza">Pizza 1</TabsContent>
-      <TabsContent value="sushi">Sushi 1</TabsContent>
-      <TabsContent value="salad">Salad 1</TabsContent>
-      <TabsContent value="burrito">Burrito 1</TabsContent>
-      <TabsContent value="beverage">Beverages 1</TabsContent>
-      <TabsContent value="fast_foods">Fast Foods 1</TabsContent>
-      <TabsContent value="password"></TabsContent>
+      <div className="px-10">
+        <TabsContent value="burger">
+          {FeaturedMenu(
+            "http://localhost:5000/api/specialBurger",
+            "specialBurger"
+          )}
+        </TabsContent>
+        <TabsContent value="pizza">
+          {FeaturedMenu("http://localhost:5000/api/specialPizza", "specialPizza")}
+        </TabsContent>
+        <TabsContent value="sushi">Sushi 1</TabsContent>
+        <TabsContent value="salad">Salad 1</TabsContent>
+        <TabsContent value="burrito">Burrito 1</TabsContent>
+        <TabsContent value="beverage">Beverages 1</TabsContent>
+        <TabsContent value="fast_foods">Fast Foods 1</TabsContent>
+        <TabsContent value="password"></TabsContent>
+      </div>
     </Tabs>
   );
 }
