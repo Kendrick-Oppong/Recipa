@@ -54,7 +54,12 @@ export function PopularMenus() {
             "specialSushi"
           )}
         </TabsContent>
-        <TabsContent value="salad">Salad 1</TabsContent>
+        <TabsContent value="salad">
+          {FeaturedMenu(
+            "http://localhost:5000/api/specialSalad",
+            "specialSalad"
+          )}
+        </TabsContent>
         <TabsContent value="burrito">Burrito 1</TabsContent>
         <TabsContent value="beverage">Beverages 1</TabsContent>
         <TabsContent value="fast_foods">Fast Foods 1</TabsContent>

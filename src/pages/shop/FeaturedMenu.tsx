@@ -25,7 +25,7 @@ export const FeaturedMenu = (url: string, queryKey: string) => {
         <div className="shadow-2xl border-green-600 rounded-lg border relative p-3 pb-10">
           <div className="dark:text-black  absolute  right-4 top-3  ">
             <ToolTip tooltip="Add to wishlist">
-              <Heart className=" text-green h-6 w-6 cursor-pointer" />
+              <Heart className="text-green hover:text-red-500 h-6 w-6 cursor-pointer" />
             </ToolTip>
           </div>
           <img
@@ -34,7 +34,7 @@ export const FeaturedMenu = (url: string, queryKey: string) => {
             height={250}
             loading="lazy"
             alt={menu.title}
-            className="mx-auto !h-[250px] object-scale-down"
+            className="mx-auto !h-[250px] object-scale-down lg:scale-[0.8]"
           />
           <div className="font-bold ">
             <h3>{menu.title}</h3>
