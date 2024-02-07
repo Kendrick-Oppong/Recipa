@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { AllRecipesDropDownLinks, Logo } from ".";
 import { Input } from "@/components/ui/input";
 import { ShoppingCart, User } from "lucide-react";
-import { ModeToggle } from "@/components/theme";
+import { ModeToggle } from "@/context/theme";
 
 export const Navbar = () => {
   return (
@@ -40,9 +40,7 @@ export const Navbar = () => {
           </NavLink>
           <NavLink to="/account">
             <li>
-          
               <User />
-            
             </li>
           </NavLink>
 
