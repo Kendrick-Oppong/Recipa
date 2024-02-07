@@ -66,9 +66,19 @@ export function PopularMenus() {
             "specialBurrito"
           )}
         </TabsContent>
-        <TabsContent value="beverage">Beverages 1</TabsContent>
-        <TabsContent value="fast_foods">Fast Foods 1</TabsContent>
-        <TabsContent value="password"></TabsContent>
+        <TabsContent value="beverage">
+          {FeaturedMenu(
+            "http://localhost:5000/api/specialBeverage",
+            "specialBeverage"
+          )}
+        </TabsContent>
+        <TabsContent value="fast_foods">
+         
+          {FeaturedMenu(
+            "http://localhost:5000/api/specialFries",
+            "specialFries"
+          )}
+        </TabsContent>
       </div>
     </Tabs>
   );
