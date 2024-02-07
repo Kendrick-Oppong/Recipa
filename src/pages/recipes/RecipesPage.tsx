@@ -7,9 +7,13 @@ import {
 import { useFetch } from "@/hooks/useFetch";
 import { Recipe, RecipesProp } from "@/types/types";
 import { Utensils } from "lucide-react";
+
 import { Link } from "react-router-dom";
 
 export const RecipesPage: React.FC = () => {
+  
+
+  
   const { data, isLoading, error } = useFetch<RecipesProp>(
     "https://www.themealdb.com/api/json/v1/1/categories.php",
     "allRecipes"
@@ -35,12 +39,15 @@ export const RecipesPage: React.FC = () => {
     <main className="mt-28 px-4 sm:px-10  my-10">
       <div className="flex flex-wrap place-items-center justify-center  border-green-600 rounded-lg border shadow-2xl">
         <div>
+        
           <img
             src={featuredRecipe?.strCategoryThumb}
             width={600}
             height={600}
+            loading="lazy"
             alt=""
-            className="transition"
+          
+            className={`transition`}
           />
         </div>
 

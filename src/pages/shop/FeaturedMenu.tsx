@@ -1,17 +1,24 @@
-import { ErrorMessage, LoadingSkeleton, ToolTip } from "@/components/ui/shared";
+import {
+  ErrorMessage,
+  ImagePlaceholderSkeleton,
+  LazyImage,
+  LoadingSkeleton,
+  ToolTip,
+} from "@/components/ui/shared";
 import { useFetch } from "@/hooks/useFetch";
 import { MenuProps } from "@/types/types";
 import { DollarSign, Heart, ShoppingBasket } from "lucide-react";
 
 export const FeaturedMenu = (url: string, queryKey: string) => {
   const { data, isLoading, error } = useFetch<MenuProps>(url, queryKey);
-  console.log(error);
+
   if (isLoading)
     return (
       <div className="mt-10 m-10">
         <LoadingSkeleton />
       </div>
     );
+
   if (error)
     return (
       <div className="mt-10 m-[6rem]">
@@ -22,20 +29,22 @@ export const FeaturedMenu = (url: string, queryKey: string) => {
   return (
     <div className="mt-10 grid auto-fit-menu gap-4 ">
       {data?.data?.map((menu) => (
-        <div className="shadow-2xl border-green-600 rounded-lg border relative p-3 pb-10">
+        <div
+          key={menu._id}
+          className="shadow-2xl border-green-600 rounded-lg border relative p-3 pb-10"
+        >
           <div className="dark:text-black  absolute  right-4 top-3  ">
             <ToolTip tooltip="Add to wishlist">
               <Heart className="text-green hover:text-red-500 h-6 w-6 cursor-pointer" />
             </ToolTip>
           </div>
-          <img
-            src={menu.image}
-            width={250}
-            height={250}
-            loading="lazy"
+          <LazyImage
+            src={menu?.image}
             alt={menu.title}
             className="mx-auto !h-[250px] object-scale-down lg:scale-[0.8]"
+            placeholder={<ImagePlaceholderSkeleton />}
           />
+
           <div className="font-bold ">
             <h3>{menu.title}</h3>
           </div>

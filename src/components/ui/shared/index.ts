@@ -1,3 +1,7 @@
+export { LazyImage } from "./LazyImage";
+
+export { ImagePlaceholderSkeleton } from "./ImagePlaceholderSkeleton";
+
 export { ToolTip } from "./ToolTip";
 
 export { ScrollToTop } from "./ScrollToTop";

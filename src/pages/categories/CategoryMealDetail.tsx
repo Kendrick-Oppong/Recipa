@@ -1,4 +1,7 @@
-import { ErrorMessage, ModalWindow } from "@/components/ui/shared";
+import {
+  ErrorMessage,
+  ModalWindow,
+} from "@/components/ui/shared";
 
 import { useFetch } from "@/hooks/useFetch";
 import { Meal_ID_Prop } from "@/types/types";
@@ -6,6 +9,8 @@ import { Key } from "react";
 import { useParams } from "react-router-dom";
 
 export const CategoryMealDetail = () => {
+  
+
   const { id } = useParams();
   const { data, isLoading, error } = useFetch<Meal_ID_Prop>(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
@@ -54,14 +59,14 @@ export const CategoryMealDetail = () => {
   return (
     <main className="mt-28 px-4 sm:px-10 my-10">
       <div className="max-w-[90%] sm:max-w-[80%]  mx-auto">
-        <div className="flex gap-5 mx-auto sm:flex-wrap place-items-center  border-green-600 rounded-lg border shadow-2xl">
+        <div className="flex gap-5 mx-auto sm:flex-wrap place-items-center border-green-600 rounded-lg border shadow-2xl">
           <div className="w-full lg:w-auto rounded-2xl">
-            <img 
+            <img
               src={mealDetail!.strMealThumb!}
               width={300}
               height={300}
               alt={mealDetail!.strMealThumb!}
-              className=" rounded-lg w-full lg:h-80 "
+              className={`rounded-lg w-full lg:h-80`}
             />
           </div>
           <div className="relative font-semibold text-lg lg:ml-6 my-6 ml-4 sm:ml-0 min-w-[90%] sm:min-w-[60%] pr-3">
@@ -71,6 +76,7 @@ export const CategoryMealDetail = () => {
             <img
               src="/featured.png"
               alt=""
+              loading="lazy"
               width={30}
               height={30}
               className="ml-auto"
@@ -118,7 +124,7 @@ export const CategoryMealDetail = () => {
               return null;
             })}
         </ul>
-        <section className="dark:pb-20 px-0">
+        <section className="dark:pb-20 !px-0">
           <h2 className="my-8">
             <span>
               Instructions.{" "}

@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Quote } from "lucide-react";
-import { carouselData } from "@/constants/links";
+import { carouselData } from "@/constants/constants";
 
 export function TestimonyCarousel() {
   const plugin = React.useRef(

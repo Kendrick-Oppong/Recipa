@@ -27,7 +27,7 @@ export function PopularMenus() {
           Burrito
         </TabsTrigger>
         <TabsTrigger value="beverage" className="px-12 sm:px-3">
-          <img className="mr-1" src="/beverage-svgrepo-com.svg" alt="" />
+          <img className="mr-1" src="/strawberry-smoothie-svgrepo-com.svg" alt="" />
           Beverages
         </TabsTrigger>
         <TabsTrigger value="fast_foods" className="px-16 sm:px-3">
@@ -73,7 +73,6 @@ export function PopularMenus() {
           )}
         </TabsContent>
         <TabsContent value="fast_foods">
-         
           {FeaturedMenu(
             "http://localhost:5000/api/specialFries",
             "specialFries"

@@ -33,7 +33,7 @@ export const RecipeCategory = () => {
       </div>
     );
   return (
-    <main className="mt-28 px-10">
+    <main className="mt-28 px-4 sm:px-10">
       <h2 className="mt-8">{id}</h2>
       <section className="grid auto-fit gap-4 pb-10 ">
         {mealCategory?.meals?.map((categoryName) => (

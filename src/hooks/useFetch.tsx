@@ -23,7 +23,8 @@ export const useFetch = <T,>(
     queryKey: [queryKey, id],
     queryFn: () => fetcher(url),
     retry: 3,
-    staleTime: 0
+    staleTime: 0,
+    refetchOnWindowFocus:false
    
   });
 

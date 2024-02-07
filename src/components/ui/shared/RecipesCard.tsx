@@ -2,22 +2,24 @@ import { Utensils } from "lucide-react";
 
 import { FeaturedCardProps } from "@/types/types";
 
-import { ButtonLink } from ".";
+import { ButtonLink, ImagePlaceholderSkeleton, LazyImage } from ".";
 import { Link } from "react-router-dom";
 
+
 export const RecipesCard: React.FC<FeaturedCardProps> = ({ recipe }) => {
+ 
+
   return (
-    <div className="shadow-2xl transition border-green-600 rounded-lg border relative p-3">
+    <div className="shadow-2xl border-green-600 rounded-lg border relative p-3">
+  
       <div className="dark:text-black rounded-lg absolute shadow-md right-4 top-3 bg-green-200  px-5 py-3">
         {recipe.strCategory}
       </div>
 
-      <img
+      <LazyImage
         src={recipe.strCategoryThumb}
-        width={400}
-        height={400}
-        loading="lazy"
         alt={recipe.strCategoryThumb}
+        placeholder={<ImagePlaceholderSkeleton />}
       />
       <div className="font-semibold text-lg my-6">
         <p>

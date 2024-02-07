@@ -14,7 +14,6 @@ export const FeaturedCategories = ({ category }: Props) => {
             width={60}
             height={60}
             alt={category.name}
-          
           />
           <p className="dark:text-black">{category.name}</p>
         </div>

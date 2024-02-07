@@ -1,9 +1,8 @@
 import { ButtonLink } from "@/components/ui/shared";
-import { featuredCategories, overview } from "@/constants/links";
+import { featuredCategories, overview } from "@/constants/constants";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FeaturedCategories, FeaturedRecipes, TestimonyCarousel } from ".";
-
 
 export const HomePage = () => {
   return (
@@ -134,7 +133,7 @@ export const HomePage = () => {
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
           </h2>
-          <TestimonyCarousel/>
+          <TestimonyCarousel />
         </section>
       </div>
     </main>

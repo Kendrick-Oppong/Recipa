@@ -29,8 +29,7 @@ export const CategoryPage = () => {
       </div>
     );
   return (
-    <>
-      <main className="mt-28 px-4 sm:px-10">
+    <main className="mt-28 px-4 sm:px-10">
         <h2 className="mt-8">{category}</h2>
         <section className="grid auto-fit gap-4">
           {mealCategory?.meals.map((categoryName) => (
@@ -42,6 +41,5 @@ export const CategoryPage = () => {
           ))}
         </section>
       </main>
-    </>
   );
 };

@@ -9,7 +9,7 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { categories } from "@/constants/links";
+import { categories } from "@/constants/constants";
 import { HandPlatter, Component } from "lucide-react";
 import { Link } from "react-router-dom";
 

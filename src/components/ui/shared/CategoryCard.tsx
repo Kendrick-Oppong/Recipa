@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
-import { ButtonLink } from ".";
+import { ButtonLink, ImagePlaceholderSkeleton, LazyImage } from ".";
 import { Utensils } from "lucide-react";
 import { CategoryName } from "@/types/types";
 
-export const CategoryCard: React.FC<CategoryName> = ({ meal, categoryName }) => {
+
+export const CategoryCard: React.FC<CategoryName> = ({
+  meal,
+  categoryName,
+}) => {
+ 
+
   return (
-    <div className="shadow-2xl transition border-green-600 rounded-lg border relative p-3">
-      <img
+    <div className="shadow-2xl border-green-600 rounded-lg border relative p-3">
+    
+      <LazyImage
         src={categoryName.strMealThumb}
-        width={400}
-        height={400}
-        loading="lazy"
         alt={categoryName.strMealThumb}
-        className="rounded-lg object-scale-down"
+        placeholder={<ImagePlaceholderSkeleton />} 
       />
       <div className="font-semibold text-lg my-6">
         <p>{categoryName.strMeal}</p>
@@ -25,5 +29,3 @@ export const CategoryCard: React.FC<CategoryName> = ({ meal, categoryName }) => 
     </div>
   );
 };
-
-
