@@ -31,9 +31,25 @@ export const LazyImage = ({ src, alt, placeholder, className }: Props) => {
           height={250}
           onLoad={handleLoad}
           style={{ display: loaded ? "block" : "none" }}
-          className={className}
+          className={`rounded-lg ${className}`}
         />
       )}
     </div>
   );
 };
+
+//  <div ref={ref}>
+//    {inView ? (
+//      <img
+//        width={250}
+//        height={250}
+//        alt={alt}
+//        src={src}
+//        loading="lazy"
+//        style={{ display: "block" }}
+//        className={className}
+//      />
+//    ) : (
+//      placeholder
+//    )}
+//  </div>;

@@ -55,7 +55,7 @@ export const HomePage = () => {
             key={el.title}
             className={`px-5 text-center ${
               index !== overview.length - 1
-                ? "border-r-2 border-r-gray-300"
+                ? "border-r-0 border-r-gray-300 border-b-2 pb-8 border-b-gray-300 sm:border-b-0 sm:border-r-2"
                 : ""
             }`}
           >
@@ -113,7 +113,7 @@ export const HomePage = () => {
           </div>
           <FeaturedRecipes />
         </section>
-        <section className="dark:pb-20  text-center">
+        <section className="pb-28  text-center">
           <li className="flex items-center justify-center sm:text-lg">
             <svg
               className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"

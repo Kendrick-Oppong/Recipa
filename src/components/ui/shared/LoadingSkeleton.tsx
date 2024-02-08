@@ -1,7 +1,11 @@
 const mapper = [1, 2, 3];
-export const LoadingSkeleton = () => {
+export const LoadingSkeleton = ({
+  layout = "auto-fit",
+}: {
+  layout?: string 
+}) => {
   return (
-    <div className="grid auto-fit gap-4 ">
+    <div className={`grid ${layout} gap-4`}>
       {mapper.map((skeleton) => (
         <div
           key={skeleton}

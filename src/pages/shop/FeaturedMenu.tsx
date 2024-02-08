@@ -27,7 +27,7 @@ export const FeaturedMenu = (url: string, queryKey: string) => {
     );
 
   return (
-    <div className="mt-10 grid auto-fit-menu gap-4 ">
+    <div className="mt-10 grid auto-fit gap-4 ">
       {data?.data?.map((menu) => (
         <div
           key={menu._id}

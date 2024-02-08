@@ -18,9 +18,6 @@ export const Navbar = () => {
           <NavLink to="/shop">
             <li> Shop</li>
           </NavLink>
-          <NavLink to="/hot-sales">
-            <li> Hot Sales</li>
-          </NavLink>
           {/* <DropDownMenu /> */}
         </div>
 
@@ -43,9 +40,6 @@ export const Navbar = () => {
               <User />
             </li>
           </NavLink>
-
-          <li> Language</li>
-
           {/* <DropDownMenu /> */}
         </div>
 

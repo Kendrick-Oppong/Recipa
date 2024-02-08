@@ -47,7 +47,7 @@ export const ShoppingPage = () => {
           </Link>
         </div>
       </section>
-      <section className=" dark:pb-40  text-center">
+      <section className="pb-10 text-center">
         <li className="flex items-center justify-center sm:text-lg">
           <svg
             className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
