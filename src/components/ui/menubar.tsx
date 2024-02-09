@@ -53,7 +53,7 @@ const MenubarSubTrigger = React.forwardRef<
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-lg outline-none focus:bg-green-200 focus:text-accent-foreground data-[state=open]:bg-green-200  data-[state=open]:text-accent-foreground",
+      "flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-lg outline-none focus:bg-green-600 focus:text-accent-foreground data-[state=open]:bg-green-600  data-[state=open]:text-accent-foreground",
       inset && "pl-8",
       className
     )}
@@ -114,7 +114,7 @@ const MenubarItem = React.forwardRef<
   <MenubarPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-lg outline-none focus:bg-green-200 focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-lg outline-none focus:bg-green-600 focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       inset && "pl-8",
       className
     )}

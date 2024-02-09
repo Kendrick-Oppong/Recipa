@@ -9,8 +9,8 @@ import { useFetch } from "@/hooks/useFetch";
 import { MenuProps } from "@/types/types";
 import { DollarSign, Heart, ShoppingBasket } from "lucide-react";
 
-export const FeaturedMenu = (url: string, queryKey: string) => {
-  const { data, isLoading, error } = useFetch<MenuProps>(url, queryKey);
+export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
+  const { data, isLoading, error } = useFetch<MenuProps>(url, queryKey, id);
 
   if (isLoading)
     return (
@@ -45,7 +45,7 @@ export const FeaturedMenu = (url: string, queryKey: string) => {
             placeholder={<ImagePlaceholderSkeleton />}
           />
 
-          <div className="font-bold ">
+          <div className="font-bold text-center">
             <h3>{menu.title}</h3>
           </div>
           <div className="text-lg my-6">

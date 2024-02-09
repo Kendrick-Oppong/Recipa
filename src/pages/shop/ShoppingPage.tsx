@@ -40,7 +40,7 @@ export const ShoppingPage = () => {
           <div className="text-xl leading-normal my-4 text-gray-600">
             <p> Juicy and crispy taste</p>
           </div>
-          <Link to="/all-menus">
+          <Link to="/all-menus/burgers">
             <ButtonLink className="!text-xl px-8 sm:px-7 py-6 sm:py-5">
               All Menu <ArrowUpRight className="ml-2" />
             </ButtonLink>
@@ -68,7 +68,7 @@ export const ShoppingPage = () => {
           </span>
         </h2>
         <PopularMenus />
-        <Link to="/all-menus">
+        <Link to="/all-menus/burgers">
           <ButtonLink className="!text-xl px-8 sm:px-7 py-6 sm:py-5 mt-10">
             See All Menu <ArrowUpRight className="ml-2" />
           </ButtonLink>

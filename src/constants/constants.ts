@@ -2,7 +2,6 @@ import delivery_truck from "../assets/delivery-truck.svg";
 import organic from "../assets/organic_guarantee.svg";
 import quality_food from "../assets/quality_food.svg";
 
-
 export const categories = [
   { id: 1, name: "Beef", icon: "/beef-svgrepo-com.svg" },
   { id: 2, name: "Breakfast", icon: "/breakfast-bacon-svgrepo-com.svg" },
@@ -20,7 +19,6 @@ export const featuredCategories = [
   { id: 5, name: "Dessert", icon: "/dessert-svgrepo-com.svg" },
   { id: 6, name: "Lamb", icon: "/lamb-svgrepo-com.svg" },
 ];
-
 
 export const overview = [
   {
@@ -42,7 +40,6 @@ export const overview = [
       "Craving convenience? Click and enjoy! Lightning-fast delivery bringing your favorite dishes to your doorstep",
   },
 ];
-
 
 export const carouselData = [
   {
@@ -95,4 +92,12 @@ export const carouselData = [
   },
 ];
 
-
+export const menu = [
+  { title: "Burger", src: "/burger-svgrepo-com.svg" },
+  { title: "Pizza", src: "/pizza-svgrepo-com.svg" },
+  { title: "Sushi", src: "/sushi-svgrepo-com.svg" },
+  { title: "Salad", src: "/salad-svgrepo-com.svg" },
+  { title: "Burrito", src: "/burrito-svgrepo-com.svg" },
+  { title: "Beverage", src: "/strawberry-smoothie-svgrepo-com.svg" },
+  { title: "Fries", src: "/french-fries-svgrepo-com.svg" },
+];

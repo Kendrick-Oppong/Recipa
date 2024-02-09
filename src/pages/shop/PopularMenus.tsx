@@ -1,39 +1,17 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FeaturedMenu } from ".";
-
+import { menu } from "@/constants/constants";
 
 export function PopularMenus() {
   return (
     <Tabs defaultValue="burger">
-      <TabsList className="grid auto-fit-tabs mx-5 gap-5 max-w-full  sm:max-w-[95%]  border border-green-600">
-        <TabsTrigger value="burger">
-          <img className="mr-1 hidden md:inline" src="/burger-svgrepo-com.svg" alt="" />
-          Burger
-        </TabsTrigger>
-        <TabsTrigger value="pizza">
-          <img className="mr-1 hidden md:inline" src="/pizza-svgrepo-com.svg" alt="" />
-          Pizza
-        </TabsTrigger>
-        <TabsTrigger value="sushi">
-          <img className="mr-1 hidden md:inline" src="/sushi-svgrepo-com.svg" alt="" />
-          Sushi
-        </TabsTrigger>
-        <TabsTrigger value="salad">
-          <img className="mr-1 hidden md:inline" src="/salad-svgrepo-com.svg" alt="" />
-          Salad
-        </TabsTrigger>
-        <TabsTrigger value="burrito">
-          <img className="mr-1 hidden md:inline" src="/burrito-svgrepo-com.svg" alt="" />
-          Burrito
-        </TabsTrigger>
-        <TabsTrigger value="beverage" className="px-12 sm:px-3">
-          <img className="mr-1 hidden md:inline" src="/strawberry-smoothie-svgrepo-com.svg" alt="" />
-          Beverages
-        </TabsTrigger>
-        <TabsTrigger value="fast_foods" className="px-16 sm:px-3">
-          <img className="mr-1 hidden md:inline" src="/french-fries-svgrepo-com.svg" alt="" />
-          Fries
-        </TabsTrigger>
+      <TabsList className="grid auto-fit-tabs px-5 mx-auto gap-5 max-w-full  sm:max-w-[95%]  border border-green-600">
+        {menu.map((menu) => (
+          <TabsTrigger key={menu.title} value={menu.title.toLowerCase()}>
+            <img className="mr-1 hidden md:inline" src={menu.src} alt="" />
+            {menu.title}
+          </TabsTrigger>
+        ))}
       </TabsList>
       <div className="px-10">
         <TabsContent value="burger">
@@ -72,7 +50,7 @@ export function PopularMenus() {
             "specialBeverage"
           )}
         </TabsContent>
-        <TabsContent value="fast_foods">
+        <TabsContent value="fries">
           {FeaturedMenu(
             "http://localhost:5000/api/specialFries",
             "specialFries"

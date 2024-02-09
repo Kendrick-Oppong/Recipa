@@ -20,7 +20,6 @@ export const RecipesPage: React.FC = () => {
   );
 
   const recipes = data?.categories.reverse();
-  const featuredRecipe = data?.categories[5];
 
   if (isLoading)
     return (
@@ -37,16 +36,14 @@ export const RecipesPage: React.FC = () => {
     );
   return (
     <main className="mt-28 px-4 sm:px-10  my-10">
-      <div className="flex flex-wrap place-items-center justify-center  border-green-600 rounded-lg border shadow-2xl">
+      <div className="flex flex-wrap place-items-center gap-4 py-10 justify-center  border-green-600 rounded-lg border shadow-2xl">
         <div>
-        
           <img
-            src={featuredRecipe?.strCategoryThumb}
-            width={600}
-            height={600}
+            src="/pasta.png"
+            width={400}
+            height={400}
             loading="lazy"
             alt=""
-          
             className={`transition`}
           />
         </div>
@@ -63,12 +60,9 @@ export const RecipesPage: React.FC = () => {
             <span>Pasta</span>{" "}
           </h2>
           <p className="text-2xl mb-5">
-            {featuredRecipe?.strCategoryDescription
-              ?.match(/\S+/g)
-              ?.slice(0, 9)
-              .join(" ")}
+            Pasta is a staple food of traditional Italian cuisine,
           </p>
-          <Link to={`/recipes/${featuredRecipe?.strCategory}`}>
+          <Link to="/recipes/Pasta">
             <ButtonLink>
               View Details <Utensils className="ml-3" />
             </ButtonLink>
