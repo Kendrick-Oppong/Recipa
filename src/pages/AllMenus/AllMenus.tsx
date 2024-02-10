@@ -27,7 +27,7 @@ export const AllMenus = () => {
 
   return (
     <section className="grid px-5 grid-cols-[200px_1fr]">
-      <aside>
+      <aside className="border border-green-600 px-2 rounded-lg">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger className="text-green">
@@ -35,7 +35,7 @@ export const AllMenus = () => {
             </AccordionTrigger>
             <AccordionContent className="flex flex-col gap-6 justify-center">
               {menu.map((menu) => (
-                <Link key={menu.title} to={`/all-menus/${menu.title}s`}>
+                <Link key={menu.title} to={`/all-menus/${menu.title}s`} className="hover:bg-green-600 p-1 pl-2 rounded-sm ">
                   <img className="mr-2 md:inline" src={menu.src} alt="" />
                   {menu.title}
                 </Link>

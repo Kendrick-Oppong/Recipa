@@ -3,6 +3,7 @@ import {
   AllBurgers,
   AllMenuLayout,
   AllMenus,
+  AllPizzas,
   CategoryMealDetail,
   CategoryPage,
   HomePage,
@@ -29,6 +30,7 @@ export const AllRoutes = () => {
         <Route path="all-menus" element={<AllMenuLayout />}>
           <Route element={<AllMenus />}>
             <Route index path="burgers" element={<AllBurgers />} />
+            <Route path="pizzas" element={<AllPizzas />} />
           </Route>
         </Route>
       </Route>

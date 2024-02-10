@@ -1,3 +1,4 @@
+export { AllPizzas } from "./pizza";
 
 export { AllMenus } from "./AllMenus";
 
@@ -16,4 +17,3 @@ export { RecipesPage } from "./recipes";
 export { RecipeCategory } from "./recipes";
 
 export { HomePage } from "./Home";
-
