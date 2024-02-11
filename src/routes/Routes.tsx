@@ -1,9 +1,14 @@
 import { Layout } from "@/components/layout";
 import {
+  AllBeverages,
   AllBurgers,
+  AllBurritos,
+  AllFries,
   AllMenuLayout,
   AllMenus,
   AllPizzas,
+  AllSalads,
+  AllSushis,
   CategoryMealDetail,
   CategoryPage,
   HomePage,
@@ -31,6 +36,11 @@ export const AllRoutes = () => {
           <Route element={<AllMenus />}>
             <Route index path="burgers" element={<AllBurgers />} />
             <Route path="pizzas" element={<AllPizzas />} />
+            <Route path="sushis" element={<AllSushis />} />
+            <Route path="salads" element={<AllSalads />} />
+            <Route path="burritos" element={<AllBurritos />} />
+            <Route path="beverages" element={<AllBeverages />} />
+            <Route path="fries" element={<AllFries />} />
           </Route>
         </Route>
       </Route>

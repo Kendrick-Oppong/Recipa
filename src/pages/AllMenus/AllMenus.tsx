@@ -1,10 +1,4 @@
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
   Select,
   SelectContent,
   SelectGroup,
@@ -27,22 +21,20 @@ export const AllMenus = () => {
 
   return (
     <section className="grid px-5 grid-cols-[200px_1fr]">
-      <aside className="border border-green-600 px-2 rounded-lg">
-        <Accordion type="single" collapsible>
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-green">
-              Categories
-            </AccordionTrigger>
-            <AccordionContent className="flex flex-col gap-6 justify-center">
-              {menu.map((menu) => (
-                <Link key={menu.title} to={`/all-menus/${menu.title}s`} className="hover:bg-green-600 p-1 pl-2 rounded-sm ">
-                  <img className="mr-2 md:inline" src={menu.src} alt="" />
-                  {menu.title}
-                </Link>
-              ))}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+      <aside className="border border-green-600 px-2 rounded-lg ">
+        <h3 className="text-green ml-2">Categories</h3>
+        <div className="flex flex-col gap-4 py-4">
+          {menu.map((menu) => (
+            <Link
+              key={menu.title}
+              to={`/all-menus/${menu.title}`}
+              className="hover:bg-green-600 p-1 pl-2 rounded-sm "
+            >
+              <img className="mr-2 md:inline" src={menu.src} alt="" />
+              {menu.title}
+            </Link>
+          ))}
+        </div>
       </aside>
       <div className="px-4 pt-2 h-[26rem] overflow-y-scroll">
         <div className="flex justify-between items-center">

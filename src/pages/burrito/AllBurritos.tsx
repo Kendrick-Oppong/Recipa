@@ -1,15 +1,15 @@
 import { getAllSortQuery } from "@/redux/sortQuerySlice";
-import { FeaturedMenu as PizzaMenu } from "..";
+import { FeaturedMenu as BurritoMenu } from "..";
 import { useAppSelector } from "@/redux/store";
 
-export const AllPizzas = () => {
+export const AllBurritos = () => {
   const query = useAppSelector(getAllSortQuery);
-  console.log(query);
+
   return (
     <div>
-      {PizzaMenu(
-        `http://localhost:5000/api/Pizzas?sort=${query}`,
-        "pizzas",
+      {BurritoMenu(
+        `http://localhost:5000/api/Burritos?sort=${query}`,
+        "burritos",
         query
       )}
     </div>

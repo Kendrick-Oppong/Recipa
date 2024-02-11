@@ -7,7 +7,7 @@ const fetcher = (url: string) =>
     .then((res) => res.data)
     .catch((error) => {
       console.error("Error in fetcher:", error);
-      throw error; // Rethrow to propagate to useQuery
+      throw error; 
     });
 
 export const useFetch = <T,>(

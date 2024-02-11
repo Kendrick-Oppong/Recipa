@@ -93,11 +93,11 @@ export const carouselData = [
 ];
 
 export const menu = [
-  { title: "Burger", src: "/burger-svgrepo-com.svg" },
-  { title: "Pizza", src: "/pizza-svgrepo-com.svg" },
-  { title: "Sushi", src: "/sushi-svgrepo-com.svg" },
-  { title: "Salad", src: "/salad-svgrepo-com.svg" },
-  { title: "Burrito", src: "/burrito-svgrepo-com.svg" },
-  { title: "Beverage", src: "/strawberry-smoothie-svgrepo-com.svg" },
+  { title: "Burgers", src: "/burger-svgrepo-com.svg" },
+  { title: "Pizzas", src: "/pizza-svgrepo-com.svg" },
+  { title: "Sushis", src: "/sushi-svgrepo-com.svg" },
+  { title: "Salads", src: "/salad-svgrepo-com.svg" },
+  { title: "Burritos", src: "/burrito-svgrepo-com.svg" },
+  { title: "Beverages", src: "/strawberry-smoothie-svgrepo-com.svg" },
   { title: "Fries", src: "/french-fries-svgrepo-com.svg" },
 ];
