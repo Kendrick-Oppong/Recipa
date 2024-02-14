@@ -5,13 +5,9 @@ import { useAppSelector } from "@/redux/store";
 export const AllSalads = () => {
   const query = useAppSelector(getAllSortQuery);
 
-  return (
-    <div>
-      {SaladMenu(
-        `http://localhost:5000/api/Salads?sort=${query}`,
-        "salads",
-        query
-      )}
-    </div>
+  return SaladMenu(
+    `http://localhost:5000/api/Salads?sort=${query}`,
+    "salads",
+    query
   );
 };

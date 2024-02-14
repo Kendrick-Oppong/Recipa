@@ -6,9 +6,10 @@ interface Props {
   alt?: string;
   placeholder: React.ReactElement;
   className?: string;
+  tag?: React.ReactElement;
 }
 
-export const LazyImage = ({ src, alt, placeholder, className }: Props) => {
+export const LazyImage = ({ src, alt, placeholder, className, tag }: Props) => {
   const [loaded, setLoaded] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -20,7 +21,7 @@ export const LazyImage = ({ src, alt, placeholder, className }: Props) => {
   };
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="relative">
       {!loaded && placeholder}
       {/* Show the skeleton loader while image is loading */}
       {inView && (
@@ -34,6 +35,7 @@ export const LazyImage = ({ src, alt, placeholder, className }: Props) => {
           className={`rounded-lg ${className}`}
         />
       )}
+      {tag}
     </div>
   );
 };

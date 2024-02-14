@@ -74,7 +74,7 @@ export const ShoppingPage = () => {
           </ButtonLink>
         </Link>
       </section>
-      <section></section>
+    
     </main>
   );
 };

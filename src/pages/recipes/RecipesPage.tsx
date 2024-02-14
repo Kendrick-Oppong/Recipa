@@ -4,22 +4,20 @@ import {
   LoadingSkeleton,
   RecipesCard,
 } from "@/components/ui/shared";
-import { useFetch } from "@/hooks/useFetch";
+import { useFetch } from "@/hooks";
 import { Recipe, RecipesProp } from "@/types/types";
 import { Utensils } from "lucide-react";
 
 import { Link } from "react-router-dom";
 
 export const RecipesPage: React.FC = () => {
-  
-
-  
   const { data, isLoading, error } = useFetch<RecipesProp>(
     "https://www.themealdb.com/api/json/v1/1/categories.php",
     "allRecipes"
   );
-
+ 
   const recipes = data?.categories.reverse();
+
 
   if (isLoading)
     return (

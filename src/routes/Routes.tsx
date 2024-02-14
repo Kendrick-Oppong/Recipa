@@ -9,9 +9,11 @@ import {
   AllPizzas,
   AllSalads,
   AllSushis,
+  BurgerMenuDetails,
   CategoryMealDetail,
   CategoryPage,
   HomePage,
+  PageNotFound,
   RecipeCategory,
   RecipesPage,
   ShoppingPage,
@@ -42,7 +44,9 @@ export const AllRoutes = () => {
             <Route path="beverages" element={<AllBeverages />} />
             <Route path="fries" element={<AllFries />} />
           </Route>
+          <Route path=":title/:id" element={<BurgerMenuDetails />} />
         </Route>
+      <Route path="*" element={<PageNotFound/> } />
       </Route>
     </Routes>
   );

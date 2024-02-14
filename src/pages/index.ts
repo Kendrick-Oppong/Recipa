@@ -1,3 +1,5 @@
+export { PageNotFound } from "./notFound";
+
 export { AllFries } from "./fries";
 
 export { AllBeverages } from "./beverage";
@@ -14,9 +16,10 @@ export { AllMenus } from "./AllMenus";
 
 export { AllMenuLayout } from "./AllMenus/AllMenuLayout";
 
-export { AllBurgers } from "./burger";
+export { AllBurgers, BurgerMenuDetails } from "./burger";
 
-export { ShoppingPage, FeaturedMenu } from "./shop";
+
+export { ShoppingPage, FeaturedMenu, MenuDetails } from "./shop";
 
 export { CategoryMealDetail } from "./categories";
 

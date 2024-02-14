@@ -109,3 +109,25 @@ export interface MenuProps {
     };
   }[];
 }
+
+
+export interface MenuDetailsProps {
+ 
+  data: {
+    _id?: string;
+    title?: string;
+    rating?: number;
+    image?: string;
+    description?: string;
+    price?: number;
+    details?: {
+      fullDescription?: string;
+      category?: string;
+      tag?: string;
+      weight?: string;
+      dimension?: string;
+      quantityInStock?: number;
+      _id?: string;
+    };
+  }[];
+}

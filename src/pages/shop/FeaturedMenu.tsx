@@ -5,9 +5,10 @@ import {
   LoadingSkeleton,
   ToolTip,
 } from "@/components/ui/shared";
-import { useFetch } from "@/hooks/useFetch";
+import { useFetch } from "@/hooks";
 import { MenuProps } from "@/types/types";
 import { DollarSign, Heart, ShoppingBasket } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
   const { data, isLoading, error } = useFetch<MenuProps>(url, queryKey, id);
@@ -38,15 +39,19 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
               <Heart className="text-green hover:text-red-500 h-6 w-6 cursor-pointer" />
             </ToolTip>
           </div>
-          <LazyImage
-            src={menu?.image}
-            alt={menu.title}
-            className="mx-auto !h-[250px] object-scale-down lg:scale-[0.8]"
-            placeholder={<ImagePlaceholderSkeleton />}
-          />
+          <Link to={`/all-menus/${menu.title}/${menu._id}`}>
+            <LazyImage
+              src={menu?.image}
+              alt={menu.title}
+              className="mx-auto !h-[250px] object-scale-down lg:scale-[0.8]"
+              placeholder={<ImagePlaceholderSkeleton />}
+            />
+          </Link>
 
           <div className="font-bold text-center">
-            <h3>{menu.title}</h3>
+            <Link to={""}>
+              <h3>{menu.title}</h3>
+            </Link>
           </div>
           <div className="text-lg my-6">
             <div className="flex justify-center my-4 items-center">
@@ -106,7 +111,7 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
               </p>
             </div>
 
-            <p className=" ">
+            <p className="text-center">
               {menu.description?.match(/\S+/g)?.slice(0, 8).join(" ")}
               ...
             </p>
@@ -130,4 +135,4 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
     </div>
   );
 };
-// <RecipesCard recipe={recipe} key={recipe.idCategory} />
+

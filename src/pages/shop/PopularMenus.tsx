@@ -4,7 +4,7 @@ import { menu } from "@/constants/constants";
 
 export function PopularMenus() {
   return (
-    <Tabs defaultValue="burger">
+    <Tabs defaultValue="burgers">
       <TabsList className="grid auto-fit-tabs px-5 mx-auto gap-5 max-w-full  sm:max-w-[95%]  border border-green-600">
         {menu.map((menu) => (
           <TabsTrigger key={menu.title} value={menu.title.toLowerCase()}>
@@ -14,37 +14,37 @@ export function PopularMenus() {
         ))}
       </TabsList>
       <div className="px-10">
-        <TabsContent value="burger">
+        <TabsContent value="burgers">
           {FeaturedMenu(
             "http://localhost:5000/api/specialBurger",
             "specialBurger"
           )}
         </TabsContent>
-        <TabsContent value="pizza">
+        <TabsContent value="pizzas">
           {FeaturedMenu(
             "http://localhost:5000/api/specialPizza",
             "specialPizza"
           )}
         </TabsContent>
-        <TabsContent value="sushi">
+        <TabsContent value="sushis">
           {FeaturedMenu(
             "http://localhost:5000/api/specialSushi",
             "specialSushi"
           )}
         </TabsContent>
-        <TabsContent value="salad">
+        <TabsContent value="salads">
           {FeaturedMenu(
             "http://localhost:5000/api/specialSalad",
             "specialSalad"
           )}
         </TabsContent>
-        <TabsContent value="burrito">
+        <TabsContent value="burritos">
           {FeaturedMenu(
             "http://localhost:5000/api/specialBurrito",
             "specialBurrito"
           )}
         </TabsContent>
-        <TabsContent value="beverage">
+        <TabsContent value="beverages">
           {FeaturedMenu(
             "http://localhost:5000/api/specialBeverage",
             "specialBeverage"

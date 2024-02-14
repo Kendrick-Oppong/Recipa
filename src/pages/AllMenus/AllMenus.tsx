@@ -44,6 +44,7 @@ export const AllMenus = () => {
           <div className="w-64 ">
             <Select onValueChange={(val) => handleSortQuery(val)}>
               <SelectTrigger>
+                
                 <SelectValue placeholder="Sort Menu By" />
               </SelectTrigger>
               <SelectContent>

@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 export const RecipeCategory = () => {
   const { id } = useParams();
-  console.log(id);
+
   const {
     data: mealCategory,
     isLoading,
@@ -26,6 +26,7 @@ export const RecipeCategory = () => {
         <LoadingSkeleton />
       </div>
     );
+  
   if (error)
     return (
       <div className="mt-[12rem] m-[6rem]">
