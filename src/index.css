@@ -60,7 +60,7 @@
   }
   .auto-fit {
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    @apply lg:auto-fit-menu-lg
+    @apply lg:auto-fit-menu-lg;
   }
 
   .auto-fit-tabs {
@@ -68,11 +68,15 @@
   }
 
   .auto-fit-menu-lg {
-     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
   }
 
   .auto-fit-menu {
-     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+
+  .auto-fit-menu-skeleton {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 
   .transition {
@@ -80,11 +84,19 @@
   }
 
   .active {
-    @apply bg-green-300 rounded-sm px-3 py-1 shadow-sm;
+    @apply bg-green-600 rounded-sm px-3 py-1 shadow-sm;
+  }
+
+  .active li {
+    @apply hover:!text-white;
   }
 
   .on-dark-shadow {
     box-shadow: 0 10px 15px -3px rgb(255 255 255 / 5%);
+  }
+
+  .form-field-bg {
+    @apply focus-visible:!bg-[#e8f0fe] text-black;
   }
 
   .spin-image {
@@ -164,7 +176,7 @@
     font-family: "Archivo", sans-serif;
   }
 
-  li {
+  nav li {
     @apply hover:text-green-600 list-none;
   }
 
@@ -195,7 +207,4 @@
   footer {
     @apply !bg-background !text-foreground;
   }
-}
-.active {
-  @apply bg-green-300 rounded-sm px-3 py-1 shadow-sm;
 }

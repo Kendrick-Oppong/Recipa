@@ -26,7 +26,7 @@ export const CategoryMealDetail = () => {
         role="status"
         className="mt-[8rem] my-20 max-w-[80%] mx-auto space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
       >
-        <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
+        <div className="flex items-center justify-center w-full h-48 bg-gray-400 rounded sm:w-96 dark:bg-gray-700">
           <svg
             className="w-10 h-10 text-gray-200 dark:text-gray-600"
             aria-hidden="true"
@@ -58,18 +58,16 @@ export const CategoryMealDetail = () => {
 
   return (
     <main className="mt-28 px-4 sm:px-10 my-10">
-      <div className="max-w-[90%] sm:max-w-[80%]  mx-auto">
-        <div className="flex gap-5 mx-auto sm:flex-wrap place-items-center border-green-600 rounded-lg border shadow-2xl">
-          <div className="w-full lg:w-auto rounded-2xl">
+      <div className="max-w-[95%]  mx-auto">
+        <div className="md:flex gap-4  rounded-lg shadow-2xl">
+          <div className=" rounded-2xl">
             <img
               src={mealDetail!.strMealThumb!}
-              width={300}
-              height={300}
               alt={mealDetail!.strMealThumb!}
-              className={`rounded-lg w-full lg:h-80`}
+              className={`w-[250px] rounded-lg`}
             />
           </div>
-          <div className="relative font-semibold text-lg lg:ml-6 my-6 ml-4 sm:ml-0 min-w-[90%] sm:min-w-[60%] pr-3">
+          <div className="relative font-semibold text-lg lg:ml-6 my-6 ml-4 sm:ml-0  px-3">
             <div className="dark:text-black rounded-lg absolute shadow-md right-12 top-0 bg-green-100  px-4 mr-1 py-1">
               {mealDetail?.strCategory} / {mealDetail?.strArea}
             </div>
@@ -86,6 +84,7 @@ export const CategoryMealDetail = () => {
             </h2>
           </div>
         </div>
+
         <div className="flex justify-center text-xl  gap-6 my-10 text-green ">
           {mealDetail?.strYoutube && mealDetail?.strYoutube !== "" && (
             <>

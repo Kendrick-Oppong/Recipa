@@ -15,8 +15,8 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
 
   if (isLoading)
     return (
-      <div className="mt-10 m-10">
-        <LoadingSkeleton />
+      <div className="mt-10 m-4">
+        <LoadingSkeleton layout="auto-fit-menu-skeleton" />
       </div>
     );
 
@@ -28,7 +28,7 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
     );
 
   return (
-    <div className="mt-10 grid auto-fit gap-4 ">
+    <div className="mt-10 grid auto-fit gap-4 md:px-16">
       {data?.data?.map((menu) => (
         <div
           key={menu._id}
@@ -39,7 +39,9 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
               <Heart className="text-green hover:text-red-500 h-6 w-6 cursor-pointer" />
             </ToolTip>
           </div>
-          <Link to={`/all-menus/${menu.title}/${menu._id}`}>
+          <Link
+            to={`/all-menus/${menu.category}/${menu.title}/${menu._id}`}
+          >
             <LazyImage
               src={menu?.image}
               alt={menu.title}
@@ -135,4 +137,3 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
     </div>
   );
 };
-

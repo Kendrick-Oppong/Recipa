@@ -21,6 +21,8 @@ import {
   Heart,
 } from "lucide-react";
 import React, { Key } from "react";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { decrementQuantity, getAllMenuQuantity, incrementQuantity, onChangeValue } from "@/redux/menuQuantitySlice";
 
 export const MenuDetails = (url: string, queryKey: string, id?: string) => {
   const { data, isLoading, error } = useFetch<MenuDetailsProps>(
@@ -29,13 +31,15 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
     id
   );
 
-  console.log(data);
+  const dispatch = useAppDispatch()
+  const quantity = useAppSelector(getAllMenuQuantity)
+ 
 
   if (isLoading)
     return (
       <div
-        role="status"
-        className="mt-[2rem] my-20 max-w-[80%] mx-auto space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
+        role="output"
+        className="mt-[2rem] my-20 max-w-[95%] mx-auto space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
       >
         <div className="flex items-center justify-center w-full h-48 bg-gray-400 rounded sm:w-96 dark:bg-gray-700">
           <svg
@@ -69,16 +73,16 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 text-lg mt-3 mb-20 px-4">
+      <div className="grid lg:grid-cols-2 items-center gap-4 text-lg mt-3 mb-20 px-4">
         {data?.data.map((menuDetail) => (
           <React.Fragment key={menuDetail._id}>
             <LazyImage
               src={menuDetail?.image}
               alt={menuDetail.title}
-              className="w-auto mx-auto"
+              className="w-80 lg:w-96 lg:mx-auto"
               tag={
-                <p className="absolute top-5 right-[20%] px-5 py-2 text-white bg-red-500 rounded-md">
-                  {menuDetail.details?.category}
+                <p className="absolute top-5 right-[15%] px-5 py-2 text-white bg-red-500 rounded-md">
+                  {menuDetail.category}
                 </p>
               }
               placeholder={<ImagePlaceholderSkeleton className=" h-[26rem]" />}
@@ -166,19 +170,22 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                 backordered)
               </p>
 
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <div className="flex items-center justify-between pr-8">
                   <strong>QUANTITY:</strong>{" "}
                   <div className="p-1 border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
-                    <Plus />
+                    <Minus onClick={() => dispatch(decrementQuantity())} />
                   </div>{" "}
                   <Input
                     type="number"
                     min={1}
+                    max={100}
+                    onChange={(e) => dispatch(onChangeValue(+e.target.value))}
+                    value={quantity}
                     className="w-[30%] text-center"
                   />
                   <div className="p-1 border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
-                    <Minus />
+                    <Plus onClick={() => dispatch(incrementQuantity())} />
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -244,7 +251,6 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                       </p>
                     )
                 )}
-              
               </div>
             </TabsContent>
             <TabsContent value="additional_info">

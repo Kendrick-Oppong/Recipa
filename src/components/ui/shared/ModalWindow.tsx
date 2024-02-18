@@ -8,7 +8,7 @@ export const ModalWindow = ({ url }: { url: string }) => {
       <DialogTrigger>
         <PlayCircle className="w-8 h-8 my-auto" />
       </DialogTrigger>
-      <DialogContent className="max-w-3xl h-auto rounded-3xl">
+      <DialogContent className="max-w-[22rem] md:max-w-3xl h-auto rounded-lg">
         <ReactPlayer
           url={url}
           controls={true}

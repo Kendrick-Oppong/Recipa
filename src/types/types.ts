@@ -95,6 +95,7 @@ export interface MenuProps {
     _id?: string;
     title?: string;
     rating?: number;
+    category?:string,
     image?: string;
     description?: string;
     price?: number;
@@ -110,13 +111,12 @@ export interface MenuProps {
   }[];
 }
 
-
 export interface MenuDetailsProps {
- 
   data: {
     _id?: string;
     title?: string;
     rating?: number;
+    category?: string;
     image?: string;
     description?: string;
     price?: number;

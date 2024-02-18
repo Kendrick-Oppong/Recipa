@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { AllRecipesDropDownLinks, Logo } from ".";
 import { Input } from "@/components/ui/input";
-import { ShoppingCart, User } from "lucide-react";
+// import { ShoppingBasket, User } from "lucide-react";
 import { ModeToggle } from "@/context/theme";
 
 export const Navbar = () => {
@@ -25,19 +25,20 @@ export const Navbar = () => {
           <Input
             type="search"
             placeholder="Search for recipe"
-            className="text-base"
+            className="text-lg border-green-600"
           />
         </div>
 
         <div className="flex gap-5">
-          <NavLink to="/cart">
+          {/* <NavLink to="/cart">
             <li>
-              <ShoppingCart />
+              <ShoppingBasket />
             </li>
-          </NavLink>
-          <NavLink to="/account">
+          </NavLink> */}
+          <NavLink to="/signup">
             <li>
-              <User />
+              Sign In
+              {/* <User /> */}
             </li>
           </NavLink>
           {/* <DropDownMenu /> */}

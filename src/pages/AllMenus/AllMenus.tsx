@@ -7,9 +7,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
 import { menu } from "@/constants/constants";
 import { addSortQuery } from "@/redux/sortQuerySlice";
 import { useAppDispatch } from "@/redux/store";
+import { SlidersHorizontal } from "lucide-react";
 import { Link, Outlet } from "react-router-dom";
 
 export const AllMenus = () => {
@@ -20,31 +23,42 @@ export const AllMenus = () => {
   };
 
   return (
-    <section className="grid px-5 grid-cols-[200px_1fr]">
-      <aside className="border border-green-600 px-2 rounded-lg ">
-        <h3 className="text-green ml-2">Categories</h3>
-        <div className="flex flex-col gap-4 py-4">
-          {menu.map((menu) => (
-            <Link
-              key={menu.title}
-              to={`/all-menus/${menu.title}`}
-              className="hover:bg-green-600 p-1 pl-2 rounded-sm "
-            >
-              <img className="mr-2 md:inline" src={menu.src} alt="" />
-              {menu.title}
-            </Link>
-          ))}
+    <section className="px-5">
+      <div className="px-4 pt-2">
+        <div>
+          <Sheet>
+            <SheetTrigger>
+              <h3 className="inline-flex gap-1 items-center">
+                <SlidersHorizontal />
+                Menu
+              </h3>
+            </SheetTrigger>
+            <SheetContent className="mt-[5rem] md:mt-[4rem] hover:scale-100 text-lg">
+              <aside className="border border-green-600 px-2 mt-10 rounded-lg ">
+                <div className="flex flex-col gap-4 py-4">
+                  {menu.map((menu) => (
+                    <Link
+                      key={menu.title}
+                      to={`/all-menus/${menu.title.toLowerCase()}`}
+                      className="inline-flex items-center hover:bg-green-600 p-1 pl-2 rounded-sm "
+                    >
+                      <img className="mr-2 md:inline" src={menu.src} alt="" />
+                      {menu.title}
+                    </Link>
+                  ))}
+                </div>
+              </aside>
+            </SheetContent>
+          </Sheet>
         </div>
-      </aside>
-      <div className="px-4 pt-2 h-[26rem] overflow-y-scroll">
-        <div className="flex justify-between items-center">
-          <div className="font-semibold">
+
+        <div className="flex flex-wrap justify-around items-center pb-4">
+          <div className="font-semibold mb-6 sm:mb-0">
             <p>Showing 1-12 of 12 items</p>
           </div>
           <div className="w-64 ">
             <Select onValueChange={(val) => handleSortQuery(val)}>
               <SelectTrigger>
-                
                 <SelectValue placeholder="Sort Menu By" />
               </SelectTrigger>
               <SelectContent>
@@ -77,7 +91,9 @@ export const AllMenus = () => {
             </Select>
           </div>
         </div>
-        <Outlet />
+        <div className=" h-[26rem] overflow-y-scroll pb-10">
+          <Outlet />
+        </div>
       </div>
     </section>
   );

@@ -3,20 +3,17 @@ import { ButtonLink, ImagePlaceholderSkeleton, LazyImage } from ".";
 import { Utensils } from "lucide-react";
 import { CategoryName } from "@/types/types";
 
-
 export const CategoryCard: React.FC<CategoryName> = ({
   meal,
   categoryName,
 }) => {
- 
-
   return (
     <div className="shadow-2xl border-green-600 rounded-lg border relative p-3">
-    
       <LazyImage
         src={categoryName.strMealThumb}
         alt={categoryName.strMealThumb}
-        placeholder={<ImagePlaceholderSkeleton />} 
+        className="mx-auto w-auto "
+        placeholder={<ImagePlaceholderSkeleton />}
       />
       <div className="font-semibold text-lg my-6">
         <p>{categoryName.strMeal}</p>

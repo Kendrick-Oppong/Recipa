@@ -9,14 +9,17 @@ import {
   AllPizzas,
   AllSalads,
   AllSushis,
-  BurgerMenuDetails,
+  BurgerMenuDetails as MenuDetails,
   CategoryMealDetail,
   CategoryPage,
   HomePage,
   PageNotFound,
+ 
   RecipeCategory,
   RecipesPage,
   ShoppingPage,
+  SignUp,
+  SignIn,
 } from "@/pages";
 
 import { Route, Routes } from "react-router-dom";
@@ -44,9 +47,12 @@ export const AllRoutes = () => {
             <Route path="beverages" element={<AllBeverages />} />
             <Route path="fries" element={<AllFries />} />
           </Route>
-          <Route path=":title/:id" element={<BurgerMenuDetails />} />
+          <Route path=":category/:title/:id" element={<MenuDetails />} />
         </Route>
-      <Route path="*" element={<PageNotFound/> } />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="signin" element={<SignIn />} />
+
+        <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
   );
