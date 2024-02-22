@@ -10,7 +10,7 @@ export const ErrorMessage = ({ message }: { message: string }) => {
       dismissible: true,
       important: true,
       icon: <XCircle />,
-      className: "gap-5 mt-5",
+      className: "gap-6 mt-5",
       style: {
         padding: "1rem",
         backgroundColor: "red",

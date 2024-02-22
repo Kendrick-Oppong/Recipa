@@ -131,3 +131,18 @@ export interface MenuDetailsProps {
     };
   }[];
 }
+
+
+// Form Input Fields From IsError Utils
+export interface SignUpFormData {
+  username: string;
+  name: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+}
+
+export interface SignInFormData {
+  email: string;
+  password: string;
+}

@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/shared";
 
 export const Footer = () => {
   const location = useLocation();
-  console.log(location.pathname);
+ 
 
   return (
     <div className="shadow-2xl">

@@ -1,11 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sortQueryReducer from "./sortQuerySlice";
 import menuQuantityReducer from "./menuQuantitySlice";
+import userFormReducer from "./userFormSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
 export const store = configureStore({
-  reducer: { query: sortQueryReducer, menuQuantity: menuQuantityReducer },
+  reducer: {
+    query: sortQueryReducer,
+    menuQuantity: menuQuantityReducer,
+    userForm: userFormReducer,
+  },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

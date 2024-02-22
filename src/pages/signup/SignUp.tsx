@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldError, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import {
@@ -17,8 +17,8 @@ import { signUpSchema } from "@/validators/formSchema";
 import { Asterisk } from "lucide-react";
 import { ButtonLink } from "@/components/ui/shared";
 import { Link } from "react-router-dom";
-
-// import { toast } from "@/components/ui/use-toast";
+import { isError, handleErrorToast } from "@/lib/utils";
+import { usePost } from "@/hooks";
 
 export const SignUp = () => {
   const form = useForm<z.infer<typeof signUpSchema>>({
@@ -31,28 +31,56 @@ export const SignUp = () => {
       confirm_password: "",
     },
   });
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid, errors },
+  } = form;
 
-  const { control, handleSubmit, formState } = form;
-
-  const isError = (fieldName: string) => {
-    const error = formState.errors[
-      fieldName as keyof typeof form.formState.defaultValues
-    ] as FieldError | undefined;
-    return error?.message;
-  };
+  const {
+    data: signUpData,
+    error: signUpError,
+    isError: isPostError,
+    isPending,
+    isSuccess,
+    mutate: signUpMutation,
+  } = usePost("http://localhost:5000/user/signup");
+  //  useMutation({
+  //   mutationFn: (newUser: SignUpFormData) =>
+  //     axios
+  //       .post("http://localhost:5000/user/signup", newUser)
+  //       .catch((error) => {
+  //         if (error instanceof AxiosError) {
+  //           console.error("Error creating new user:", error);
+  //           throw new Error(error.response?.data.message || error.message);
+  //         }
+  //         throw error;
+  //       }),
+  //   onSuccess: (data) => {
+  //     console.log(data.data);
+  //   },
+  //   onError: (error) => {
+  //     console.error(error);
+  //     throw error;
+  //   },
+  // });
 
   function onSubmit(data: z.infer<typeof signUpSchema>) {
     console.log(data);
+
+    signUpMutation(data);
   }
 
   return (
     <main className="max-w-5xl mx-auto text-lg">
       <div className="border border-green-600 w-[90%] md:w-[70%] px-5  md:px-10  pb-10 rounded-lg mx-auto mt-28 mb-10 shadow-2xl">
         <div className="text-center ">
+          {signUpData?.data}
+          {signUpError?.message}
           <h2>
             Create an {""}
             <span>
-              account.
+              account. {""}
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
           </h2>
@@ -90,7 +118,7 @@ export const SignUp = () => {
                       type="text"
                       {...field}
                       className={`${
-                        isError(field.name)
+                        isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
                           : "border-green-600"
                       }`}
@@ -118,7 +146,7 @@ export const SignUp = () => {
                       type="text"
                       {...field}
                       className={`${
-                        isError(field.name)
+                        isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
                           : "border-green-600"
                       }`}
@@ -143,7 +171,7 @@ export const SignUp = () => {
                       type="email"
                       {...field}
                       className={`${
-                        isError(field.name)
+                        isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
                           : "border-green-600"
                       }`}
@@ -167,8 +195,8 @@ export const SignUp = () => {
                       placeholder="Enter your password"
                       type="password"
                       {...field}
-                      className={`form-field-bg ${
-                        isError(field.name)
+                      className={`${
+                        isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
                           : "border-green-600"
                       }`}
@@ -192,8 +220,8 @@ export const SignUp = () => {
                       placeholder="confirm your password"
                       type="password"
                       {...field}
-                      className={`form-field-bg ${
-                        isError(field.name)
+                      className={`${
+                        isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
                           : "border-green-600"
                       }`}
@@ -203,7 +231,13 @@ export const SignUp = () => {
                 </FormItem>
               )}
             />
-            <ButtonLink className="w-full mt-4">Create account</ButtonLink>
+            <ButtonLink
+              className="w-full mt-4"
+              type="submit"
+              onClick={() => handleErrorToast(isValid || isPostError)}
+            >
+              {isPending ? "Creating account" : "Create account"}
+            </ButtonLink>
           </form>
         </Form>
         <div className="mt-6">
@@ -214,10 +248,12 @@ export const SignUp = () => {
           </p>
           <ButtonLink className="w-full">
             <img src="/google.svg" alt="" className="mr-2" />
+            {""}
             Continue with Google
           </ButtonLink>
           <ButtonLink className="w-full my-4">
             <img src="/facebook.svg" alt="" className="mr-2" />
+            {""}
             Continue with Facebook
           </ButtonLink>
         </div>

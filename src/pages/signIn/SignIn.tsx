@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldError, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import {
@@ -16,8 +16,8 @@ import { signInSchema } from "@/validators/formSchema";
 import { Asterisk } from "lucide-react";
 import { ButtonLink } from "@/components/ui/shared";
 import { Link } from "react-router-dom";
-
-// import { toast } from "@/components/ui/use-toast";
+import { isError, handleErrorToast } from "@/lib/utils";
+import { usePost } from "@/hooks";
 
 export const SignIn = () => {
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -28,27 +28,37 @@ export const SignIn = () => {
     },
   });
 
-  const { control, handleSubmit, formState } = form;
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid, errors },
+  } = form;
 
-  const isError = (fieldName: string) => {
-    const error = formState.errors[
-      fieldName as keyof typeof form.formState.defaultValues
-    ] as FieldError | undefined;
-    return error?.message;
-  };
+  const {
+    data: signInData,
+    error: signInError,
+    isError: isPostError,
+    isPending,
+    isSuccess,
+    mutate: signInMutation,
+  } = usePost("http://localhost:5000/user/signin");
+
 
   function onSubmit(data: z.infer<typeof signInSchema>) {
     console.log(data);
+    signInMutation(data);
   }
 
   return (
     <main className="max-w-5xl mx-auto text-lg">
       <div className="border border-green-600 w-[90%] md:w-[70%] px-5  md:px-10  pb-10 rounded-lg mx-auto mt-28 mb-10 shadow-2xl">
         <div className="text-center ">
+          {signInData?.data}
+          {signInError?.message}
           <h2>
             Sign to {""}
             <span>
-              your account.
+              your account.{""}
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
           </h2>
@@ -86,7 +96,7 @@ export const SignIn = () => {
                       type="email"
                       {...field}
                       className={`${
-                        isError(field.name)
+                        isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
                           : "border-green-600"
                       }`}
@@ -111,7 +121,7 @@ export const SignIn = () => {
                       type="password"
                       {...field}
                       className={`${
-                        isError(field.name)
+                        isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
                           : "border-green-600"
                       }`}
@@ -121,7 +131,13 @@ export const SignIn = () => {
                 </FormItem>
               )}
             />
-            <ButtonLink className="w-full mt-4">Sign In</ButtonLink>
+            <ButtonLink
+              className="w-full mt-4"
+              type="submit"
+              onClick={() => handleErrorToast(isValid || isPostError)}
+            >
+              {isPending ? "Validating" : "Sign In"}
+            </ButtonLink>
           </form>
         </Form>
         <div className="mt-6">
@@ -132,10 +148,12 @@ export const SignIn = () => {
           </p>
           <ButtonLink className="w-full">
             <img src="/google.svg" alt="" className="mr-2" />
+            {""}
             Continue with Google
           </ButtonLink>
           <ButtonLink className="w-full my-4">
             <img src="/facebook.svg" alt="" className="mr-2" />
+            {""}
             Continue with Facebook
           </ButtonLink>
         </div>

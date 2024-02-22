@@ -18,12 +18,12 @@ const Toaster = ({ ...props }: ToasterProps) => {
           actionButton:
             "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+            "group-[.toast]:bg-muted group-[.toast]:text-base group-[.toast]:text-black  group-[.toast]:dark:text-white",
         },
       }}
       {...props}
     />
-  )
+  );
 }
 
 export { Toaster }

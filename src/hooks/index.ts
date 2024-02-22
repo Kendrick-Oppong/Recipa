@@ -1,4 +1,3 @@
-// export { useLoadMore } from "./useLoadMore";
+export { usePost } from "./usePost";
 
 export { useFetch } from "./useFetch";
-
