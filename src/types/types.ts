@@ -88,14 +88,13 @@ export interface Meal_ID_Prop {
   meals: Meal[];
 }
 
-//Page.tsx
 export interface MenuProps {
   count: number;
   data: {
     _id?: string;
     title?: string;
     rating?: number;
-    category?:string,
+    category?: string;
     image?: string;
     description?: string;
     price?: number;
@@ -132,7 +131,6 @@ export interface MenuDetailsProps {
   }[];
 }
 
-
 // Form Input Fields From IsError Utils
 export interface SignUpFormData {
   username: string;
@@ -145,4 +143,23 @@ export interface SignUpFormData {
 export interface SignInFormData {
   email: string;
   password: string;
+}
+
+//cart
+export interface CartItem {
+  _id?: string;
+  title?: string;
+  rating?: number;
+  image?: string;
+  description?: string;
+  price?: number;
+  category?: string;
+}
+
+export interface CartState {
+  existingCart: {
+    itemId: string | undefined;
+    isExisting: boolean;
+  };
+  cart: CartItem[];
 }

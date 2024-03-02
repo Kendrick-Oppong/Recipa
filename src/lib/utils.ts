@@ -8,8 +8,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-
-
 export const isError = <T extends SignUpFormData | SignInFormData>(
   fieldName: string,
   errors: FieldErrors<T>,
@@ -24,15 +22,19 @@ export const isError = <T extends SignUpFormData | SignInFormData>(
 export const handleErrorToast = (isValid: boolean) => {
   if (!isValid) {
     return toast.error("Please fill all fields", {
-      duration: 3000,
-      dismissible: true,
-      important: true,
-      className: "gap-5",
       style: {
-        padding: "1rem",
-        fontSize: "16px",
         background: "red",
       },
     });
   }
+};
+
+export const handleInfoToast = (message: string) => {
+  return toast.info(message, {
+    duration: 3000,
+    style: {
+      background: "rgb(253 185 61)",
+      color: "black",
+    },
+  });
 };

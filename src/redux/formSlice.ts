@@ -21,6 +21,7 @@ const initialState: UserFormProps = {
     password: "",
   },
 };
+
 export const userFormSlice = createSlice({
   name: "auth",
   initialState,

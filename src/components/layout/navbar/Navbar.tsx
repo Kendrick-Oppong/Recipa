@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { AllRecipesDropDownLinks, Logo } from ".";
 import { Input } from "@/components/ui/input";
-// import { ShoppingBasket, User } from "lucide-react";
 import { ModeToggle } from "@/context/theme";
+import { ShoppingBasket, User } from "lucide-react";
 
 export const Navbar = () => {
   return (
@@ -30,15 +30,17 @@ export const Navbar = () => {
         </div>
 
         <div className="flex gap-5">
-          {/* <NavLink to="/cart">
+          <NavLink to="/signin">
+            <li>Sign In</li>
+          </NavLink>
+          <NavLink to="all-menus/cart">
             <li>
               <ShoppingBasket />
             </li>
-          </NavLink> */}
-          <NavLink to="/signup">
+          </NavLink>
+          <NavLink to="/profile">
             <li>
-              Sign In
-              {/* <User /> */}
+              <User />
             </li>
           </NavLink>
           {/* <DropDownMenu /> */}

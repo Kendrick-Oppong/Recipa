@@ -6,7 +6,6 @@ import {
   ErrorMessage,
   ImagePlaceholderSkeleton,
   LazyImage,
-  ToolTip,
 } from "@/components/ui/shared";
 import { useFetch } from "@/hooks";
 import { MenuDetailsProps } from "@/types/types";
@@ -18,11 +17,16 @@ import {
   Plus,
   Minus,
   ShoppingBasket,
-  Heart,
 } from "lucide-react";
 import React, { Key } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { decrementQuantity, getAllMenuQuantity, incrementQuantity, onChangeValue } from "@/redux/menuQuantitySlice";
+import {
+  decrementQuantity,
+  getAllMenuQuantity,
+  incrementQuantity,
+  onChangeValue,
+} from "@/redux/menuQuantitySlice";
+import { addToCart } from "@/redux/cartSlice";
 
 export const MenuDetails = (url: string, queryKey: string, id?: string) => {
   const { data, isLoading, error } = useFetch<MenuDetailsProps>(
@@ -31,9 +35,8 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
     id
   );
 
-  const dispatch = useAppDispatch()
-  const quantity = useAppSelector(getAllMenuQuantity)
- 
+  const dispatch = useAppDispatch();
+  const quantity = useAppSelector(getAllMenuQuantity);
 
   if (isLoading)
     return (
@@ -170,8 +173,8 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                 backordered)
               </p>
 
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center justify-between pr-8">
+              <div className="flex justify-between flex-wrap gap-3">
+                <div className="flex items-center justify-between gap-5">
                   <strong>QUANTITY:</strong>{" "}
                   <div className="p-1 border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
                     <Minus onClick={() => dispatch(decrementQuantity())} />
@@ -182,21 +185,25 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                     max={100}
                     onChange={(e) => dispatch(onChangeValue(+e.target.value))}
                     value={quantity}
-                    className="w-[30%] text-center"
+                    className="w-[30%] text-center border border-green-600"
                   />
                   <div className="p-1 border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
                     <Plus onClick={() => dispatch(incrementQuantity())} />
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <ButtonLink className="hover:!bg-red-500 ">
+                  <ButtonLink
+                    type="button"
+                    className="hover:!bg-red-500 "
+                    onClick={() => dispatch(addToCart(menuDetail))}
+                  >
                     <ShoppingBasket className="mr-2" /> Add to Cart
                   </ButtonLink>
-                  <ToolTip tooltip="Add to wishlist">
+                  {/* <ToolTip tooltip="Add to wishlist">
                     <div className="p-[0.6rem] border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
                       <Heart className=" h-6 w-6 cursor-pointer" />
                     </div>
-                  </ToolTip>
+                  </ToolTip> */}
                 </div>
               </div>
 
@@ -207,7 +214,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                 <p className="my-3">
                   <strong>TAG</strong>: {menuDetail.details?.tag}
                 </p>
-                <p>
+                <div>
                   <strong className="flex gap-2">
                     SHARE:
                     <div className="flex gap-2">
@@ -225,7 +232,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                       />
                     </div>
                   </strong>
-                </p>
+                </div>
               </div>
             </div>
           </React.Fragment>

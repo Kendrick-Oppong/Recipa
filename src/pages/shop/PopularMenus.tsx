@@ -4,7 +4,7 @@ import { menu } from "@/constants/constants";
 
 export function PopularMenus() {
   return (
-    <Tabs defaultValue="burgers">
+    <Tabs defaultValue="burgers"className="mx-4">
       <TabsList className="grid auto-fit-tabs px-5 mx-auto gap-5 max-w-full  sm:max-w-[95%]  border border-green-600">
         {menu.map((menu) => (
           <TabsTrigger key={menu.title} value={menu.title.toLowerCase()}>
@@ -13,7 +13,7 @@ export function PopularMenus() {
           </TabsTrigger>
         ))}
       </TabsList>
-      <div className="px-10">
+      <div className="md:px-10">
         <TabsContent value="burgers">
           {FeaturedMenu(
             "http://localhost:5000/api/specialBurger",

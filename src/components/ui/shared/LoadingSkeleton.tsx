@@ -1,8 +1,9 @@
 const mapper = [1, 2, 3];
+
 export const LoadingSkeleton = ({
   layout = "auto-fit",
 }: {
-  layout?: string 
+  layout?: string;
 }) => {
   return (
     <div className={`grid ${layout} gap-4`}>
@@ -14,7 +15,7 @@ export const LoadingSkeleton = ({
         >
           <div className="flex items-center justify-center h-48 mb-4 bg-gray-400 rounded dark:bg-gray-700">
             <svg
-              className="w-10 h-10 text-gray-300 dark:text-gray-600"
+              className="w-10 h-10 text-gray-400 dark:text-gray-600"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -24,10 +25,10 @@ export const LoadingSkeleton = ({
               <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
             </svg>
           </div>
-          <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-          <div className="h-2 bg-gray-300 rounded-full dark:bg-gray-700 mb-2.5"></div>
-          <div className="h-2 bg-gray-300 rounded-full dark:bg-gray-700 mb-2.5"></div>
-          <div className="h-2 bg-gray-300 rounded-full dark:bg-gray-700"></div>
+          <div className="h-2.5 bg-gray-400 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+          <div className="h-2 bg-gray-400 rounded-full dark:bg-gray-700 mb-2.5"></div>
+          <div className="h-2 bg-gray-400 rounded-full dark:bg-gray-700 mb-2.5"></div>
+          <div className="h-2 bg-gray-400 rounded-full dark:bg-gray-700"></div>
         </div>
       ))}
     </div>

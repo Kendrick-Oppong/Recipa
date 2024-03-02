@@ -7,7 +7,7 @@ const fetcher = (url: string) =>
     .then((res) => res.data)
     .catch((error) => {
       console.error("Error in fetcher:", error);
-      throw error; 
+      throw error;
     });
 
 export const useFetch = <T,>(
@@ -24,8 +24,7 @@ export const useFetch = <T,>(
     queryFn: () => fetcher(url),
     retry: 3,
     staleTime: 0,
-    refetchOnWindowFocus:false
-   
+    refetchOnWindowFocus: false,
   });
 
   return { isLoading, error, data };

@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sortQueryReducer from "./sortQuerySlice";
 import menuQuantityReducer from "./menuQuantitySlice";
-import userFormReducer from "./userFormSlice";
+import userFormReducer from "./formSlice";
+import cartReducer from "./cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
@@ -10,6 +11,7 @@ export const store = configureStore({
     query: sortQueryReducer,
     menuQuantity: menuQuantityReducer,
     userForm: userFormReducer,
+    cart: cartReducer,
   },
 });
 

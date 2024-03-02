@@ -20,6 +20,7 @@ import {
   ShoppingPage,
   SignUp,
   SignIn,
+  Cart,
 } from "@/pages";
 
 import { Route, Routes } from "react-router-dom";
@@ -48,6 +49,7 @@ export const AllRoutes = () => {
             <Route path="fries" element={<AllFries />} />
           </Route>
           <Route path=":category/:title/:id" element={<MenuDetails />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
         <Route path="signup" element={<SignUp />} />
         <Route path="signin" element={<SignIn />} />

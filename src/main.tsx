@@ -19,7 +19,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <Provider store={store}>
             <App />
-            <Toaster position="top-center" expand={false} className="text-lg" />
+            <Toaster
+              position="top-center"  
+              expand={false}
+              gap={5}
+              toastOptions={{
+                duration: 3000,
+                style: { border: "none", fontSize: "medium" },
+              }}
+            />
           </Provider>
         </ThemeProvider>
       </BrowserRouter>
@@ -27,3 +35,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </QueryClientProvider>
   </React.StrictMode>
 );
+
+//  duration: 3000,
+//       dismissible: true,
+//       important: true,
+//       className: "gap-5",
+//       style: {
+//         padding: "1rem",
+//         fontSize: "16px",
+//         background: "red",
