@@ -7,7 +7,6 @@ import { ButtonLink } from "@/components/ui/shared";
 
 export const Footer = () => {
   const location = useLocation();
- 
 
   return (
     <div className="shadow-2xl">
@@ -45,25 +44,27 @@ export const Footer = () => {
           </div>
         </section>
       )}
-      <footer className="px-5 pt-10 dark:on-dark-shadow sm:grid sm:grid-cols-2 lg:grid-cols-3  text-lg !bg-[#aeafb42b] dark:!bg-[#030c22c9]">
+      <footer className="px-5 pt-10 dark:on-dark-shadow grid auto-fit gap-5 text-lg !bg-[#aeafb42b] dark:!bg-[#030c22c9]">
         <div>
           <Logo />
           <p className="mt-3">
-            Explore a world of delicious recipes with Recipy! From
-            mouth-watering mains to delightful desserts, discover a variety of
-            culinary delights
+            Welcome to Recipa, a place where a symphony of flavors and passion
+            collide.Our restaurant welcomes you on a voyage
           </p>
         </div>
-        <div className="justify-self-center mt-8 sm:mt-0">
+        <div className=" mt-8 sm:mt-0">
           <h3>Navigation</h3>
-          <Link to="/">
-            <li className="list-none mb-2 hover:text-green-600"> Home</li>
+          <Link to="/" className="list-none  hover:text-green-600">
+            <li className="mb-2"> Home</li>
+          </Link>
+          <Link to="/recipes" className="list-none hover:text-green-700">
+            <li className="mb-2"> Recipes</li>
           </Link>
           <Link to="/recipes" className="list-none hover:text-green-700">
             <li> Recipes</li>
           </Link>
         </div>
-        <div className="justify-self-center mt-8 sm:mt-0">
+        <div className=" mt-8 sm:mt-0">
           <h3>Categories</h3>
           <ul className="space-y-4 text-base ">
             {categories.map((category) => (
@@ -83,6 +84,17 @@ export const Footer = () => {
               </Link>
             ))}
           </ul>
+        </div>
+        <div>
+          <h3>Opening Hours</h3>
+          <div className="flex justify-between border-b border-gray-400 pb-1 mb-2">
+            <p>Mon - Tue </p>
+            <p>09.00 am - 10.00 pm</p>
+          </div>
+          <div className="flex justify-between">
+            <p>Wed - Thu</p>
+            <p>10.00am - 11.00pm</p>
+          </div>
         </div>
         <p className="text-center pb-4  ">
           Copyright &copy; {new Date().getFullYear()}

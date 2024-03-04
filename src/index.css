@@ -207,4 +207,23 @@
   footer {
     @apply !bg-background !text-foreground;
   }
+
+  td {
+    @apply p-3 border-b border-gray-400;
+  }
+
+  /* thead th {
+    @apply border border-green-600
+  } */
+
+  thead th:first-child {
+    padding-left: 8px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+  }
+
+  thead th:last-child {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
 }

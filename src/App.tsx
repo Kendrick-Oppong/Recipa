@@ -1,4 +1,3 @@
-
 import { AllRoutes } from "./routes/Routes";
 
 function App() {

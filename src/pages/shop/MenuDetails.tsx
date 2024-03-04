@@ -154,11 +154,11 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
               <p>{menuDetail.description}</p>
 
               <h2 className="text-red-500">
-                {menuDetail.price}
                 <DollarSign
                   strokeWidth={2}
                   className="inline-block -translate-y-[4px] w-8 h-8"
                 />
+                {menuDetail.price}
               </h2>
 
               <div>

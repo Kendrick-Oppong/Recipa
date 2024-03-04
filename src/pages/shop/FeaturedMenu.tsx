@@ -19,7 +19,6 @@ import {
   addToCart,
   checkExistingCartItem,
   getAllCartData,
-  getExistingCartItem,
   removeFromCart,
 } from "@/redux/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
@@ -33,8 +32,6 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
   const dispatch = useAppDispatch();
 
   const cartItems = useAppSelector(getAllCartData);
-  const existingCart = useAppSelector(getExistingCartItem);
-  console.log(existingCart);
 
   const handleAddToCart = (menu: CartItem) => {
     dispatch(addToCart(menu));
@@ -141,11 +138,11 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
           </div>
           <div className="flex justify-between items-center ">
             <p className="text-2xl ml-3 font-extrabold text-red-500">
-              {menu.price}
               <DollarSign
                 strokeWidth={2}
                 className="inline-block -translate-y-[2px]"
               />
+              {menu.price}
             </p>
             <div>
               <Drawer direction="bottom">
@@ -252,13 +249,15 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
                       </p>
                     </div>
                     <div>
-                      <ButtonLink
-                        type="button"
-                        className="hover:!bg-red-500 w-full"
-                      >
-                        <ShoppingBasket className="mr-2 " />
-                        View Cart
-                      </ButtonLink>
+                      <Link to="/all-menus/cart">
+                        <ButtonLink
+                          type="button"
+                          className="hover:!bg-red-500 w-full"
+                        >
+                          <ShoppingBasket className="mr-2 " />
+                          View Cart
+                        </ButtonLink>
+                      </Link>
                       <ButtonLink
                         type="button"
                         className="hover:!bg-red-500 w-full mt-2"

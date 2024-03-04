@@ -14,7 +14,6 @@ import {
   CategoryPage,
   HomePage,
   PageNotFound,
- 
   RecipeCategory,
   RecipesPage,
   ShoppingPage,
@@ -22,7 +21,6 @@ import {
   SignIn,
   Cart,
 } from "@/pages";
-
 import { Route, Routes } from "react-router-dom";
 
 export const AllRoutes = () => {

@@ -28,6 +28,7 @@ export const cartSlice = createSlice({
         state.cart[existingItemIndex] = action.payload;
       } else {
         state.cart.push(action.payload);
+        handleInfoToast("Meal successfully added to cart");
         localStorage.setItem("cartItems", JSON.stringify(state.cart));
       }
     },
