@@ -7,45 +7,50 @@ import { ButtonLink } from "@/components/shared";
 
 export const Footer = () => {
   const location = useLocation();
+  console.log(location.pathname);
+  const excludedPaths = [
+    "/signup",
+    "/signin",
+    "/profile",
+    "/all-menus/contact-us",
+  ];
 
   return (
     <div className="shadow-2xl">
-      {location.pathname !== "/signup" &&
-        location.pathname !== "/signin" &&
-        location.pathname !== "/profile" && (
-          <section className="px-5 pb-20 my-0 text-center">
-            <h2>
-              Join for{" "}
-              <span>
-                Hot Offers.{" "}
-                <img src="/twirl-layered.svg" alt="" width={30} height={30} />
-              </span>
-            </h2>
-            <li className="flex items-center justify-center sm:text-lg">
-              <svg
-                className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-              </svg>
-              Subscribe to the newsletter for exclusive promos
-            </li>
-            <div className="flex flex-wrap gap-4 sm:flex-nowrap w-full max-w-4xl mx-auto mt-8 items-center space-x-2">
-              <Input
-                type="email"
-                required
-                placeholder="Enter Your Email Address..."
-                className="p-5 text-base shadow-md"
-              />
-              <ButtonLink className="w-full !ml-0 mt-3 sm:mt-0 sm:w-auto rounded-sm">
-                Subscribe <Rocket className="ml-2" />
-              </ButtonLink>
-            </div>
-          </section>
-        )}
+      {!excludedPaths.includes(location.pathname) && (
+        <section className="px-5 pb-20 my-0 text-center">
+          <h2>
+            Join for{" "}
+            <span>
+              Hot Offers.{" "}
+              <img src="/twirl-layered.svg" alt="" width={30} height={30} />
+            </span>
+          </h2>
+          <li className="flex items-center justify-center sm:text-lg">
+            <svg
+              className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+            </svg>
+            Subscribe to the newsletter for exclusive promos
+          </li>
+          <div className="flex flex-wrap gap-4 sm:flex-nowrap w-full max-w-4xl mx-auto mt-8 items-center space-x-2">
+            <Input
+              type="email"
+              required
+              placeholder="Enter Your Email Address..."
+              className="p-5 text-base shadow-md"
+            />
+            <ButtonLink className="w-full !ml-0 mt-3 sm:mt-0 sm:w-auto rounded-sm">
+              Subscribe <Rocket className="ml-2" />
+            </ButtonLink>
+          </div>
+        </section>
+      )}
       <footer className="px-5 pt-10 dark:on-dark-shadow grid auto-fit gap-5 text-lg !bg-[#aeafb42b] dark:!bg-[#030c22c9]">
         <div>
           <Logo />

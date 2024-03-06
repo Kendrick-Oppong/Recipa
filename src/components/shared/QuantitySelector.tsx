@@ -7,12 +7,13 @@ import {
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Minus, Plus } from "lucide-react";
 import { Input } from "../ui/input";
+import { memo } from "react";
 
 interface IdProp {
   itemId: string;
 }
 
-export const QuantitySelector = ({ itemId }: IdProp) => {
+export const QuantitySelector = memo(({ itemId }: IdProp) => {
   const dispatch = useAppDispatch();
   const quantity = useAppSelector((state) =>
     getMenuItemQuantity(state, itemId)
@@ -38,4 +39,4 @@ export const QuantitySelector = ({ itemId }: IdProp) => {
       </div>
     </>
   );
-};
+});

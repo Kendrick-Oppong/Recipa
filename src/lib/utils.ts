@@ -1,4 +1,4 @@
-import { SignInFormData, SignUpFormData } from "@/types/types";
+import { ContactUsFormData, SignInFormData, SignUpFormData } from "@/types/types";
 import { type ClassValue, clsx } from "clsx";
 import { FieldError, FieldErrors, UseFormReturn } from "react-hook-form";
 import { toast } from "sonner";
@@ -8,7 +8,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const isError = <T extends SignUpFormData | SignInFormData>(
+export const isError = <
+  T extends SignUpFormData | SignInFormData | ContactUsFormData
+>(
   fieldName: string,
   errors: FieldErrors<T>,
   form: UseFormReturn<T, unknown, T>

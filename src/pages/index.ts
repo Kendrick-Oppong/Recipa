@@ -1,3 +1,5 @@
+export { ContactUs } from "./contactUs";
+
 export { UserProfileLayout, Settings } from "./profile";
 
 export { Cart } from "./cart";

@@ -201,7 +201,7 @@
   }
 
   section {
-    @apply my-10 !bg-background !text-foreground dark:on-dark-shadow dark:px-4 dark:rounded-lg;
+    @apply my-10 dark:py-14 !bg-background !text-foreground dark:on-dark-shadow dark:px-4 dark:rounded-lg;
   }
 
   footer {

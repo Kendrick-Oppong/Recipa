@@ -22,6 +22,7 @@ import {
   Cart,
   UserProfileLayout,
   Settings,
+  ContactUs,
 } from "@/pages";
 import { Route, Routes } from "react-router-dom";
 
@@ -50,6 +51,7 @@ export const AllRoutes = () => {
           </Route>
           <Route path=":category/:title/:id" element={<MenuDetails />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="contact-us" element={<ContactUs />} />
         </Route>
         <Route path="signup" element={<SignUp />} />
         <Route path="signin" element={<SignIn />} />

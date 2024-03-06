@@ -65,7 +65,9 @@ export const Navbar = () => {
           <NavLink to="/about-us">
             <li> About Us</li>
           </NavLink>
-          <NavLink to="mailto:kendrickoppong94@gmail.com">Contact</NavLink>
+          <NavLink to="all-menus/contact-us">
+            <li>Contact Us</li>
+          </NavLink>
         </div>
       </nav>
     </header>

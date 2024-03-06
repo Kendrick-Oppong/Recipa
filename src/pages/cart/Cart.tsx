@@ -155,7 +155,7 @@ export const Cart = () => {
                 <ButtonLink className="w-full">Apply coupon</ButtonLink>
               </td>
             </tr>
-            <tr>
+            <tr className="bg-grey">
               <td className="font-bold border border-gray-400 text-red-600">
                 Total
               </td>

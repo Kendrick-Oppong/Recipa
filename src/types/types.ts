@@ -140,6 +140,13 @@ export interface SignUpFormData {
   confirm_password: string;
 }
 
+export interface ContactUsFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 export interface SignInFormData {
   email: string;
   password: string;
