@@ -1,3 +1,5 @@
+export { UserProfileLayout, Settings } from "./profile";
+
 export { Cart } from "./cart";
 
 export { SignIn } from "./signIn";
@@ -35,4 +37,3 @@ export { RecipesPage } from "./recipes";
 export { RecipeCategory } from "./recipes";
 
 export { HomePage } from "./Home";
-

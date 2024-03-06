@@ -1,7 +1,4 @@
-import {
-  ErrorMessage,
-  ModalWindow,
-} from "@/components/ui/shared";
+import { ErrorMessage, ModalWindow } from "@/components/shared";
 
 import { useFetch } from "@/hooks/useFetch";
 import { Meal_ID_Prop } from "@/types/types";
@@ -9,8 +6,6 @@ import { Key } from "react";
 import { useParams } from "react-router-dom";
 
 export const CategoryMealDetail = () => {
-  
-
   const { id } = useParams();
   const { data, isLoading, error } = useFetch<Meal_ID_Prop>(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,

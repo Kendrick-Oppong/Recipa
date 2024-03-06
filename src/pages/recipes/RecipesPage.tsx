@@ -3,7 +3,7 @@ import {
   ErrorMessage,
   LoadingSkeleton,
   RecipesCard,
-} from "@/components/ui/shared";
+} from "@/components/shared";
 import { useFetch } from "@/hooks";
 import { Recipe, RecipesProp } from "@/types/types";
 import { Utensils } from "lucide-react";
@@ -15,9 +15,8 @@ export const RecipesPage: React.FC = () => {
     "https://www.themealdb.com/api/json/v1/1/categories.php",
     "allRecipes"
   );
- 
-  const recipes = data?.categories.reverse();
 
+  const recipes = data?.categories.reverse();
 
   if (isLoading)
     return (

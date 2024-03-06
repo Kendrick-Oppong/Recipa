@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/shared";
+import { ButtonLink } from "@/components/shared";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PopularMenus } from ".";
@@ -74,7 +74,6 @@ export const ShoppingPage = () => {
           </ButtonLink>
         </Link>
       </section>
-    
     </main>
   );
 };

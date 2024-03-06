@@ -2,7 +2,7 @@ import {
   CategoryCard,
   ErrorMessage,
   LoadingSkeleton,
-} from "@/components/ui/shared";
+} from "@/components/shared";
 import { useFetch } from "@/hooks/useFetch";
 import { CategoryProp } from "@/types/types";
 import { useParams } from "react-router-dom";
@@ -26,7 +26,7 @@ export const RecipeCategory = () => {
         <LoadingSkeleton />
       </div>
     );
-  
+
   if (error)
     return (
       <div className="mt-[12rem] m-[6rem]">

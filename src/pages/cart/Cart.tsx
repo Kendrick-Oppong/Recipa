@@ -1,27 +1,21 @@
-// {
-//     "_id": "65bffd8575ea2e086a6d86cd",
-//     "title": "The Sriracha Sunrise",
-//     "rating": 4.6,
-//     "image": "https://i.postimg.cc/GpNxVkP9/burger-3.png",
-//     "description": "A juicy beef patty topped with a fried egg, sriracha mayo, crispy bacon, and cheddar cheese on a toasted brioche bun.",
-//     "price": 11.49,
-//     "category": "Burger"
-// md: table - header - group;
-// }
-
-import { FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { ButtonLink } from "@/components/ui/shared";
+import { ButtonLink, QuantitySelector } from "@/components/shared";
 import { getAllCartData, removeFromCart } from "@/redux/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { ShoppingBasket, XCircle, Minus, Plus, DollarSign } from "lucide-react";
+import { ShoppingBasket, XCircle, DollarSign } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { CartItem } from "@/types/types";
+import { useCartItemSubtotal as cartItemSubtotal } from "@/hooks";
 
 export const Cart = () => {
   const cartItems = useAppSelector(getAllCartData);
   const dispatch = useAppDispatch();
+
+  const totalSubtotal = cartItems.reduce(
+    (acc, cartItem) => acc + Math.floor(parseFloat(cartItemSubtotal(cartItem))),
+    0
+  );
 
   if (!cartItems.length)
     return (
@@ -29,8 +23,8 @@ export const Cart = () => {
         <img
           src="/shopping-basket-svgrepo-com.svg"
           className="mx-auto border border-green-600 p-5 rounded-full"
+          alt=""
         />
-
         <div className="mt-2 mb-14">
           <p className="font-bold">Your cart is empty!</p>
           <p className="my-3">Browse our menu and discover our best deals</p>
@@ -64,7 +58,7 @@ export const Cart = () => {
             </tr>
           </thead>
           <tbody className="hidden md:table-header-group">
-            {cartItems.map((cartItem) => (
+            {cartItems.map((cartItem: CartItem) => (
               <React.Fragment key={cartItem._id}>
                 <tr>
                   <td>
@@ -79,28 +73,17 @@ export const Cart = () => {
                   <td>{cartItem.title}</td>
                   <td>{cartItem.category}</td>
                   <td>
-                    <DollarSign className="w-5 h-5 inline-flex" />
-                    {cartItem.price}
+                    <DollarSign className="w-5 h-5 inline-flex -translate-y-[.3px]" />
+                    {cartItem?.price}
                   </td>
                   <td>
                     <div className="flex items-center justify-between gap-5">
-                      <div className="p-1 border border-green-600 rounded-md hover:border-red-600 hover:bg-red-500 hover:text-white">
-                        <Minus />
-                      </div>
-                      <Input
-                        type="number"
-                        min={1}
-                        max={100}
-                        className="text-center border py-0 border-green-600"
-                      />
-                      <div className="p-1 border border-green-600 rounded-md hover:border-red-600  hover:bg-red-500 hover:text-white">
-                        <Plus />
-                      </div>
+                      <QuantitySelector itemId={cartItem._id!} />
                     </div>
                   </td>
                   <td>
-                    <DollarSign className="w-5 h-5 inline-flex" />
-                    11.49
+                    <DollarSign className="w-5 h-5 inline-flex -translate-y-[.3px]" />
+                    {cartItemSubtotal(cartItem)}
                   </td>
                 </tr>
               </React.Fragment>
@@ -121,7 +104,7 @@ export const Cart = () => {
                 <h1 className="font-bold">{cartItem.title}</h1>
                 <p className="text-red-600 flex items-center">
                   <DollarSign className="w-5 h-5" />
-                  {cartItem.price}
+                  {cartItemSubtotal(cartItem) ?? cartItem.price}
                 </p>
               </div>
             </div>
@@ -134,18 +117,7 @@ export const Cart = () => {
                 Remove
               </p>
               <div className="flex items-center justify-between gap-5">
-                <div className="p-1 border border-green-600 rounded-md hover:border-red-600 hover:bg-red-500 hover:text-white">
-                  <Minus />
-                </div>{" "}
-                <Input
-                  type="number"
-                  min={1}
-                  max={100}
-                  className="text-center border py-0 border-green-600"
-                />
-                <div className="p-1 border border-green-600 rounded-md hover:border-red-600  hover:bg-red-500 hover:text-white">
-                  <Plus />
-                </div>
+                <QuantitySelector itemId={cartItem._id!} />
               </div>
             </div>
           </div>
@@ -159,11 +131,17 @@ export const Cart = () => {
               <td className="font-bold border border-gray-400">
                 Subtotal ({cartItems?.length})
               </td>
-              <td className="text-right border border-gray-400">5545</td>
+              <td className="text-right border border-gray-400">
+                <DollarSign className="w-5 h-5 inline-flex -translate-y-[.3px]" />
+                {totalSubtotal}
+              </td>
             </tr>
             <tr>
               <td className="font-bold border border-gray-400">Delivery fee</td>
-              <td className="text-right border border-gray-400">67</td>
+              <td className="text-right border border-gray-400">
+                <DollarSign className="w-5 h-5 inline-flex -translate-y-[.3px]" />
+                {1.5 * cartItems?.length}
+              </td>
             </tr>
             <tr>
               <td className=" border border-gray-400">
@@ -182,8 +160,8 @@ export const Cart = () => {
                 Total
               </td>
               <td className="text-right font-bold border border-gray-400 text-red-600">
-                <DollarSign className="w-5 h-5 inline-flex" />
-                787878
+                <DollarSign className="w-5 h-5 inline-flex -translate-y-[.3px]" />
+                {totalSubtotal + 1.5 * cartItems?.length}
               </td>
             </tr>
           </tbody>
@@ -195,13 +173,3 @@ export const Cart = () => {
     </>
   );
 };
-
-// {
-//     "_id": "65c1902675ea2e086a4dac44",
-//     "title": "Rainbow Delight Nigiri",
-//     "rating": 4.7,
-//     "image": "https://i.postimg.cc/43xTM8Hw/Rainbow-Delight-Nigiri.png",
-//     "description": "Taste the rainbow with our Rainbow Delight Nigiri.",
-//     "price": 21.99,
-//     "category": "Sushi"
-// }

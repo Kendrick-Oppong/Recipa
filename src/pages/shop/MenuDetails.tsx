@@ -1,32 +1,32 @@
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ButtonLink,
   ErrorMessage,
   ImagePlaceholderSkeleton,
   LazyImage,
-} from "@/components/ui/shared";
+  QuantitySelector,
+} from "@/components/shared";
 import { useFetch } from "@/hooks";
-import { MenuDetailsProps } from "@/types/types";
+import { CartItem, MenuDetailsProps } from "@/types/types";
 import {
   DollarSign,
   Facebook,
   Twitter,
   Linkedin,
-  Plus,
-  Minus,
+ 
   ShoppingBasket,
 } from "lucide-react";
 import React, { Key } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
+
 import {
-  decrementQuantity,
-  getAllMenuQuantity,
-  incrementQuantity,
-  onChangeValue,
-} from "@/redux/menuQuantitySlice";
-import { addToCart } from "@/redux/cartSlice";
+  addToCart,
+  checkExistingCartItem,
+  getAllCartData,
+  removeFromCart,
+} from "@/redux/cartSlice";
+import { Button } from "@/components/ui/button";
 
 export const MenuDetails = (url: string, queryKey: string, id?: string) => {
   const { data, isLoading, error } = useFetch<MenuDetailsProps>(
@@ -36,7 +36,13 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
   );
 
   const dispatch = useAppDispatch();
-  const quantity = useAppSelector(getAllMenuQuantity);
+
+  const cartItems = useAppSelector(getAllCartData);
+
+  const handleAddToCart = (menu: CartItem) => {
+    dispatch(addToCart(menu));
+    dispatch(checkExistingCartItem(menu));
+  };
 
   if (isLoading)
     return (
@@ -176,34 +182,30 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
               <div className="flex justify-between flex-wrap gap-3">
                 <div className="flex items-center justify-between gap-5">
                   <strong>QUANTITY:</strong>{" "}
-                  <div className="p-1 border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
-                    <Minus onClick={() => dispatch(decrementQuantity())} />
-                  </div>{" "}
-                  <Input
-                    type="number"
-                    min={1}
-                    max={100}
-                    onChange={(e) => dispatch(onChangeValue(+e.target.value))}
-                    value={quantity}
-                    className="w-[30%] text-center border border-green-600"
-                  />
-                  <div className="p-1 border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
-                    <Plus onClick={() => dispatch(incrementQuantity())} />
-                  </div>
+                  <QuantitySelector itemId={menuDetail._id!} />
                 </div>
                 <div className="flex items-center gap-3">
-                  <ButtonLink
-                    type="button"
-                    className="hover:!bg-red-500 "
-                    onClick={() => dispatch(addToCart(menuDetail))}
-                  >
-                    <ShoppingBasket className="mr-2" /> Add to Cart
-                  </ButtonLink>
-                  {/* <ToolTip tooltip="Add to wishlist">
-                    <div className="p-[0.6rem] border border-green-600 rounded-md hover:bg-red-500 hover:text-white">
-                      <Heart className=" h-6 w-6 cursor-pointer" />
-                    </div>
-                  </ToolTip> */}
+                  {cartItems?.find(
+                    (cartItem) => cartItem._id === menuDetail._id
+                  ) ? (
+                    <Button
+                      variant={"destructive"}
+                      className="text-lg dark:bg-red-500"
+                      onClick={() => dispatch(removeFromCart(menuDetail))}
+                    >
+                      Remove from cart
+                    </Button>
+                  ) : (
+                    <ButtonLink
+                      type="button"
+                      className="hover:!bg-red-500 hover:border-red-600"
+                      onClick={() => handleAddToCart(menuDetail)}
+                    >
+                      <ShoppingBasket className="mr-2" /> Add to Cart
+                    </ButtonLink>
+                  )}
+
+                
                 </div>
               </div>
 

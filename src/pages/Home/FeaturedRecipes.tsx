@@ -2,7 +2,7 @@ import {
   ErrorMessage,
   LoadingSkeleton,
   RecipesCard,
-} from "@/components/ui/shared";
+} from "@/components/shared";
 import { useFetch } from "@/hooks/useFetch";
 import { RecipesProp } from "@/types/types";
 
@@ -12,7 +12,6 @@ export const FeaturedRecipes: React.FC = () => {
     "featuredRecipes"
   );
 
- 
   const slicedData = data?.categories.slice(0, 4);
 
   if (isLoading) return <LoadingSkeleton />;

@@ -5,7 +5,7 @@ import {
   LazyImage,
   LoadingSkeleton,
   ToolTip,
-} from "@/components/ui/shared";
+} from "@/components/shared";
 import {
   Drawer,
   DrawerClose,
@@ -30,7 +30,6 @@ import { Button } from "@/components/ui/button";
 export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
   const { data, isLoading, error } = useFetch<MenuProps>(url, queryKey, id);
   const dispatch = useAppDispatch();
-
   const cartItems = useAppSelector(getAllCartData);
 
   const handleAddToCart = (menu: CartItem) => {

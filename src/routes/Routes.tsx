@@ -20,6 +20,8 @@ import {
   SignUp,
   SignIn,
   Cart,
+  UserProfileLayout,
+  Settings,
 } from "@/pages";
 import { Route, Routes } from "react-router-dom";
 
@@ -51,7 +53,10 @@ export const AllRoutes = () => {
         </Route>
         <Route path="signup" element={<SignUp />} />
         <Route path="signin" element={<SignIn />} />
-
+        <Route path="profile" element={<UserProfileLayout />}>
+          <Route index element={<Settings />} />
+          <Route path="cart" element={<p>Sign Out</p>} />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>

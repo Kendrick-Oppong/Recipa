@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/shared";
+import { ButtonLink } from "@/components/shared";
 import { featuredCategories, overview } from "@/constants/constants";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";

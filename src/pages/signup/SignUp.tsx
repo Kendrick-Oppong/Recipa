@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { signUpSchema } from "@/validators/formSchema";
 import { Asterisk } from "lucide-react";
-import { ButtonLink } from "@/components/ui/shared";
+import { ButtonLink } from "@/components/shared";
 import { Link } from "react-router-dom";
 import { isError, handleErrorToast } from "@/lib/utils";
 import { usePost } from "@/hooks";

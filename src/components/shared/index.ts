@@ -1,3 +1,5 @@
+export { QuantitySelector } from "./QuantitySelector";
+
 export { LazyImage } from "./LazyImage";
 
 export { ImagePlaceholderSkeleton } from "./ImagePlaceholderSkeleton";
