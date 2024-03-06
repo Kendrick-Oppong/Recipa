@@ -13,6 +13,7 @@ export const Footer = () => {
     "/signin",
     "/profile",
     "/all-menus/contact-us",
+    "/all-menus/about-us",
   ];
 
   return (

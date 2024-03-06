@@ -1,3 +1,5 @@
+export { AboutUs } from "./about";
+
 export { ContactUs } from "./contactUs";
 
 export { UserProfileLayout, Settings } from "./profile";

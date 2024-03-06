@@ -62,7 +62,7 @@ export const Navbar = () => {
         {/* <div><Hamburger /></div> */}
 
         <div className="flex items-center  gap-5">
-          <NavLink to="/about-us">
+          <NavLink to="all-menus/about-us">
             <li> About Us</li>
           </NavLink>
           <NavLink to="all-menus/contact-us">
