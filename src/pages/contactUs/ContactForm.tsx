@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { contactUsSchema } from "@/validators/formSchema";
-import { Asterisk, SendHorizontal  } from "lucide-react";
+import { Asterisk, SendHorizontal } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
 import { isError, handleErrorToast } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
@@ -137,6 +137,7 @@ export const ContactForm = () => {
                     <Textarea
                       placeholder="Write to us..."
                       rows={5}
+                      maxLength={200}
                       {...field}
                       className={`w-full resize-none ${
                         isError(field.name, errors, form)
@@ -145,6 +146,19 @@ export const ContactForm = () => {
                       }`}
                     />
                   </FormControl>
+                  <small
+                    className={`${
+                      field.value.length === 200
+                        ? "text-destructive dark:text-red-500"
+                        : ""
+                    }`}
+                  >
+                    {field.value.length === 200
+                      ? "Maximum characters exceeded"
+                      : `${Math.round(
+                          (field.value.length / 200) * 100
+                        )}% of maximum length (${field.value.length}/${200})`}
+                  </small>
                   <FormMessage />
                 </FormItem>
               )}
@@ -154,7 +168,7 @@ export const ContactForm = () => {
               type="submit"
               onClick={() => handleErrorToast(isValid)}
             >
-              Send message <SendHorizontal className="ml-2"/>
+              Send message <SendHorizontal className="ml-2" />
               {/* {isPending ? "Validating" : "Sign In"} */}
             </ButtonLink>
           </form>
