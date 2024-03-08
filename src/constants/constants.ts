@@ -10,7 +10,16 @@ export const categories = [
   { id: 5, name: "Dessert", icon: "/dessert-svgrepo-com.svg" },
   { id: 6, name: "Lamb", icon: "/lamb-svgrepo-com.svg" },
 ];
-
+export const navigationLinks = [
+  { path: "/", label: "Home" },
+  { path: "/recipes", label: "Recipes" },
+  { path: "/shop", label: "Shop" },
+  { path: "/signin", label: "Sign in" },
+  { path: "/profile", label: "Profile" },
+  { path: "all-menus/cart", label: "Cart" },
+  { path: "all-menus/about-us", label: "About Us" },
+  { path: "all-menus/contact-us", label: "Contact Us" },
+];
 export const featuredCategories = [
   { id: 1, name: "Beef", icon: "/beef-svgrepo-com.svg" },
   { id: 2, name: "Breakfast", icon: "/breakfast-bacon-svgrepo-com.svg" },

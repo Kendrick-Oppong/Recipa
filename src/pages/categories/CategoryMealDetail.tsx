@@ -54,15 +54,15 @@ export const CategoryMealDetail = () => {
   return (
     <main className="mt-28 px-4 sm:px-10 my-10">
       <div className="max-w-[95%]  mx-auto">
-        <div className="md:flex gap-4  rounded-lg shadow-2xl">
-          <div className=" rounded-2xl">
+        <div className="md:grid grid-cols-2 gap-4 justify-center p-4 border-green-600 rounded-lg border shadow-2xl ">
+          <div className="w-[250px] mx-auto  md:mx-0 rounded-2xl">
             <img
               src={mealDetail!.strMealThumb!}
               alt={mealDetail!.strMealThumb!}
-              className={`w-[250px] rounded-lg`}
+              className={` rounded-lg mx-auto`}
             />
           </div>
-          <div className="relative font-semibold text-lg lg:ml-6 my-6 ml-4 sm:ml-0  px-3">
+          <div className="relative font-semibold text-center md:text-left text-lg lg:ml-6 my-6 ml-4 sm:ml-0  px-3">
             <div className="dark:text-black rounded-lg absolute shadow-md right-12 top-0 bg-green-100  px-4 mr-1 py-1">
               {mealDetail?.strCategory} / {mealDetail?.strArea}
             </div>
@@ -74,7 +74,7 @@ export const CategoryMealDetail = () => {
               height={30}
               className="ml-auto"
             />
-            <h2>
+            <h2 className="text-3xl">
               <span>{mealDetail?.strMeal}</span>{" "}
             </h2>
           </div>
@@ -100,7 +100,7 @@ export const CategoryMealDetail = () => {
             </span>
           </h2>
         </div>
-        <ul className="text-green-600 text-lg font-medium !list-disc border-green-600 rounded-lg border shadow-2xl p-4">
+        <ul className=" text-lg font-medium !list-disc border-green-600 rounded-lg border shadow-2xl p-4">
           {mealDetail &&
             Object.keys(mealDetail).map((key) => {
               const ingredient = mealDetail[key];
@@ -125,7 +125,7 @@ export const CategoryMealDetail = () => {
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
           </h2>
-          <ul className="text-green-600 text-lg font-medium !list-disc border-green-600 rounded-lg border shadow-2xl p-4">
+          <ul className="text-lg font-medium !list-disc border-green-600 rounded-lg border shadow-2xl p-4">
             {mealDetail?.strInstructions?.split(".").map(
               (instruction: string, index: Key | null | undefined) =>
                 instruction.trim() && (

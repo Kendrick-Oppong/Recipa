@@ -1,4 +1,8 @@
-import { ContactUsFormData, SignInFormData, SignUpFormData } from "@/types/types";
+import {
+  ContactUsFormData,
+  SignInFormData,
+  SignUpFormData,
+} from "@/types/types";
 import { type ClassValue, clsx } from "clsx";
 import { FieldError, FieldErrors, UseFormReturn } from "react-hook-form";
 import { toast } from "sonner";
@@ -37,6 +41,15 @@ export const handleInfoToast = (message: string) => {
     style: {
       background: "rgb(253 185 61)",
       color: "black",
+    },
+  });
+};
+
+export const handleFetchErrorToast = () => {
+  return toast.error("Error fetching recipe", {
+    style: {
+      backgroundColor: "red",
+      color: "white",
     },
   });
 };

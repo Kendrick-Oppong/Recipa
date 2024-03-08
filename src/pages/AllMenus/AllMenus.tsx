@@ -13,14 +13,42 @@ import { menu } from "@/constants/constants";
 import { addSortQuery } from "@/redux/sortQuerySlice";
 import { useAppDispatch } from "@/redux/store";
 import { SlidersHorizontal } from "lucide-react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 export const AllMenus = () => {
   const dispatch = useAppDispatch();
-
   const handleSortQuery = (val: string) => {
     dispatch(addSortQuery(val));
   };
+
+  const location = useLocation();
+
+  let pageTitle;
+  switch (location.pathname) {
+    case "/all-menus/burgers":
+      pageTitle = "burgers";
+      break;
+    case "/all-menus/pizzas":
+      pageTitle = "pizza";
+      break;
+    case "/all-menus/sushis":
+      pageTitle = "sushi";
+      break;
+    case "/all-menus/salads":
+      pageTitle = "salad";
+      break;
+    case "/all-menus/burritos":
+      pageTitle = "burritos";
+      break;
+    case "/all-menus/beverages":
+      pageTitle = "beverages";
+      break;
+    case "/all-menus/fries":
+      pageTitle = "fries";
+      break;
+    default:
+      pageTitle = "";
+  }
 
   return (
     <section className="px-5">
@@ -53,8 +81,8 @@ export const AllMenus = () => {
         </div>
 
         <div className="flex flex-wrap justify-around items-center pb-4">
-          <div className="font-semibold mb-6 sm:mb-0">
-            <p>Showing 1-12 of 12 items</p>
+          <div className="font-semibold mb-6 sm:mb-0 text-lg">
+            <p>Showing 1-12 of 12 {pageTitle}</p>
           </div>
           <div className="w-64 ">
             <Select onValueChange={(val) => handleSortQuery(val)}>
@@ -84,7 +112,7 @@ export const AllMenus = () => {
                     </p>
                   </SelectItem>
                   <SelectItem value="rating">
-                    <p className="text-black dark:text-white">Highest rating</p>
+                    <p className="text-black dark:text-white">Sort by highest rating</p>
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>

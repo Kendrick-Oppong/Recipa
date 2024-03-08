@@ -37,11 +37,11 @@ export const RecipesPage: React.FC = () => {
         <div>
           <img
             src="/pasta.png"
-            width={400}
-            height={400}
+            width={350}
+            height={350}
             loading="lazy"
             alt=""
-            className={`transition`}
+            className="transition spin-image"
           />
         </div>
 
@@ -51,7 +51,7 @@ export const RecipesPage: React.FC = () => {
             alt=""
             width={30}
             height={30}
-            className="ml-auto mr-3 sm:mr-0"
+            className="ml-auto mr-3 sm:mr-0 "
           />
           <h2>
             <span>Pasta</span>{" "}
@@ -73,7 +73,7 @@ export const RecipesPage: React.FC = () => {
           <img src="/twirl-layered.svg" alt="" width={30} height={30} />
         </span>
       </h2>
-      <section className="dark:pb-10 grid auto-fit gap-4">
+      <section className="dark:pb-10 grid auto-fit-menu-skeleton gap-4">
         {recipes?.map((recipe: Recipe) => (
           <RecipesCard recipe={recipe} key={recipe.idCategory} />
         ))}

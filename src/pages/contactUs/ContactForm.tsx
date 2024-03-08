@@ -146,19 +146,21 @@ export const ContactForm = () => {
                       }`}
                     />
                   </FormControl>
-                  <small
-                    className={`${
-                      field.value.length === 200
-                        ? "text-destructive dark:text-red-500"
-                        : ""
-                    }`}
-                  >
-                    {field.value.length === 200
-                      ? "Maximum characters exceeded"
-                      : `${Math.round(
-                          (field.value.length / 200) * 100
-                        )}% of maximum length (${field.value.length}/${200})`}
-                  </small>
+                  {field.value.length>0 && (
+                    <small
+                      className={`${
+                        field.value.length === 200
+                          ? "text-destructive dark:text-red-500"
+                          : ""
+                      }`}
+                    >
+                      {field.value.length === 200
+                        ? "Maximum characters exceeded"
+                        : `${Math.round(
+                            (field.value.length / 200) * 100
+                          )}% of maximum length (${field.value.length}/${200})`}
+                    </small>
+                  )}
                   <FormMessage />
                 </FormItem>
               )}

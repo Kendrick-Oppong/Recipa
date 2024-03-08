@@ -52,11 +52,11 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
     );
 
   return (
-    <div className="mt-10 grid auto-fit gap-4 ">
+    <div className="mt-10 grid auto-fit-menu gap-4 ">
       {data?.data?.map((menu) => (
         <div
           key={menu._id}
-          className="shadow-2xl border-green-600 rounded-lg border relative p-3 pb-10"
+          className="relative shadow-2xl border-green-600 rounded-lg border p-3 pb-16"
         >
           <Link to={`/all-menus/${menu.category}/${menu.title}/${menu._id}`}>
             <LazyImage
@@ -135,7 +135,7 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
               ...
             </p>
           </div>
-          <div className="flex justify-between items-center ">
+          <div className="flex justify-between items-center absolute bottom-0 left-0 right-0 w-[92%] mx-auto mb-4">
             <p className="text-2xl ml-3 font-extrabold text-red-500">
               <DollarSign
                 strokeWidth={2}

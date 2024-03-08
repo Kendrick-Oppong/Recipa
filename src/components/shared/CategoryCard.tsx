@@ -8,7 +8,7 @@ export const CategoryCard: React.FC<CategoryName> = ({
   categoryName,
 }) => {
   return (
-    <div className="shadow-2xl border-green-600 rounded-lg border relative p-3">
+    <div className="shadow-2xl border-green-600 rounded-lg border relative p-3 pb-14">
       <LazyImage
         src={categoryName.strMealThumb}
         alt={categoryName.strMealThumb}
@@ -18,11 +18,13 @@ export const CategoryCard: React.FC<CategoryName> = ({
       <div className="font-semibold text-lg my-6">
         <p>{categoryName.strMeal}</p>
       </div>
-      <Link to={`/categories/${meal}/${categoryName.idMeal}`}>
-        <ButtonLink>
-          View Details <Utensils className="ml-3" />
-        </ButtonLink>
-      </Link>
+      <div className="absolute bottom-0 pb-4 left-0 right-0 mx-auto w-[92%]">
+        <Link to={`/categories/${meal}/${categoryName.idMeal}`}>
+          <ButtonLink className="w-full">
+            View Details <Utensils className="ml-3" />
+          </ButtonLink>
+        </Link>
+      </div>
     </div>
   );
 };

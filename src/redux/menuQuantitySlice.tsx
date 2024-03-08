@@ -75,16 +75,16 @@ export const menuQuantitySlice = createSlice({
       state.quantity[itemId] = value;
     },
     calculateSubtotal: (state) => {
-       let total = 0;
-       const cartItemsJson = localStorage.getItem("cartItems");
-       if (cartItemsJson) {
-         const cartItems = JSON.parse(cartItemsJson) as CartItem[];
-         cartItems.forEach((item) => {
-           const quantity = state.quantity[item._id ?? ""] || 0;
-           total += (item.price ?? 0) * quantity;
-         });
-       }
-       state.subtotal = total;
+      let total = 0;
+      const cartItemsJson = localStorage.getItem("cartItems");
+      if (cartItemsJson) {
+        const cartItems = JSON.parse(cartItemsJson) as CartItem[];
+        cartItems.forEach((item) => {
+          const quantity = state.quantity[item._id ?? ""] || 0;
+          total += (item.price ?? 0) * quantity;
+        });
+      }
+      state.subtotal = total;
     },
   },
 });
@@ -101,6 +101,5 @@ export const getMenuItemQuantity = (state: RootState, itemId: string) =>
 
 export const getTotalSubtotal = (state: RootState) =>
   state.menuQuantity.subtotal;
-  
 
 export default menuQuantitySlice.reducer;

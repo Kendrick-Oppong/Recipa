@@ -1,13 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "../navbar";
-import { categories } from "@/constants/constants";
+import { categories, menu, navigationLinks } from "@/constants/constants";
 import { Input } from "@/components/ui/input";
 import { Rocket } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
 
 export const Footer = () => {
   const location = useLocation();
-  console.log(location.pathname);
   const excludedPaths = [
     "/signup",
     "/signin",
@@ -21,7 +20,7 @@ export const Footer = () => {
       {!excludedPaths.includes(location.pathname) && (
         <section className="px-5 pb-20 my-0 text-center">
           <h2>
-            Join for{" "}
+            Join for
             <span>
               Hot Offers.{" "}
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
@@ -52,59 +51,83 @@ export const Footer = () => {
           </div>
         </section>
       )}
-      <footer className="px-5 pt-10 dark:on-dark-shadow grid auto-fit gap-5 text-lg !bg-[#aeafb42b] dark:!bg-[#030c22c9]">
-        <div>
-          <Logo />
-          <p className="mt-3">
-            Welcome to Recipa, a place where a symphony of flavors and passion
-            collide.Our restaurant welcomes you on a voyage
-          </p>
-        </div>
-        <div className=" mt-8 sm:mt-0">
-          <h3>Navigation</h3>
-          <Link to="/" className="list-none  hover:text-green-600">
-            <li className="mb-2"> Home</li>
-          </Link>
-          <Link to="/recipes" className="list-none hover:text-green-700">
-            <li className="mb-2"> Recipes</li>
-          </Link>
-          <Link to="/recipes" className="list-none hover:text-green-700">
-            <li> Recipes</li>
-          </Link>
-        </div>
-        <div className=" mt-8 sm:mt-0">
-          <h3>Categories</h3>
-          <ul className="space-y-4 text-base ">
-            {categories.map((category) => (
-              <Link to={`/categories/${category.name}`} key={category.id}>
-                <li
-                  className={`text-base gap-2 hover:text-green-700 cursor-pointer`}
-                >
-                  <img
-                    src={category.icon}
-                    alt={category.icon}
-                    width={30}
-                    height={30}
-                    className="inline-flex mr-2"
-                  />
-                  {category.name}
-                </li>
+      <footer className=" !bg-[#aeafb42b] dark:!bg-[#030c22c9] dark:on-dark-shadow px-5 pb-10">
+        <div className=" pt-10 grid auto-fit gap-5 text-lg">
+          <div>
+            <Logo />
+            <p className="mt-3">
+              Welcome to Recipa, a place where a symphony of flavors and passion
+              collide.Our restaurant welcomes you on a voyage
+            </p>
+          </div>
+          <div className=" md:ml-12">
+            <h3 className="text-green mt-0">Navigation</h3>
+            {navigationLinks.map((link) => (
+              <Link
+                to={link.path}
+                key={link.label}
+                className="list-none hover:text-green-700"
+              >
+                <li className="mb-2"> {link.label}</li>
               </Link>
             ))}
-          </ul>
-        </div>
-        <div>
-          <h3>Opening Hours</h3>
-          <div className="flex justify-between border-b border-gray-400 pb-1 mb-2">
-            <p>Mon - Tue </p>
-            <p>09.00 am - 10.00 pm</p>
           </div>
-          <div className="flex justify-between">
-            <p>Wed - Thu</p>
-            <p>10.00am - 11.00pm</p>
+          <div>
+            <h3 className="text-green mt-0">Recipes</h3>
+            <ul className="space-y-4">
+              {categories.map((category) => (
+                <Link to={`/categories/${category.name}`} key={category.id}>
+                  <li
+                    className={`text-lg mb-2 hover:text-green-700 cursor-pointer`}
+                  >
+                    <img
+                      src={category.icon}
+                      alt={category.icon}
+                      width={30}
+                      height={30}
+                      className="inline-flex mr-2"
+                    />
+                    {category.name}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-green mt-0">Shop(Menu)</h3>
+            <ul>
+              {menu.map((menu) => (
+                <Link
+                  key={menu.title}
+                  to={`all-menus/${menu.title.toLowerCase()}`}
+                >
+                  <li
+                    className={`text-lg mb-2 hover:text-green-700 cursor-pointer`}
+                  >
+                    <img
+                      className="mr-1 hidden md:inline"
+                      src={menu.src}
+                      alt=""
+                    />
+                    {menu.title}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-green mt-0">Opening Hours</h3>
+            <div className="flex justify-between border-b border-gray-400 pb-1 mb-2">
+              <p>Mon - Tue </p>
+              <p>09.00 am - 10.00 pm</p>
+            </div>
+            <div className="flex justify-between">
+              <p>Wed - Thu</p>
+              <p>10.00am - 11.00pm</p>
+            </div>
           </div>
         </div>
-        <p className="text-center pb-4  ">
+        <p className="text-center mt-8 text-lg ">
           Copyright &copy; {new Date().getFullYear()}
         </p>
       </footer>

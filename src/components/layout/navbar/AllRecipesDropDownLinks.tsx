@@ -20,7 +20,7 @@ export function AllRecipesDropDownLinks() {
         <MenubarTrigger className="cursor-pointer ">
           Free Recipes
         </MenubarTrigger>
-        <MenubarContent className="text-lg z-[300] shadow-2xl ">
+        <MenubarContent className="text-lg z-[10002] shadow-2xl ">
           <Link to="/recipes">
             <MenubarItem>
               <HandPlatter strokeWidth={1} className="mr-2 text-green" />

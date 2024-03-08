@@ -10,7 +10,7 @@ export const Navbar = () => {
   const cartLength = useAppSelector(getAllCartData)?.length;
 
   return (
-    <header className="text-lg">
+    <header className="text-lg z-[10001]">
       <nav className="flex justify-between items-center px-6 py-4 shadow-lg dark:on-dark-shadow">
         <Logo />
 

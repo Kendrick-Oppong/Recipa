@@ -60,7 +60,7 @@
   }
   .auto-fit {
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    @apply lg:auto-fit-menu-lg;
+    /* @apply lg:auto-fit-menu-lg; */
   }
 
   .auto-fit-tabs {
@@ -201,7 +201,7 @@
   }
 
   section {
-    @apply my-10 dark:py-14 !bg-background !text-foreground dark:on-dark-shadow dark:px-4 dark:rounded-lg;
+    @apply my-10  !bg-background !text-foreground dark:on-dark-shadow  dark:rounded-lg;
   }
 
   footer {

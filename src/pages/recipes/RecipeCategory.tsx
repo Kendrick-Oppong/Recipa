@@ -35,8 +35,10 @@ export const RecipeCategory = () => {
     );
   return (
     <main className="mt-28 px-4 sm:px-10">
-      <h2 className="mt-8">{id}</h2>
-      <section className="grid auto-fit gap-4 pb-10 ">
+      <h2 className="mt-8">
+        Free <span>{id}</span> recipes
+      </h2>
+      <section className="grid auto-fit gap-4 mt-0 !pt-0 pb-10 ">
         {mealCategory?.meals?.map((categoryName) => (
           <CategoryCard
             meal={id!}

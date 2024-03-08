@@ -49,27 +49,24 @@ export const HomePage = () => {
           </Link>
         </div>
       </section>
-      <section className="grid auto-fit gap-5 max-w-[90%] mx-auto my-20 shadow-md py-16 rounded-lg">
-        {overview.map((el, index) => (
+      <section className="grid auto-fit gap-5 max-w-[95%] px-5 mx-auto mb-20 shadow-lg py-16 border border-green-600 rounded-lg">
+        {overview.map((el) => (
           <div
             key={el.title}
-            className={`px-5 text-center ${
-              index !== overview.length - 1
-                ? "border-r-0 border-r-gray-300 border-b-2 pb-8 border-b-gray-300 sm:border-b-0 sm:border-r-2"
-                : ""
+            className={`p-3 pb-8 text-center border border-gray-400 rounded-lg
             }`}
           >
             <img src={el.src} alt={el.title} className="mx-auto" />
             <h3 className="text-green no-underline font-semibold">
               {el.title}
             </h3>
-            <p className="text-left">{el.description}</p>
+            <p className="text-left text-lg">{el.description}</p>
           </div>
         ))}
       </section>
       {/* categories */}
       <div className="px-4 sm:px-10">
-        <section className=" dark:pb-40  text-center">
+        <section className=" dark:pb-20  text-center">
           <li className="flex items-center justify-center sm:text-lg">
             <svg
               className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
@@ -95,7 +92,7 @@ export const HomePage = () => {
             ))}
           </div>
         </section>
-        <section className="dark:pb-20 py-10">
+        <section className="px-4 dark:pb-20 py-10">
           {/* {api} */}
           <div className="flex flex-wrap justify-between items-center mb-10">
             <h2>

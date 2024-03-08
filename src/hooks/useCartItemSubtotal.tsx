@@ -8,10 +8,9 @@ export const useCartItemSubtotal = (cartItem: CartItem) => {
     getMenuItemQuantity(state, cartItem._id!)
   );
   const price = cartItem.price ?? 0;
-
   const subtotal = useMemo(() => {
     return (price * quantity).toFixed(2);
   }, [price, quantity]);
 
-  return subtotal;
+  return Number(subtotal);
 };

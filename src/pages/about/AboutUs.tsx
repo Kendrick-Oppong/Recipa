@@ -28,8 +28,7 @@ export const AboutUs = () => {
         </h2>
         <p >
           Indulge in a world of flavors meticulously curated by our culinary
-          experts. <br /> From farm-fresh ingredients to exotic spices, each
-          dish tells a story of quality. <br /> Our chefs draw inspiration from
+          experts. <br /> From free recipes, farm-fresh ingredients to exotic meals, each dish tells a story of quality. <br /> Our chefs draw inspiration from
           global culinary traditions.
         </p>
       </div>
