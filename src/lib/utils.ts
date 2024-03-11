@@ -1,5 +1,6 @@
 import {
   ContactUsFormData,
+  SettingsFormData,
   SignInFormData,
   SignUpFormData,
 } from "@/types/types";
@@ -13,7 +14,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const isError = <
-  T extends SignUpFormData | SignInFormData | ContactUsFormData
+  T extends
+    | SignUpFormData
+    | SignInFormData
+    | ContactUsFormData
+    | SettingsFormData
 >(
   fieldName: string,
   errors: FieldErrors<T>,

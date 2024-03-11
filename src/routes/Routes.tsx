@@ -25,6 +25,7 @@ import {
   ContactUs,
   AboutUs,
 } from "@/pages";
+import { ProfileCart } from "@/pages/profile";
 import { Route, Routes } from "react-router-dom";
 
 export const AllRoutes = () => {
@@ -59,7 +60,7 @@ export const AllRoutes = () => {
         <Route path="signin" element={<SignIn />} />
         <Route path="profile" element={<UserProfileLayout />}>
           <Route index element={<Settings />} />
-          <Route path="cart" element={<p>Sign Out</p>} />
+          <Route path="cart" element={<ProfileCart/>} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Route>

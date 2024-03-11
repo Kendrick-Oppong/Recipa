@@ -146,7 +146,14 @@ export interface ContactUsFormData {
   subject: string;
   message: string;
 }
-
+export interface SettingsFormData {
+  username: string;
+  email: string;
+  address: string;
+  phone_number: string;
+  country: string;
+  city: string;
+}
 export interface SignInFormData {
   email: string;
   password: string;

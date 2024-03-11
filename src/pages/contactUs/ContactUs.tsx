@@ -60,11 +60,11 @@ export const ContactUs = () => {
           <h3 className="text-green">Opening days</h3>
           <div className="flex justify-between border-b border-gray-400 pb-1 mb-2">
             <p>Mon - Tue </p>
-            <p>09.00 am - 10.00 pm</p>
+            <p>09:00 am - 4:00 pm</p>
           </div>
           <div className="flex justify-between">
             <p>Wed - Thu</p>
-            <p>10.00am - 11.00pm</p>
+            <p>10:00 am - 11:00 pm</p>
           </div>
         </div>
       </section>

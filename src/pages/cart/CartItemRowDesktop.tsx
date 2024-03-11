@@ -2,7 +2,7 @@ import { CartItem } from "@/types/types";
 import { useAppDispatch } from "@/redux/store";
 import { removeFromCart } from "@/redux/cartSlice";
 import { QuantitySelector } from "@/components/shared";
-import { DollarSign, XCircle } from "lucide-react";
+import { DollarSign, Trash2 } from "lucide-react";
 import { useCartItemSubtotal } from "@/hooks";
 import { useEffect } from "react";
 
@@ -29,7 +29,7 @@ export const CartItemRowDesktop = ({
   return (
     <tr>
       <td>
-        <XCircle
+        <Trash2
           className="w-8 h-8 text-red-500 cursor-pointer"
           onClick={() => dispatch(removeFromCart(itemInCart))}
         />

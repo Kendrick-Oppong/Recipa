@@ -146,7 +146,7 @@ export const ContactForm = () => {
                       }`}
                     />
                   </FormControl>
-                  {field.value.length>0 && (
+                  {field.value.length > 0 && (
                     <small
                       className={`${
                         field.value.length === 200

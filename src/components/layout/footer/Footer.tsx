@@ -20,7 +20,7 @@ export const Footer = () => {
       {!excludedPaths.includes(location.pathname) && (
         <section className="px-5 pb-20 my-0 text-center">
           <h2>
-            Join for
+            Join for {""}
             <span>
               Hot Offers.{" "}
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
@@ -95,7 +95,7 @@ export const Footer = () => {
           </div>
           <div>
             <h3 className="text-green mt-0">Shop(Menu)</h3>
-            <ul>
+            <ul  className="space-y-4">
               {menu.map((menu) => (
                 <Link
                   key={menu.title}
@@ -105,7 +105,7 @@ export const Footer = () => {
                     className={`text-lg mb-2 hover:text-green-700 cursor-pointer`}
                   >
                     <img
-                      className="mr-1 hidden md:inline"
+                      className="mr-2 inline-flex"
                       src={menu.src}
                       alt=""
                     />
@@ -119,11 +119,11 @@ export const Footer = () => {
             <h3 className="text-green mt-0">Opening Hours</h3>
             <div className="flex justify-between border-b border-gray-400 pb-1 mb-2">
               <p>Mon - Tue </p>
-              <p>09.00 am - 10.00 pm</p>
+              <p>09:00 am - 4:00 pm</p>
             </div>
             <div className="flex justify-between">
               <p>Wed - Thu</p>
-              <p>10.00am - 11.00pm</p>
+              <p>10:00 am - 11:00 pm</p>
             </div>
           </div>
         </div>
