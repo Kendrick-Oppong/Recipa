@@ -9,7 +9,6 @@ import { Minus, Plus } from "lucide-react";
 import { Input } from "../ui/input";
 import { memo } from "react";
 
-
 interface IdProp {
   itemId: string;
 }

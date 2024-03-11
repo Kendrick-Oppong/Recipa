@@ -1,3 +1,5 @@
+export { DeleteCartItemPopup } from "./DeleteCartItemPopup";
+
 export { QuantitySelector } from "./QuantitySelector";
 
 export { LazyImage } from "./LazyImage";

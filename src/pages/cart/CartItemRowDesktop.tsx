@@ -1,7 +1,7 @@
 import { CartItem } from "@/types/types";
 import { useAppDispatch } from "@/redux/store";
 import { removeFromCart } from "@/redux/cartSlice";
-import { QuantitySelector } from "@/components/shared";
+import { DeleteCartItemPopup, QuantitySelector } from "@/components/shared";
 import { DollarSign, Trash2 } from "lucide-react";
 import { useCartItemSubtotal } from "@/hooks";
 import { useEffect } from "react";
@@ -29,10 +29,12 @@ export const CartItemRowDesktop = ({
   return (
     <tr>
       <td>
-        <Trash2
-          className="w-8 h-8 text-red-500 cursor-pointer"
-          onClick={() => dispatch(removeFromCart(itemInCart))}
-        />
+        <DeleteCartItemPopup itemInCart={itemInCart}>
+          <Trash2
+            role="button"
+            className="w-8 h-8 text-red-500 cursor-pointer"
+          />
+        </DeleteCartItemPopup>
       </td>
       <td>
         <img src={itemInCart?.image} width={80} alt="" />

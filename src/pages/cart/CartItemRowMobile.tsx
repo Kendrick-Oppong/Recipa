@@ -1,7 +1,7 @@
 import { CartItem } from "@/types/types";
 import { useAppDispatch } from "@/redux/store";
 import { removeFromCart } from "@/redux/cartSlice";
-import { QuantitySelector } from "@/components/shared";
+import { DeleteCartItemPopup, QuantitySelector } from "@/components/shared";
 import { DollarSign, Trash2 } from "lucide-react";
 import { useCartItemSubtotal } from "@/hooks";
 
@@ -24,12 +24,15 @@ export const CartItemRowMobile = ({ itemInCart }: { itemInCart: CartItem }) => {
         </div>
       </div>
       <div className="flex justify-between flex-wrap gap-3 cursor-pointer">
-        <button onClick={() => dispatch(removeFromCart(itemInCart))}>
-          <p className=" text-red-700 flex items-center gap-1">
-            <Trash2 className="w-5 h-5 cursor-pointer" />
-            Remove
-          </p>
-        </button>
+        <DeleteCartItemPopup itemInCart={itemInCart}>
+          <button>
+            <p className=" text-red-700 flex items-center gap-1">
+              <Trash2 className="w-5 h-5 cursor-pointer" />
+              Remove
+            </p>
+          </button>
+        </DeleteCartItemPopup>
+
         <div className="flex items-center justify-between gap-5">
           <QuantitySelector itemId={itemInCart._id!} />
         </div>
