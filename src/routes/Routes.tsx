@@ -20,13 +20,13 @@ import {
   SignUp,
   SignIn,
   Cart,
-  UserProfileLayout,
-  Settings,
   ContactUs,
   AboutUs,
+  CheckOut,
+  UserSettings,
 } from "@/pages";
-import { ProfileCart } from "@/pages/profile";
 import { Route, Routes } from "react-router-dom";
+import { ProtectedRoute } from "./ProtectedRoutes";
 
 export const AllRoutes = () => {
   return (
@@ -53,15 +53,30 @@ export const AllRoutes = () => {
           </Route>
           <Route path=":category/:title/:id" element={<MenuDetails />} />
           <Route path="cart" element={<Cart />} />
+          <Route
+            path="checkout"
+            element={
+              <ProtectedRoute>
+                <CheckOut />
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route path="checkout" element={<CheckOut />} /> */}
           <Route path="contact-us" element={<ContactUs />} />
           <Route path="about-us" element={<AboutUs />} />
         </Route>
         <Route path="signup" element={<SignUp />} />
         <Route path="signin" element={<SignIn />} />
-        <Route path="profile" element={<UserProfileLayout />}>
-          <Route index element={<Settings />} />
-          <Route path="cart" element={<ProfileCart/>} />
-        </Route>
+
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <UserSettings />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>

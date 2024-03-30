@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import {
   Form,
   FormControl,
@@ -14,13 +13,18 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { signUpSchema } from "@/validators/formSchema";
-import { Asterisk } from "lucide-react";
+import { Asterisk, Eye, EyeOff } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isError, handleErrorToast } from "@/lib/utils";
-import { usePost } from "@/hooks";
+import { usePageTitle, usePost as useSignUp } from "@/hooks";
+import { useState } from "react";
 
 export const SignUp = () => {
+  const [revealPassword, setRevealPassword] = useState(false);
+  usePageTitle("Sign Up");
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -44,36 +48,17 @@ export const SignUp = () => {
     isPending,
     isSuccess,
     mutate: signUpMutation,
-  } = usePost("http://localhost:5000/user/signup");
-  //  useMutation({
-  //   mutationFn: (newUser: SignUpFormData) =>
-  //     axios
-  //       .post("http://localhost:5000/user/signup", newUser)
-  //       .catch((error) => {
-  //         if (error instanceof AxiosError) {
-  //           console.error("Error creating new user:", error);
-  //           throw new Error(error.response?.data.message || error.message);
-  //         }
-  //         throw error;
-  //       }),
-  //   onSuccess: (data) => {
-  //     console.log(data.data);
-  //   },
-  //   onError: (error) => {
-  //     console.error(error);
-  //     throw error;
-  //   },
-  // });
+  } = useSignUp("http://localhost:5000/user/signup");
 
   function onSubmit(data: z.infer<typeof signUpSchema>) {
     console.log(data);
-
     signUpMutation(data);
+    !isSuccess && navigate("/signin");
   }
 
   return (
     <main className="max-w-5xl mx-auto text-lg">
-      <div className="border border-green-600 w-[90%] md:w-[70%] px-5  md:px-10  pb-10 rounded-lg mx-auto mt-28 mb-10 shadow-2xl">
+      <div className="border border-green600 w-[90%] md:w-[70%] px-5  md:px-10  pb-10 rounded-lg mx-auto mt-5 mb-10 shadow-2xl">
         <div className="text-center ">
           {signUpData?.data}
           {signUpError?.message}
@@ -86,7 +71,7 @@ export const SignUp = () => {
           </h2>
           <li className="flex items-center justify-center sm:text-lg">
             <svg
-              className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              className="hidden sm:inline-grid w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -120,7 +105,7 @@ export const SignUp = () => {
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
-                          : "border-green-600"
+                          : "border-green600"
                       }`}
                     />
                   </FormControl>
@@ -148,7 +133,7 @@ export const SignUp = () => {
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
-                          : "border-green-600"
+                          : "border-green600"
                       }`}
                     />
                   </FormControl>
@@ -173,7 +158,7 @@ export const SignUp = () => {
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
-                          : "border-green-600"
+                          : "border-green600"
                       }`}
                     />
                   </FormControl>
@@ -181,31 +166,47 @@ export const SignUp = () => {
                 </FormItem>
               )}
             />
-            <FormField
-              control={control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Password
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Enter your password"
-                      type="password"
-                      {...field}
-                      className={`${
-                        isError(field.name, errors, form)
-                          ? "border-red-500 focus-visible:ring-red-500"
-                          : "border-green-600"
-                      }`}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="relative">
+              <FormField
+                control={control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Password
+                      <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter your password"
+                        type={revealPassword ? "text" : "password"}
+                        {...field}
+                        className={`${
+                          isError(field.name, errors, form)
+                            ? "border-red-500 focus-visible:ring-red-500"
+                            : "border-green600"
+                        }`}
+                      />
+                    </FormControl>
+                    <div onClick={() => setRevealPassword((prev) => !prev)}>
+                      {field.value.length > 0 &&
+                        (revealPassword ? (
+                          <EyeOff
+                            strokeWidth={1}
+                            className="absolute top-[44px] right-[1%]"
+                          />
+                        ) : (
+                          <Eye
+                            strokeWidth={1}
+                            className="absolute top-[44px] right-[1%]"
+                          />
+                        ))}
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <FormField
               control={control}
               name="confirm_password"
@@ -218,12 +219,12 @@ export const SignUp = () => {
                   <FormControl>
                     <Input
                       placeholder="confirm your password"
-                      type="password"
+                      type={revealPassword ? "text" : "password"}
                       {...field}
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
-                          : "border-green-600"
+                          : "border-green600"
                       }`}
                     />
                   </FormControl>
@@ -251,15 +252,10 @@ export const SignUp = () => {
             {""}
             Continue with Google
           </ButtonLink>
-          <ButtonLink className="w-full my-4">
-            <img src="/facebook.svg" alt="" className="mr-2" />
-            {""}
-            Continue with Facebook
-          </ButtonLink>
         </div>
-        <p className="text-center">
+        <p className="text-center mt-3">
           Already have an account?{" "}
-          <Link to="/signin" className="text-green underline">
+          <Link to="/signin" className="text-green underline ml-1">
             Sign In
           </Link>
         </p>

@@ -9,8 +9,26 @@ import { ThemeProvider } from "@/context/theme/themeProvider.tsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 import { Toaster } from "@/components/ui/sonner";
+import axios from "axios";
 
 const queryClient = new QueryClient();
+
+const BACKEND_URL = "http://localhost:5000";
+
+axios.interceptors.request.use(
+  (config) => {
+    if (config?.url?.startsWith(BACKEND_URL)) {
+      config.withCredentials = true;
+    } else {
+      config.withCredentials = false; // Explicitly set to false for other requests
+    }
+    return config;
+  },
+  (error) => {
+    // Handle errors
+    return Promise.reject(error);
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -20,7 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Provider store={store}>
             <App />
             <Toaster
-              position="top-center"  
+              position="top-center"
               expand={false}
               gap={5}
               toastOptions={{
@@ -35,12 +53,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </QueryClientProvider>
   </React.StrictMode>
 );
-
-//  duration: 3000,
-//       dismissible: true,
-//       important: true,
-//       className: "gap-5",
-//       style: {
-//         padding: "1rem",
-//         fontSize: "16px",
-//         background: "red",

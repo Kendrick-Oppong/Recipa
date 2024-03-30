@@ -1,10 +1,12 @@
+import { usePageTitle } from "@/hooks";
 import { ContactForm } from "./ContactForm";
 import { MapLocation } from "./MapLocation";
 
 export const ContactUs = () => {
+  usePageTitle("Contact Us")
   return (
     <div className="text-lg max-w-[90%] mx-auto">
-      <section className="text-center dark:pt-0">
+      <section className="text-center dark:pt-0 pb-10">
         <h2>
           Get in {""}
           <span>
@@ -26,12 +28,12 @@ export const ContactUs = () => {
         </p>
       </section>
       <section className="grid auto-fit gap-10 text-center dark:shadow-none  dark:pt-0 ">
-        <div className="shadow-lg p-3 rounded-xl pb-5 border border-gray-400">
+        <div className="shadow-lg p-3 rounded-xl pb-5 border border-green600">
           <img className="mx-auto" src="/address-svgrepo-com.svg" alt="" />
           <h3 className="text-green">Address</h3>
           <p>Bostro 22, Labone Crescent, Accra, Ghana</p>
         </div>
-        <div className="shadow-lg p-3 rounded-xl pb-5 border border-gray-400">
+        <div className="shadow-lg p-3 rounded-xl pb-5 border border-green600">
           <img
             className="mx-auto"
             src="/social-contact-svgrepo-com.svg"
@@ -51,7 +53,7 @@ export const ContactUs = () => {
             </strong>
           </p>
         </div>
-        <div className="shadow-lg p-3 rounded-xl pb-5 border border-gray-400">
+        <div className="shadow-lg p-3 rounded-xl pb-5 border border-green600">
           <img
             className="mx-auto"
             src="/time-stopwatch-watch-svgrepo-com.svg"

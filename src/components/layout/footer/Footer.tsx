@@ -18,7 +18,7 @@ export const Footer = () => {
   return (
     <div className="shadow-2xl">
       {!excludedPaths.includes(location.pathname) && (
-        <section className="px-5 pb-20 my-0 text-center">
+        <section className="px-4 pb-20 my-0 text-center">
           <h2>
             Join for {""}
             <span>
@@ -28,7 +28,7 @@ export const Footer = () => {
           </h2>
           <li className="flex items-center justify-center sm:text-lg">
             <svg
-              className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              className="hidden sm:inline w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -38,12 +38,12 @@ export const Footer = () => {
             </svg>
             Subscribe to the newsletter for exclusive promos
           </li>
-          <div className="flex flex-wrap gap-4 sm:flex-nowrap w-full max-w-4xl mx-auto mt-8 items-center space-x-2">
+          <div className="flex flex-wrap gap-4 sm:flex-nowrap w-full max-w-5xl mx-auto mt-8 items-center space-x-2">
             <Input
               type="email"
               required
               placeholder="Enter Your Email Address..."
-              className="p-5 text-base shadow-md"
+              className="p-[1.3rem] text-base shadow-md border border-green600"
             />
             <ButtonLink className="w-full !ml-0 mt-3 sm:mt-0 sm:w-auto rounded-sm">
               Subscribe <Rocket className="ml-2" />
@@ -95,7 +95,7 @@ export const Footer = () => {
           </div>
           <div>
             <h3 className="text-green mt-0">Shop(Menu)</h3>
-            <ul  className="space-y-4">
+            <ul className="space-y-4">
               {menu.map((menu) => (
                 <Link
                   key={menu.title}
@@ -104,11 +104,7 @@ export const Footer = () => {
                   <li
                     className={`text-lg mb-2 hover:text-green-700 cursor-pointer`}
                   >
-                    <img
-                      className="mr-2 inline-flex"
-                      src={menu.src}
-                      alt=""
-                    />
+                    <img className="mr-2 inline-flex" src={menu.src} alt="" />
                     {menu.title}
                   </li>
                 </Link>

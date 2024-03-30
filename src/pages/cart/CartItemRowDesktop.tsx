@@ -1,30 +1,34 @@
 import { CartItem } from "@/types/types";
-import { useAppDispatch } from "@/redux/store";
-import { removeFromCart } from "@/redux/cartSlice";
 import { DeleteCartItemPopup, QuantitySelector } from "@/components/shared";
 import { DollarSign, Trash2 } from "lucide-react";
 import { useCartItemSubtotal } from "@/hooks";
 import { useEffect } from "react";
+import { useAppDispatch } from "@/redux/store";
+import { calculateBillingTotal } from "@/redux/menuQuantitySlice";
 
+interface CartProps {
+  itemInCart: CartItem;
+  sumSubtotal: number[];
+  setSumSubtotal: React.Dispatch<React.SetStateAction<number[]>>;
+}
 export const CartItemRowDesktop = ({
   itemInCart,
   setSumSubtotal,
-}: {
-  itemInCart: CartItem;
-  setSumSubtotal: React.Dispatch<React.SetStateAction<number[]>>;
-}) => {
+  sumSubtotal,
+}: CartProps) => {
   const dispatch = useAppDispatch();
   const cartItemSubtotal = useCartItemSubtotal(itemInCart);
 
   useEffect(() => {
     setSumSubtotal((previous: number[]) => [cartItemSubtotal, ...previous]);
+    dispatch(calculateBillingTotal(sumSubtotal));
     return () => {
       // Remove the cartItemSubtotal when the component unmounts
       setSumSubtotal((previous: number[]) =>
         previous.filter((subtotal) => subtotal !== cartItemSubtotal)
       );
     };
-  }, [cartItemSubtotal, setSumSubtotal]);
+  }, [cartItemSubtotal, dispatch, setSumSubtotal, sumSubtotal]);
 
   return (
     <tr>

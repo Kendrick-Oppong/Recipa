@@ -8,23 +8,25 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { settingsSchema } from "@/validators/formSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { isError, handleErrorToast } from "@/lib/utils";
 import { z } from "zod";
 import { SendHorizontal } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
+import { UserDetails } from "@/types/types";
 
-export const SettingsForm = () => {
-  const form = useForm<z.infer<typeof settingsSchema>>({
-    resolver: zodResolver(settingsSchema),
+interface UserSettingsFormProps {
+  user: UserDetails | undefined;
+}
+
+export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
+  const form = useForm({
+    // resolver: zodResolver(settingsSchema),
     defaultValues: {
-      username: "",
-      email: "",
+      username: user?.username ?? "",
+      email: user?.email ?? "",
       phone_number: "",
       address: "",
-      country: "",
-      city: "",
     },
   });
 
@@ -37,14 +39,15 @@ export const SettingsForm = () => {
   function onSubmit(data: z.infer<typeof settingsSchema>) {
     console.log(data);
   }
+
   return (
     <Form {...form}>
       <form
         autoComplete="fff"
         onSubmit={handleSubmit(onSubmit)}
-        className="mt-4"
+        className="px-5 mt-12 mb-12"
       >
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid-cols-2 sm:grid sm:gap-4">
           <FormField
             control={control}
             name="username"
@@ -59,7 +62,7 @@ export const SettingsForm = () => {
                     className={`${
                       isError(field.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-600"
+                        : "border-green600"
                     }`}
                   />
                 </FormControl>
@@ -81,7 +84,7 @@ export const SettingsForm = () => {
                     className={`${
                       isError(field?.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-600"
+                        : "border-green600"
                     }`}
                   />
                 </FormControl>
@@ -90,7 +93,7 @@ export const SettingsForm = () => {
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid-cols-2 sm:grid sm:gap-4">
           <FormField
             control={control}
             name="phone_number"
@@ -105,7 +108,7 @@ export const SettingsForm = () => {
                     className={`${
                       isError(field.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-600"
+                        : "border-green600"
                     }`}
                   />
                 </FormControl>
@@ -127,7 +130,7 @@ export const SettingsForm = () => {
                     className={`${
                       isError(field.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-600"
+                        : "border-green600"
                     }`}
                   />
                 </FormControl>
@@ -136,55 +139,10 @@ export const SettingsForm = () => {
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <FormField
-            control={control}
-            name="country"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Country</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="USA"
-                    type="text"
-                    {...field}
-                    className={`${
-                      isError(field.name, errors, form)
-                        ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-600"
-                    }`}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={control}
-            name="city"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>City</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="New Jersey"
-                    type="text"
-                    {...field}
-                    className={`${
-                      isError(field.name, errors, form)
-                        ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-600"
-                    }`}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+
         <ButtonLink
-          className="w-full mt-4"
           type="submit"
+          className="w-full mt-4"
           onClick={() => handleErrorToast(isValid)}
         >
           Update Settings

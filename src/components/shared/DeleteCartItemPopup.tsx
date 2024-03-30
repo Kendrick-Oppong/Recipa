@@ -32,7 +32,7 @@ export function DeleteCartItemPopup({ children, itemInCart }: DeleteCartProps) {
           <AlertDialogTitle className="my-1">Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription className="text-lg">
             This action cannot be undone. This will permanently delete the
-            selected item in cart.
+            selected item in cart
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter >

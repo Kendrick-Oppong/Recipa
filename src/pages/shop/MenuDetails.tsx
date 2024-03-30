@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ButtonLink,
@@ -14,7 +13,6 @@ import {
   Facebook,
   Twitter,
   Linkedin,
- 
   ShoppingBasket,
 } from "lucide-react";
 import React, { Key } from "react";
@@ -29,7 +27,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export const MenuDetails = (url: string, queryKey: string, id?: string) => {
-  const { data, isLoading, error } = useFetch<MenuDetailsProps>(
+  const { data, isLoading, error, refetch } = useFetch<MenuDetailsProps>(
     url,
     queryKey,
     id
@@ -75,14 +73,14 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
 
   if (error)
     return (
-      <div className="mt-10 m-[6rem]">
-        <ErrorMessage message={error?.message} />
+      <div className="mt-10 m-[3rem]">
+        <ErrorMessage refetch={refetch} message={error?.message} />
       </div>
     );
 
   return (
     <>
-      <div className="grid lg:grid-cols-2 items-center gap-4 text-lg mt-3 mb-20 px-4">
+      <div className="grid items-center gap-4 px-4 mt-3 mb-20 text-lg lg:grid-cols-2">
         {data?.data.map((menuDetail) => (
           <React.Fragment key={menuDetail._id}>
             <LazyImage
@@ -100,7 +98,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
             <div className="pr-5">
               <h1 className="text-4xl font-bold">{menuDetail.title}</h1>
 
-              <div className="flex  my-4 items-center">
+              <div className="flex items-center my-4">
                 <svg
                   className="w-4 h-4 text-yellow-500 me-1"
                   aria-hidden="true"
@@ -146,13 +144,13 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                 >
                   <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                 </svg>
-                <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-medium text-gray-500 ms-1 dark:text-gray-400">
                   {menuDetail.rating}
                 </p>
-                <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-medium text-gray-500 ms-1 dark:text-gray-400">
                   out of
                 </p>
-                <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+                <p className="text-sm font-medium text-gray-500 ms-1 dark:text-gray-400">
                   5
                 </p>
               </div>
@@ -174,12 +172,12 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                 </li>
               </div>
 
-              <p className="text-green-600 my-4 border-b border-b-gray-500 pb-6">
+              <p className="pb-6 my-4 text-green-600 border-b border-b-gray-500">
                 {menuDetail.details?.quantityInStock} in stock (can be
                 backordered)
               </p>
 
-              <div className="flex justify-between flex-wrap gap-3">
+              <div className="flex flex-wrap justify-between gap-3">
                 <div className="flex items-center justify-between gap-5">
                   <strong>QUANTITY:</strong>{" "}
                   <QuantitySelector itemId={menuDetail._id!} />
@@ -204,8 +202,6 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                       <ShoppingBasket className="mr-2" /> Add to Cart
                     </ButtonLink>
                   )}
-
-                
                 </div>
               </div>
 
@@ -222,15 +218,15 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
                     <div className="flex gap-2">
                       <Facebook
                         strokeWidth={1}
-                        className="hover:text-red-500 cursor-pointer"
+                        className="cursor-pointer hover:text-red-500"
                       />
                       <Twitter
                         strokeWidth={1}
-                        className="hover:text-red-500 cursor-pointer"
+                        className="cursor-pointer hover:text-red-500"
                       />
                       <Linkedin
                         strokeWidth={1}
-                        className="hover:text-red-500 cursor-pointer"
+                        className="cursor-pointer hover:text-red-500"
                       />
                     </div>
                   </strong>
@@ -243,7 +239,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
       {data?.data.map((menuDetail) => (
         <div key={menuDetail.title} className="mb-10">
           <Tabs defaultValue="description" className="max-w-[90%] mx-auto">
-            <TabsList className="gap-10 w-full">
+            <TabsList className="w-full gap-10 border border-green600 flex-wrap">
               <TabsTrigger value="description">Description</TabsTrigger>
               <TabsTrigger value="additional_info">
                 Additional Information
@@ -251,7 +247,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
               <TabsTrigger value="reviews">Reviews</TabsTrigger>
             </TabsList>
             <TabsContent value="description">
-              <div className="text-lg mt-3">
+              <div className="mt-3 text-lg">
                 {menuDetail.details?.fullDescription?.split(".").map(
                   (description: string, index: Key | null | undefined) =>
                     description.trim() && (
@@ -263,13 +259,13 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
               </div>
             </TabsContent>
             <TabsContent value="additional_info">
-              <div className="flex justify-between text-lg mt-3 pb-3 border-b border-b-gray-500">
+              <div className="flex justify-between pb-3 mt-3 text-lg border-b border-b-gray-500">
                 <p>
                   <strong>Weight</strong>
                 </p>
                 <p>{menuDetail.details?.weight}</p>
               </div>
-              <div className="flex justify-between text-lg mt-3">
+              <div className="flex justify-between mt-3 text-lg">
                 <p>
                   <strong>Dimension</strong>
                 </p>
@@ -277,7 +273,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
               </div>
             </TabsContent>
             <TabsContent value="reviews">
-              <div className="text-lg mt-3">
+              <div className="mt-3 text-lg">
                 <p>Customer Reviews</p>
               </div>
             </TabsContent>

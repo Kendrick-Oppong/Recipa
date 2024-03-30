@@ -3,6 +3,7 @@ import sortQueryReducer from "./sortQuerySlice";
 import menuQuantityReducer from "./menuQuantitySlice";
 import userFormReducer from "./formSlice";
 import cartReducer from "./cartSlice";
+import isAuthenticatedReducer from "./userAuthenticatedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     menuQuantity: menuQuantityReducer,
     userForm: userFormReducer,
     cart: cartReducer,
+    isAuthenticated: isAuthenticatedReducer,
   },
 });
 

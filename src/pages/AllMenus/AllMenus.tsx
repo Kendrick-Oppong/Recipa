@@ -10,6 +10,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { menu } from "@/constants/constants";
+import { usePageTitle } from "@/hooks";
 import { addSortQuery } from "@/redux/sortQuerySlice";
 import { useAppDispatch } from "@/redux/store";
 import { SlidersHorizontal } from "lucide-react";
@@ -17,6 +18,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 
 export const AllMenus = () => {
   const dispatch = useAppDispatch();
+  
   const handleSortQuery = (val: string) => {
     dispatch(addSortQuery(val));
   };
@@ -49,10 +51,11 @@ export const AllMenus = () => {
     default:
       pageTitle = "";
   }
-
+  usePageTitle(`Shop - ${pageTitle}`);
+  
   return (
-    <section className="px-5">
-      <div className="px-4 pt-2">
+    <section className="px-5 mt-0">
+      <div className="pt-2">
         <div>
           <Sheet>
             <SheetTrigger>
@@ -62,7 +65,7 @@ export const AllMenus = () => {
               </h3>
             </SheetTrigger>
             <SheetContent className="mt-[5rem] md:mt-[4rem] hover:scale-100 text-lg">
-              <aside className="border border-green-600 px-2 mt-10 rounded-lg ">
+              <aside className="border border-green600 px-2 mt-10 rounded-lg ">
                 <div className="flex flex-col gap-4 py-4">
                   {menu.map((menu) => (
                     <Link
@@ -84,7 +87,7 @@ export const AllMenus = () => {
           <div className="font-semibold mb-6 sm:mb-0 text-lg">
             <p>Showing 1-12 of 12 {pageTitle}</p>
           </div>
-          <div className="w-64 ">
+          <div className="w-[28rem]">
             <Select onValueChange={(val) => handleSortQuery(val)}>
               <SelectTrigger>
                 <SelectValue placeholder="Sort Menu By" />
@@ -112,14 +115,16 @@ export const AllMenus = () => {
                     </p>
                   </SelectItem>
                   <SelectItem value="rating">
-                    <p className="text-black dark:text-white">Sort by highest rating</p>
+                    <p className="text-black dark:text-white">
+                      Sort by highest rating
+                    </p>
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
           </div>
         </div>
-        <div className=" h-[26rem] overflow-y-scroll pb-10">
+        <div className=" h-[28rem] overflow-y-scroll pb-10">
           <Outlet />
         </div>
       </div>

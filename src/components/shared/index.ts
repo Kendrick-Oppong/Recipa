@@ -1,3 +1,5 @@
+export { CookieAnnouncementBanner } from "./CookieAnnouncementBanner";
+
 export { DeleteCartItemPopup } from "./DeleteCartItemPopup";
 
 export { QuantitySelector } from "./QuantitySelector";
@@ -21,4 +23,3 @@ export { ErrorMessage } from "./ErrorMessage";
 export { LoadingSkeleton } from "./LoadingSkeleton";
 
 export { ButtonLink } from "./ButtonLink";
-

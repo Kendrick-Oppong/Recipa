@@ -1,9 +1,11 @@
 import { TestimonyCarousel } from "../Home";
 import banner_about from "../../assets/banner-about.jpg";
+import { usePageTitle } from "@/hooks";
 
 export const AboutUs = () => {
+  usePageTitle("About Us");
   return (
-    <div className="text-center text-lg px-10">
+    <div className="text-center text-lg px-5">
       <div>
         <li className="flex items-center justify-center sm:text-lg">
           <svg
@@ -22,14 +24,15 @@ export const AboutUs = () => {
         <h2>
           Enjoy The Best {""}
           <span>
-            Food Restaurant.
+            Food Restaurant.{""}
             <img src="/twirl-layered.svg" alt="" width={30} height={30} />
           </span>
         </h2>
-        <p >
+        <p>
           Indulge in a world of flavors meticulously curated by our culinary
-          experts. <br /> From free recipes, farm-fresh ingredients to exotic meals, each dish tells a story of quality. <br /> Our chefs draw inspiration from
-          global culinary traditions.
+          experts. <br /> From free recipes, farm-fresh ingredients to exotic
+          meals, each dish tells a story of quality. <br /> Our chefs draw
+          inspiration from global culinary traditions.
         </p>
       </div>
       <div className="h-[510px]">

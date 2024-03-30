@@ -89,19 +89,32 @@ export const settingsSchema = z.object({
     .string()
     .min(5, { message: "Your address must be at least 5 characters long" })
     .max(200, { message: "Address cannot exceed 200 characters" }),
-  country: z
+ 
+});
+
+export const checkOutSchema = z.object({
+  name: z
     .string()
-    .min(2, { message: "Country must be at least 10 characters long" })
-    .max(50, { message: "Country cannot exceed 50 characters" }),
+    .min(2, { message: "Name must be at least 2 characters long" })
+    .max(50, { message: "Name cannot exceed 50 characters" }),
+  email: z
+    .string()
+    .regex(emailRegex, { message: "Invalid email format" })
+    .min(1, { message: "Email is required" }),
+  phone_number: z
+    .string()
+    .min(10, { message: "Phone number must be at least 10 characters long" })
+    .max(50, { message: "Phone number cannot exceed 50 characters" }),
+  town: z
+    .string()
+    .min(2, { message: "City must be at least 10 characters long" })
+    .max(50, { message: "City cannot exceed 50 characters" }),
   city: z
     .string()
     .min(2, { message: "City must be at least 10 characters long" })
     .max(50, { message: "City cannot exceed 50 characters" }),
+  address: z
+    .string()
+    .min(5, { message: "Your address must be at least 5 characters long" })
+    .max(200, { message: "Address cannot exceed 200 characters" }),
 });
-
-// username: "",
-//     email: "",
-//     phone_number: "",
-//     address: "",
-//     country: "",
-//     city: "",

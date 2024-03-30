@@ -28,7 +28,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
-  const { data, isLoading, error } = useFetch<MenuProps>(url, queryKey, id);
+  const { data, isLoading, error, refetch } = useFetch<MenuProps>(
+    url,
+    queryKey,
+    id
+  );
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector(getAllCartData);
 
@@ -46,8 +50,8 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
 
   if (error)
     return (
-      <div className="mt-10 m-[6rem]">
-        <ErrorMessage message={error?.message} />
+      <div className="mt-10 m-[3rem]">
+        <ErrorMessage refetch={refetch} message={error?.message} />
       </div>
     );
 
@@ -56,7 +60,7 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
       {data?.data?.map((menu) => (
         <div
           key={menu._id}
-          className="relative shadow-2xl border-green-600 rounded-lg border p-3 pb-16"
+          className="relative shadow-2xl border-green600 rounded-lg border p-3 pb-16"
         >
           <Link to={`/all-menus/${menu.category}/${menu.title}/${menu._id}`}>
             <LazyImage
@@ -166,8 +170,8 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
                   </div>
                 )}
 
-                <DrawerContent className="mx-auto pb-5">
-                  <div className="w-[80%]  md:w-[70%] lg:w-1/3  border border-green-600 mt-2 p-4 rounded-lg mx-auto">
+                <DrawerContent className="mx-auto pb-5 z-[10010]">
+                  <div className="w-[80%]  md:w-[70%] lg:w-1/3  border border-green600 mt-2 p-4 rounded-lg mx-auto">
                     <LazyImage
                       src={menu?.image}
                       alt={menu.title}
@@ -257,12 +261,14 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
                           View Cart
                         </ButtonLink>
                       </Link>
-                      <ButtonLink
-                        type="button"
-                        className="hover:!bg-red-500 w-full mt-2"
-                      >
-                        Continue to checkout
-                      </ButtonLink>
+                      <Link to="/all-menus/checkout">
+                        <ButtonLink
+                          type="button"
+                          className="hover:!bg-red-500 w-full mt-2"
+                        >
+                          Continue to checkout
+                        </ButtonLink>
+                      </Link>
                     </div>
                   </div>
                   <DrawerFooter className="p-0 pt-2 w-[80%] md:w-[70%] lg:w-1/3 mx-auto">

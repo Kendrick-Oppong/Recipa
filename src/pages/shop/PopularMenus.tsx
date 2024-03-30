@@ -4,8 +4,8 @@ import { menu } from "@/constants/constants";
 
 export function PopularMenus() {
   return (
-    <Tabs defaultValue="burgers"className="mx-4">
-      <TabsList className="grid auto-fit-tabs px-5 mx-auto gap-5 max-w-full  sm:max-w-[95%]  border border-green-600">
+    <Tabs defaultValue="burgers" className="mx-4">
+      <TabsList className="grid auto-fit-tabs px-5 mx-auto gap-5 max-w-full  sm:max-w-[95%]  border border-green600">
         {menu.map((menu) => (
           <TabsTrigger key={menu.title} value={menu.title.toLowerCase()}>
             <img className="mr-1 hidden md:inline" src={menu.src} alt="" />

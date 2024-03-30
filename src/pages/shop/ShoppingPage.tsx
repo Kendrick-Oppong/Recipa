@@ -2,8 +2,11 @@ import { ButtonLink } from "@/components/shared";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PopularMenus } from ".";
+import { usePageTitle } from "@/hooks";
 
 export const ShoppingPage = () => {
+  usePageTitle("Shop");
+
   return (
     <main>
       <div className="bg-[url('/wave_menu.svg')] z-50 w-full h-36 bg-repeat-x bg-scroll absolute bg-cover"></div>

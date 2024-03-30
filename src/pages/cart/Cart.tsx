@@ -6,17 +6,20 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartItem } from "@/types/types";
 import { CartGrandTotal, CartItemRowDesktop, CartItemRowMobile } from ".";
+import { usePageTitle } from "@/hooks";
 
 export const Cart = () => {
   const cartItems = useAppSelector(getAllCartData);
   const [sumSubtotal, setSumSubtotal] = useState<number[]>([]);
+
+  usePageTitle("Cart")
 
   if (!cartItems.length)
     return (
       <div className="max-w-[95%] mx-auto text-center text-lg ">
         <img
           src="/shopping-basket-svgrepo-com.svg"
-          className="mx-auto border border-green-600 p-5 rounded-full"
+          className="mx-auto border border-green600 p-3 rounded-full"
           alt=""
         />
         <div className="mt-2 mb-14">
@@ -38,7 +41,7 @@ export const Cart = () => {
         Cart {cartItems.length > 1 ? "Items" : "Item"}{" "}
         <span className="text-red-500">({cartItems?.length})</span>
       </h3>
-      <div className="w-full text-lg p-3 mb-10 border border-green-600 rounded-lg shadow-lg max-w-[97%] md:max-w-[95%] mx-auto">
+      <div className="w-full text-lg p-3 mb-10 border border-green600 rounded-lg shadow-lg max-w-[97%] md:max-w-[95%] mx-auto">
         <table className="w-full">
           <thead className="bg-[#bebeac] dark:bg-muted h-12 text-left hidden md:table-header-group">
             <tr>
@@ -56,6 +59,7 @@ export const Cart = () => {
               <React.Fragment key={cartItem._id}>
                 <CartItemRowDesktop
                   itemInCart={cartItem}
+                  sumSubtotal={sumSubtotal}
                   setSumSubtotal={setSumSubtotal}
                 />
               </React.Fragment>
@@ -63,9 +67,9 @@ export const Cart = () => {
           </tbody>
         </table>
 
-        {cartItems.map((cartItem) => (
+        {cartItems.map((cartItem: CartItem) => (
           <div
-            className="md:hidden border border-green-600 rounded-lg px-2 pb-2 mb-5"
+            className="md:hidden border border-green600 rounded-lg px-2 pb-2 mb-5"
             key={cartItem._id}
           >
             <CartItemRowMobile itemInCart={cartItem} />

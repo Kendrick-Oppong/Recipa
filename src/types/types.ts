@@ -147,12 +147,34 @@ export interface ContactUsFormData {
   message: string;
 }
 export interface SettingsFormData {
+  username?: string;
+  email?: string;
+  address?: string;
+  phone_number?: string;
+  profileImage?: string ;
+}
+
+export interface UserDetails {
+  _id: string;
   username: string;
+  name: string;
   email: string;
-  address: string;
+  role: string;
+  profileImage: string;
   phone_number: string;
-  country: string;
+  address: string;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+}
+
+export interface CheckOutFormData {
+  name: string;
+  email: string;
+  phone_number: string;
+  town: string;
   city: string;
+  address: string;
 }
 export interface SignInFormData {
   email: string;

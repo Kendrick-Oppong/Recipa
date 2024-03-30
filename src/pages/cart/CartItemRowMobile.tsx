@@ -1,12 +1,10 @@
-import { CartItem } from "@/types/types";
-import { useAppDispatch } from "@/redux/store";
-import { removeFromCart } from "@/redux/cartSlice";
 import { DeleteCartItemPopup, QuantitySelector } from "@/components/shared";
 import { DollarSign, Trash2 } from "lucide-react";
 import { useCartItemSubtotal } from "@/hooks";
+import { CartItem } from "@/types/types";
 
 export const CartItemRowMobile = ({ itemInCart }: { itemInCart: CartItem }) => {
-  const dispatch = useAppDispatch();
+
   const cartItemSubtotal = useCartItemSubtotal(itemInCart);
 
   return (

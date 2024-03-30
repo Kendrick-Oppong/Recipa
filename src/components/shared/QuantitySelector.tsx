@@ -21,7 +21,7 @@ export const QuantitySelector = memo(({ itemId }: IdProp) => {
 
   return (
     <>
-      <div className="p-1 border border-green-600 rounded-md hover:border-red-600 hover:bg-red-500 hover:text-white">
+      <div className="p-1 border border-green600 rounded-md hover:border-red-600 hover:bg-red-500 hover:text-white">
         <Minus onClick={() => dispatch(decrementQuantity(itemId))} />
       </div>
       <Input
@@ -31,10 +31,10 @@ export const QuantitySelector = memo(({ itemId }: IdProp) => {
         onChange={(e) =>
           dispatch(onChangeValue({ itemId: itemId, value: +e.target.value }))
         }
-        value={quantity}
-        className="text-center border border-green-600"
+        value={quantity <= 100 ? quantity : 1}
+        className="text-center border border-green600"
       />
-      <div className="p-1 border border-green-600 rounded-md hover:border-red-600 hover:bg-red-500 hover:text-white">
+      <div className="p-1 border border-green600 rounded-md hover:border-red-600 hover:bg-red-500 hover:text-white">
         <Plus onClick={() => dispatch(incrementQuantity(itemId))} />
       </div>
     </>

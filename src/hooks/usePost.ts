@@ -1,8 +1,9 @@
+import { handlePostErrorToast } from "@/lib/utils";
 import { SignInFormData, SignUpFormData } from "@/types/types";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
-const fetcher = (url: string, data: SignInFormData | SignUpFormData) =>
+const fetcher = (url: string, data?: SignInFormData | SignUpFormData) =>
   axios
     .post(url, data)
     .then((res) => res.data)
@@ -16,12 +17,14 @@ const fetcher = (url: string, data: SignInFormData | SignUpFormData) =>
 
 export const usePost = (url: string) => {
   const { data, error, isError, isPending, isSuccess, mutate } = useMutation({
-    mutationFn: (field: SignUpFormData | SignInFormData) => fetcher(url, field),
+    mutationFn: (field?: SignUpFormData | SignInFormData | undefined) =>
+      fetcher(url, field!),
     onSuccess: (data) => {
       console.log(data.data);
     },
     onError: (error) => {
       console.error(error);
+      handlePostErrorToast(error?.message);
       throw error;
     },
   });

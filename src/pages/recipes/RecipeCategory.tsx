@@ -3,38 +3,42 @@ import {
   ErrorMessage,
   LoadingSkeleton,
 } from "@/components/shared";
+import { usePageTitle } from "@/hooks";
 import { useFetch } from "@/hooks/useFetch";
 import { CategoryProp } from "@/types/types";
 import { useParams } from "react-router-dom";
 
 export const RecipeCategory = () => {
   const { id } = useParams();
+  usePageTitle("Recipe Categories");
 
   const {
     data: mealCategory,
     isLoading,
     error,
+    refetch,
   } = useFetch<CategoryProp>(
     `https://www.themealdb.com/api/json/v1/1/filter.php?c=${id}`,
     "recipeCategory",
+    undefined,
     id
   );
 
   if (isLoading)
     return (
-      <div className="mt-[8rem] m-10">
+      <div className="mt-[2rem] m-10">
         <LoadingSkeleton />
       </div>
     );
 
   if (error)
     return (
-      <div className="mt-[12rem] m-[6rem]">
-        <ErrorMessage message={error?.message} />
+      <div className="mt-[4rem] m-[3rem]">
+        <ErrorMessage refetch={refetch} message={error?.message} />
       </div>
     );
   return (
-    <main className="mt-28 px-4 sm:px-10">
+    <main className=" px-4 sm:px-10">
       <h2 className="mt-8">
         Free <span>{id}</span> recipes
       </h2>

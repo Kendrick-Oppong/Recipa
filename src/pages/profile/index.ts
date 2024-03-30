@@ -1,7 +1,6 @@
-export { ProfileCart } from "./ProfileCart";
+export { UserProfileImage } from "./UserProfileImage";
 
-export { SettingsForm } from "./SettingsForm";
+export { UserSettingsForm } from "./UserSettingsForm";
 
-export { Settings } from "./Settings";
+export { UserSettings } from "./UserSettings";
 
-export { UserProfileLayout } from "./UserProfileLayout";

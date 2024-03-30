@@ -4,36 +4,36 @@ import {
   LoadingSkeleton,
   RecipesCard,
 } from "@/components/shared";
-import { useFetch } from "@/hooks";
+import { useFetch, usePageTitle } from "@/hooks";
 import { Recipe, RecipesProp } from "@/types/types";
 import { Utensils } from "lucide-react";
 
 import { Link } from "react-router-dom";
 
 export const RecipesPage: React.FC = () => {
-  const { data, isLoading, error } = useFetch<RecipesProp>(
+  const { data, isLoading, error, refetch } = useFetch<RecipesProp>(
     "https://www.themealdb.com/api/json/v1/1/categories.php",
     "allRecipes"
   );
-
+  usePageTitle("All Recipes");
   const recipes = data?.categories.reverse();
 
   if (isLoading)
     return (
-      <div className="mt-[8rem] m-10">
+      <div className="mt-[2rem] m-10">
         <LoadingSkeleton />
       </div>
     );
 
   if (error)
     return (
-      <div className="mt-[12rem] m-[6rem]">
-        <ErrorMessage message={error?.message} />
+      <div className="mt-[4rem] m-[3rem]">
+        <ErrorMessage refetch={refetch} message={error?.message} />
       </div>
     );
   return (
-    <main className="mt-28 px-4 sm:px-10  my-10">
-      <div className="flex flex-wrap place-items-center gap-4 py-10 justify-center  border-green-600 rounded-lg border shadow-2xl">
+    <main className=" px-4 sm:px-10  my-10">
+      <div className="flex flex-wrap place-items-center gap-4 py-10 justify-center  border-green600 rounded-lg border shadow-2xl">
         <div>
           <img
             src="/pasta.png"

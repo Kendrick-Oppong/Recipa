@@ -1,25 +1,27 @@
-import { ErrorMessage, ModalWindow } from "@/components/shared";
-
+import { ButtonLink, ErrorMessage, ModalWindow } from "@/components/shared";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { usePageTitle } from "@/hooks";
 import { useFetch } from "@/hooks/useFetch";
 import { Meal_ID_Prop } from "@/types/types";
-import { Key } from "react";
+import { MessageSquareText } from "lucide-react";
 import { useParams } from "react-router-dom";
 
 export const CategoryMealDetail = () => {
   const { id } = useParams();
-  const { data, isLoading, error } = useFetch<Meal_ID_Prop>(
+  const { data, isLoading, error, refetch } = useFetch<Meal_ID_Prop>(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
     "categoryMealDetail",
     id
   );
 
   const mealDetail = data?.meals[0];
+  usePageTitle(mealDetail?.strMeal ? mealDetail?.strMeal : "");
 
   if (isLoading)
     return (
       <div
         role="status"
-        className="mt-[8rem] my-20 max-w-[80%] mx-auto space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
+        className="mt-[2rem] my-20 max-w-[80%] mx-auto space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
       >
         <div className="flex items-center justify-center w-full h-48 bg-gray-400 rounded sm:w-96 dark:bg-gray-700">
           <svg
@@ -46,15 +48,15 @@ export const CategoryMealDetail = () => {
 
   if (error)
     return (
-      <div className="mt-[12rem] m-[6rem]">
-        <ErrorMessage message={error?.message} />
+      <div className="mt-[4rem] m-[3rem]">
+        <ErrorMessage refetch={refetch} message={error?.message} />
       </div>
     );
 
   return (
-    <main className="mt-28 px-4 sm:px-10 my-10">
-      <div className="max-w-[95%]  mx-auto">
-        <div className="md:grid grid-cols-2 gap-4 justify-center p-4 border-green-600 rounded-lg border shadow-2xl ">
+    <main className=" px-4 sm:px-10 my-10">
+      <div className="max-w-[97%]  mx-auto">
+        <div className="md:grid grid-cols-2 gap-4 justify-center p-4 border-green600 rounded-lg border shadow-2xl ">
           <div className="w-[250px] mx-auto  md:mx-0 rounded-2xl">
             <img
               src={mealDetail!.strMealThumb!}
@@ -80,27 +82,68 @@ export const CategoryMealDetail = () => {
           </div>
         </div>
 
-        <div className="flex justify-center text-xl  gap-6 my-10 text-green ">
+        <div className="flex flex-wrap justify-center text-lg  gap-6 my-10 text-green ">
           {mealDetail?.strYoutube && mealDetail?.strYoutube !== "" && (
-            <>
-              <div>
-                <h1>Watch Tutorial</h1>
-              </div>
-              <div className="cursor-pointer self-center">
-                <ModalWindow url={mealDetail?.strYoutube} />
-              </div>
-            </>
+            <div className="cursor-pointer self-center">
+              <ModalWindow url={mealDetail?.strYoutube} />
+            </div>
           )}
+          <div>
+            <ButtonLink>
+              <MessageSquareText className="inline-flex mr-1" />
+              Add Comment
+            </ButtonLink>
+          </div>
         </div>
-        <div className="mb-0">
+        <Tabs defaultValue="ingredients">
+          <TabsList className="w-full gap-4 border border-green600">
+            <TabsTrigger value="ingredients">Ingredients</TabsTrigger>
+            <TabsTrigger value="instructions">Instructions</TabsTrigger>
+          </TabsList>
+          <div className="mt-4">
+            <TabsContent value="ingredients">
+              <ul className=" text-lg font-medium !list-disc border-green600 rounded-lg border shadow-2xl p-4">
+                {mealDetail &&
+                  Object.keys(mealDetail).map((key) => {
+                    const ingredient = mealDetail[key];
+                    if (
+                      key.startsWith("strIngredient") &&
+                      ingredient &&
+                      ingredient.trim() !== ""
+                    ) {
+                      return (
+                        <li key={key} className="ml-6 my-2 list-disc">
+                          {ingredient}
+                        </li>
+                      );
+                    }
+                    return null;
+                  })}
+              </ul>
+            </TabsContent>
+            <TabsContent value="instructions">
+              <ul className="text-lg font-medium !list-disc border-green600 rounded-lg border shadow-2xl p-4">
+                {mealDetail?.strInstructions?.split(".").map(
+                  (instruction: string) =>
+                    instruction.trim() && (
+                      <li key={instruction} className="ml-3 my-2 list-disc">
+                        {instruction.trim()}
+                      </li>
+                    )
+                )}
+              </ul>
+            </TabsContent>
+          </div>
+        </Tabs>
+        {/* <div className="mb-0">
           <h2 className="my-8">
             <span>
-              Ingredients.
+              Ingredients.{""}
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
           </h2>
-        </div>
-        <ul className=" text-lg font-medium !list-disc border-green-600 rounded-lg border shadow-2xl p-4">
+        </div> */}
+        {/* <ul className=" text-lg font-medium !list-disc border-green600 rounded-lg border shadow-2xl p-4">
           {mealDetail &&
             Object.keys(mealDetail).map((key) => {
               const ingredient = mealDetail[key];
@@ -110,32 +153,32 @@ export const CategoryMealDetail = () => {
                 ingredient.trim() !== ""
               ) {
                 return (
-                  <li key={key} className="ml-6 list-disc">
+                  <li key={key} className="ml-6 my-2 list-disc">
                     {ingredient}
                   </li>
                 );
               }
               return null;
             })}
-        </ul>
-        <section className="dark:pb-20 !px-0">
-          <h2 className="my-8">
+        </ul> */}
+        {/* <section className="dark:pb-20 !px-0"> */}
+        {/* <h2 className="my-8">
             <span>
               Instructions.{" "}
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
-          </h2>
-          <ul className="text-lg font-medium !list-disc border-green-600 rounded-lg border shadow-2xl p-4">
+          </h2> */}
+        {/* <ul className="text-lg font-medium !list-disc border-green600 rounded-lg border shadow-2xl p-4">
             {mealDetail?.strInstructions?.split(".").map(
               (instruction: string, index: Key | null | undefined) =>
                 instruction.trim() && (
-                  <li key={index} className="ml-6 list-disc">
+                  <li key={index} className="ml-6 my-2 list-disc">
                     {instruction.trim()}
                   </li>
                 )
             )}
-          </ul>
-        </section>
+          </ul> */}
+        {/* </section> */}
       </div>
     </main>
   );

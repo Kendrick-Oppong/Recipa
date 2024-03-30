@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const RecipesCard: React.FC<FeaturedCardProps> = ({ recipe }) => {
   return (
-    <div className="shadow-2xl border-green-600 rounded-lg border relative p-3 pb-16">
+    <div className="shadow-2xl border-green600 rounded-lg border relative p-2 pb-16">
       <div className="relative">
         <div className="dark:text-black rounded-lg absolute shadow-md top-2 bg-green-200 px-5 py-3 z-10">
           {recipe.strCategory}

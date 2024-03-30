@@ -46,11 +46,13 @@ interface QuantityState {
 interface MenuQuantityState {
   quantity: QuantityState;
   subtotal: number;
+  billingTotal: number[];
 }
 
 const initialState: MenuQuantityState = {
   quantity: {},
   subtotal: 0,
+  billingTotal: [],
 };
 
 export const menuQuantitySlice = createSlice({
@@ -86,6 +88,9 @@ export const menuQuantitySlice = createSlice({
       }
       state.subtotal = total;
     },
+    calculateBillingTotal: (state, action: PayloadAction<number[]>) => {
+      state.billingTotal = action.payload;
+    },
   },
 });
 
@@ -94,6 +99,7 @@ export const {
   onChangeValue,
   decrementQuantity,
   calculateSubtotal,
+  calculateBillingTotal,
 } = menuQuantitySlice.actions;
 
 export const getMenuItemQuantity = (state: RootState, itemId: string) =>
@@ -101,5 +107,7 @@ export const getMenuItemQuantity = (state: RootState, itemId: string) =>
 
 export const getTotalSubtotal = (state: RootState) =>
   state.menuQuantity.subtotal;
+export const getAllBillingTotal = (state: RootState) =>
+  state.menuQuantity.billingTotal;
 
 export default menuQuantitySlice.reducer;

@@ -8,7 +8,7 @@ export const ButtonLink = ({
   children: React.ReactNode;
   className?: string;
   type?: "submit" | "reset" | "button" | undefined;
-  onClick?: React.MouseEventHandler<HTMLButtonElement> ;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
     <Button
@@ -16,7 +16,7 @@ export const ButtonLink = ({
       size="lg"
       onClick={onClick}
       type={type}
-      className={`${className} text-lg text-green-600 hover:bg-green-500 hover:text-white border-green-600 shadow-md`}
+      className={`${className} text-lg text-green-600 hover:bg-green-500 hover:text-white border-green600 shadow-md`}
     >
       {children}
     </Button>

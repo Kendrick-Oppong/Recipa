@@ -40,7 +40,7 @@ export const ContactForm = () => {
 
   return (
     <div className="max-w-6xl mx-auto text-lg">
-      <div className="border border-green-600 md:w-[90%] px-5 md:px-10  pb-10 rounded-lg mx-auto mb-10 shadow-2xl">
+      <div className="border border-green600 md:w-[90%] px-5 md:px-10  pb-10 rounded-lg mx-auto mb-10 shadow-2xl">
         <Form {...form}>
           <form
             autoComplete="fff"
@@ -65,7 +65,7 @@ export const ContactForm = () => {
                         className={`${
                           isError(field.name, errors, form)
                             ? "border-red-500 focus-visible:ring-red-500"
-                            : "border-green-600"
+                            : "border-green600"
                         }`}
                       />
                     </FormControl>
@@ -90,7 +90,7 @@ export const ContactForm = () => {
                         className={`${
                           isError(field.name, errors, form)
                             ? "border-red-500 focus-visible:ring-red-500"
-                            : "border-green-600"
+                            : "border-green600"
                         }`}
                       />
                     </FormControl>
@@ -116,7 +116,7 @@ export const ContactForm = () => {
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
-                          : "border-green-600"
+                          : "border-green600"
                       }`}
                     />
                   </FormControl>
@@ -142,7 +142,7 @@ export const ContactForm = () => {
                       className={`w-full resize-none ${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
-                          : "border-green-600"
+                          : "border-green600"
                       }`}
                     />
                   </FormControl>

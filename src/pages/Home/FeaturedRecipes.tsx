@@ -7,15 +7,15 @@ import { useFetch } from "@/hooks/useFetch";
 import { RecipesProp } from "@/types/types";
 
 export const FeaturedRecipes: React.FC = () => {
-  const { data, isLoading, error } = useFetch<RecipesProp>(
+  const { data, isLoading, error, refetch } = useFetch<RecipesProp>(
     "https://www.themealdb.com/api/json/v1/1/categories.php",
     "featuredRecipes"
   );
 
   const slicedData = data?.categories.slice(0, 4);
 
+  if (error) return <ErrorMessage refetch={refetch} message={error?.message} />;
   if (isLoading) return <LoadingSkeleton />;
-  if (error) return <ErrorMessage message={error?.message} />;
 
   return (
     <div className="grid auto-fit gap-4">

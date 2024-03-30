@@ -4,16 +4,19 @@ import { useAppSelector } from "@/redux/store";
 import { DollarSign } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 
 export const CartGrandTotal = ({ sumSubtotal }: { sumSubtotal: number[] }) => {
   const cartItems = useAppSelector(getAllCartData);
   const totalSubtotal = useMemo(() => {
-    return sumSubtotal.reduce((acc, subtotal) => acc + Math.round(subtotal), 0);
+    return sumSubtotal?.reduce(
+      (acc, subtotal) => acc + Math.round(subtotal),
+      0
+    );
   }, [sumSubtotal]);
 
   return (
-    <div className="w-full text-lg p-3 mb-10 border border-green-600 rounded-lg shadow-lg max-w-[97%] md:max-w-[95%] mx-auto">
-    
+    <div className="w-full text-lg p-3 mb-10 border border-green600 rounded-lg shadow-lg max-w-[97%] md:max-w-[95%] mx-auto">
       <table className="w-full">
         <tbody>
           <tr>
@@ -32,6 +35,7 @@ export const CartGrandTotal = ({ sumSubtotal }: { sumSubtotal: number[] }) => {
               {1.5 * cartItems?.length}
             </td>
           </tr>
+
           <tr>
             <td className=" border border-gray-400">
               <Input
@@ -44,6 +48,7 @@ export const CartGrandTotal = ({ sumSubtotal }: { sumSubtotal: number[] }) => {
               <ButtonLink className="w-full">Apply coupon</ButtonLink>
             </td>
           </tr>
+
           <tr className="bg-grey dark:bg-[#29282896]">
             <td className="font-bold border border-gray-400 text-red-600">
               Total
@@ -55,8 +60,11 @@ export const CartGrandTotal = ({ sumSubtotal }: { sumSubtotal: number[] }) => {
           </tr>
         </tbody>
       </table>
+
       <div className="w-full mt-5 ">
-        <ButtonLink className="w-full">Proceed to checkout</ButtonLink>
+        <Link to="/all-menus/checkout">
+          <ButtonLink className="w-full">Proceed to checkout</ButtonLink>
+        </Link>
       </div>
     </div>
   );

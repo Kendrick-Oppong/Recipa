@@ -1,8 +1,10 @@
+export { CheckOut } from "./checkout";
+
 export { AboutUs } from "./about";
 
 export { ContactUs } from "./contactUs";
 
-export { UserProfileLayout, Settings } from "./profile";
+export { UserSettings } from "./profile";
 
 export { Cart } from "./cart";
 

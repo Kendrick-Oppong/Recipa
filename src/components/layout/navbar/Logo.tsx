@@ -7,8 +7,8 @@ export const Logo = () => {
         <img
           src="/logo.svg"
           alt="logo"
-          width={125}
-          height={40}
+          width={100}
+          height={20}
           className="dark:invert"
         />
       </Link>

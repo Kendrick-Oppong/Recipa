@@ -19,7 +19,7 @@ export function TestimonyCarousel() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="relative w-full max-w-[28rem] lg:max-w-3xl mx-auto border border-green-600 rounded-lg shadow-2xl"
+      className="relative w-full max-w-[28rem] lg:max-w-3xl mx-auto border border-green600 rounded-lg shadow-2xl"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
@@ -44,7 +44,7 @@ export function TestimonyCarousel() {
                 <img
                   src={data.imageSrc}
                   alt=""
-                  className="rounded-full w-16 h-16 object-cover sm:w-20 sm:h-20"
+                  className="rounded-full w-12 h-12 object-cover sm:w-20 sm:h-20"
                 />
               </div>
             </div>
@@ -54,9 +54,9 @@ export function TestimonyCarousel() {
       <div className="absolute left-1/2 -bottom-12 top-auto">
         <CarouselPrevious
           variant="outline"
-          className="border border-green-600 "
+          className="border border-green600 "
         />
-        <CarouselNext variant="outline" className="border border-green-600 " />
+        <CarouselNext variant="outline" className="border border-green600 " />
       </div>
     </Carousel>
   );

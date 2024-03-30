@@ -49,7 +49,7 @@ export const HomePage = () => {
           </Link>
         </div>
       </section>
-      <section className="grid auto-fit gap-5 max-w-[95%] px-5 mx-auto mb-20 shadow-lg py-16 border border-green-600 rounded-lg">
+      <section className="grid auto-fit gap-5 max-w-[95%] px-5 mx-auto mb-20 shadow-lg py-10 border border-green600 rounded-lg">
         {overview.map((el) => (
           <div
             key={el.title}
@@ -93,12 +93,11 @@ export const HomePage = () => {
           </div>
         </section>
         <section className="px-4 dark:pb-20 py-10">
-          {/* {api} */}
           <div className="flex flex-wrap justify-between items-center mb-10">
             <h2>
               Latest {""}
               <span>
-                recipes by category.
+                recipes by category.{""}
                 <img src="/twirl-layered.svg" alt="" width={30} height={30} />
               </span>
             </h2>
@@ -108,6 +107,7 @@ export const HomePage = () => {
               </ButtonLink>
             </Link>
           </div>
+          {/* {api} */}
           <FeaturedRecipes />
         </section>
         <section className="pb-28  text-center">
@@ -126,7 +126,7 @@ export const HomePage = () => {
           <h2>
             Stories from {""}
             <span>
-              our clients.
+              our clients.{""}
               <img src="/twirl-layered.svg" alt="" width={30} height={30} />
             </span>
           </h2>
