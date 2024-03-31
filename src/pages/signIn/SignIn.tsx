@@ -41,7 +41,6 @@ export const SignIn = () => {
   } = form;
 
   const {
-    data: signInData,
     error: signInError,
     isError: isPostError,
     isPending,
@@ -49,6 +48,8 @@ export const SignIn = () => {
     mutate: signInMutation,
   } = useSignIn("http://localhost:5000/user/signin");
 
+  if (isPostError) console.log(signInError?.message);
+  
   function onSubmit(data: z.infer<typeof signInSchema>) {
     signInMutation(data);
     dispatch(storeAuthValue(true));

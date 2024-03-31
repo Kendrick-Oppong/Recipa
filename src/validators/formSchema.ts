@@ -81,15 +81,8 @@ export const settingsSchema = z.object({
     .string()
     .regex(emailRegex, { message: "Invalid email format" })
     .min(1, { message: "Email is required" }),
-  phone_number: z
-    .string()
-    .min(10, { message: "Phone number must be at least 10 characters long" })
-    .max(50, { message: "Phone number cannot exceed 50 characters" }),
-  address: z
-    .string()
-    .min(5, { message: "Your address must be at least 5 characters long" })
-    .max(200, { message: "Address cannot exceed 200 characters" }),
- 
+  phone_number: z.string(),
+  address: z.string(),
 });
 
 export const checkOutSchema = z.object({

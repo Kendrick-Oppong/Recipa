@@ -11,9 +11,11 @@ import { settingsSchema } from "@/validators/formSchema";
 import { useForm } from "react-hook-form";
 import { isError, handleErrorToast } from "@/lib/utils";
 import { z } from "zod";
-import { SendHorizontal } from "lucide-react";
+import { SaveAll } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
 import { UserDetails } from "@/types/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { usePatch as useUpdateProfileSettings } from "@/hooks";
 
 interface UserSettingsFormProps {
   user: UserDetails | undefined;
@@ -21,12 +23,12 @@ interface UserSettingsFormProps {
 
 export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
   const form = useForm({
-    // resolver: zodResolver(settingsSchema),
+    resolver: zodResolver(settingsSchema),
     defaultValues: {
       username: user?.username ?? "",
       email: user?.email ?? "",
-      phone_number: "",
-      address: "",
+      phone_number: user?.phone_number ?? "",
+      address: user?.address ?? "",
     },
   });
 
@@ -36,7 +38,19 @@ export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
     formState: { isValid, errors },
   } = form;
 
+  const {
+    error: updateProfileError,
+    isError: isUpdateProfileError,
+    isPending: isUpdating,
+    mutate: updateProfileMutation,
+  } = useUpdateProfileSettings(
+    "http://localhost:5000/user/profile/update_details"
+  );
+
+  if (isUpdateProfileError) console.log(updateProfileError?.message);
+
   function onSubmit(data: z.infer<typeof settingsSchema>) {
+    updateProfileMutation(data);
     console.log(data);
   }
 
@@ -56,9 +70,9 @@ export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
                 <FormLabel>Username</FormLabel>
                 <FormControl className="">
                   <Input
-                    placeholder="Martin"
                     type="text"
                     {...field}
+                    disabled={isUpdating}
                     className={`${
                       isError(field.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
@@ -78,9 +92,9 @@ export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
                 <FormLabel>Email </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="martin@gmail.com"
                     type="email"
                     {...field}
+                    disabled={isUpdating}
                     className={`${
                       isError(field?.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
@@ -102,9 +116,10 @@ export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
                 <FormLabel>Phone number</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="+233 552199577"
+                    placeholder="+233..."
                     type="tel"
                     {...field}
+                    disabled={isUpdating}
                     className={`${
                       isError(field.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
@@ -124,9 +139,10 @@ export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
                 <FormLabel>Address</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="New Jersey, USA"
+                    placeholder="Your address..."
                     type="text"
                     {...field}
+                    disabled={isUpdating}
                     className={`${
                       isError(field.name, errors, form)
                         ? "border-red-500 focus-visible:ring-red-500"
@@ -143,11 +159,17 @@ export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
         <ButtonLink
           type="submit"
           className="w-full mt-4"
+          disable={isUpdating}
           onClick={() => handleErrorToast(isValid)}
         >
-          Update Settings
-          <SendHorizontal className="ml-2" />
-          {/* {isPending ? "Validating" : "Sign In"} */}
+          {isUpdating ? (
+            "Updating profile settings"
+          ) : (
+            <>
+              Update Settings
+              <SaveAll className="ml-2" />
+            </>
+          )}
         </ButtonLink>
       </form>
     </Form>

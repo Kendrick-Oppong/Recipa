@@ -4,6 +4,7 @@ import menuQuantityReducer from "./menuQuantitySlice";
 import userFormReducer from "./formSlice";
 import cartReducer from "./cartSlice";
 import isAuthenticatedReducer from "./userAuthenticatedSlice";
+import userProfileImageSliceReducer from "./userProfileImageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
@@ -14,6 +15,7 @@ export const store = configureStore({
     userForm: userFormReducer,
     cart: cartReducer,
     isAuthenticated: isAuthenticatedReducer,
+    userProfileImage: userProfileImageSliceReducer,
   },
 });
 

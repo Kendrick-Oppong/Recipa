@@ -16,7 +16,7 @@ export const CheckOut = () => {
           <img src="/twirl-layered.svg" alt="" width={30} height={30} />
         </span>
       </h2>
-      <CartGrandTotal sumSubtotal={sumSubtotal} showCouponButton={false} />
+      <CartGrandTotal sumSubtotal={sumSubtotal} />
       <CheckOutForm />
     </div>
   );

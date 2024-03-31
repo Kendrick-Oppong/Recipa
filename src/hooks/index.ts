@@ -1,3 +1,5 @@
+export { useDelete } from "./useDelete";
+
 export { usePatch } from "./UsePatch";
 
 export { usePageTitle } from "./usePageTitle";

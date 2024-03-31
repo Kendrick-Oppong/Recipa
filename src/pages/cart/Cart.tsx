@@ -1,18 +1,25 @@
 import { ButtonLink } from "@/components/shared";
 import { getAllCartData } from "@/redux/cartSlice";
-import { useAppSelector } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { ShoppingBasket } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartItem } from "@/types/types";
 import { CartGrandTotal, CartItemRowDesktop, CartItemRowMobile } from ".";
 import { usePageTitle } from "@/hooks";
+import { calculateBillingTotal } from "@/redux/menuQuantitySlice";
 
 export const Cart = () => {
   const cartItems = useAppSelector(getAllCartData);
   const [sumSubtotal, setSumSubtotal] = useState<number[]>([]);
+  const dispatch = useAppDispatch();
+  
+  usePageTitle("Cart");
 
-  usePageTitle("Cart")
+  useEffect(() => {
+    dispatch(calculateBillingTotal(sumSubtotal));
+  }, [dispatch, sumSubtotal]);
+
 
   if (!cartItems.length)
     return (
@@ -59,7 +66,6 @@ export const Cart = () => {
               <React.Fragment key={cartItem._id}>
                 <CartItemRowDesktop
                   itemInCart={cartItem}
-                  sumSubtotal={sumSubtotal}
                   setSumSubtotal={setSumSubtotal}
                 />
               </React.Fragment>

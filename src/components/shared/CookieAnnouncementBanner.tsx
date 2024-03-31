@@ -7,7 +7,7 @@ import { getIsAuthenticated } from "@/redux/userAuthenticatedSlice";
 export const CookieAnnouncementBanner = () => {
   const [removeCookieBanner, setRemoveCookieBanner] = useState(false);
   const isLoggedIn = useAppSelector(getIsAuthenticated);
-  console.log(isLoggedIn);
+  
   return (
     !isLoggedIn &&
     !removeCookieBanner && (

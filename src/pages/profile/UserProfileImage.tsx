@@ -2,7 +2,10 @@ import { UploadCloud, RotateCw } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ButtonLink } from "@/components/shared";
-import { usePatch as useUpdateProfilePicture } from "@/hooks";
+import {
+  usePatch as useUpdateProfilePicture,
+  useDelete as useDeleteProfilePicture,
+} from "@/hooks";
 import { useState } from "react";
 
 interface Props {
@@ -17,12 +20,21 @@ export const UserProfileImage = () => {
 
   const {
     error,
-    isPending,
+    isPending: isUploading,
     isError,
     mutate: updateProfile,
   } = useUpdateProfilePicture("http://localhost:5000/user/profile");
 
   if (isError) console.log(error?.message);
+
+  const {
+    error: deleteError,
+    isPending: isDeleting,
+    isError: isDeleteError,
+    mutate: deleteMutation,
+  } = useDeleteProfilePicture("http://localhost:5000/user/profile");
+
+  if (isDeleteError) console.log(deleteError?.message);
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
@@ -35,7 +47,7 @@ export const UserProfileImage = () => {
     }
   };
 
-  const handleSubmit = async (
+  const handleImageUpload = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
@@ -46,6 +58,13 @@ export const UserProfileImage = () => {
     setShowUpload(false);
   };
 
+  const handleImageDelete = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    deleteMutation();
+  };
+
   return (
     <>
       <div className="flex flex-wrap justify-center gap-4 mt-4">
@@ -53,9 +72,10 @@ export const UserProfileImage = () => {
           <ButtonLink
             type="button"
             className="px-4"
+            disable={isUploading}
             onClick={() => setShowUpload((prev) => !prev)}
           >
-            {isPending ? (
+            {isUploading ? (
               <>
                 Updating photo
                 <RotateCw className="animate-spin w-5 h-5 ml-1" />
@@ -69,8 +89,17 @@ export const UserProfileImage = () => {
           <ButtonLink
             type="button"
             className="border px-4 !border-red-500 hover:!bg-red-500 hover:border-red-600 !text-red-500 hover:!text-white"
+            disable={isDeleting}
+            onClick={(e) => handleImageDelete(e)}
           >
-            Delete photo
+            {isDeleting ? (
+              <>
+                Deleting photo
+                <RotateCw className="animate-spin w-5 h-5 ml-1" />
+              </>
+            ) : (
+              "Delete photo"
+            )}
           </ButtonLink>
         </div>
       </div>
@@ -119,7 +148,7 @@ export const UserProfileImage = () => {
               <ButtonLink
                 type="button"
                 className="w-[97%] mt-4 mx-auto"
-                onClick={(e) => handleSubmit(e)}
+                onClick={(e) => handleImageUpload(e)}
               >
                 Upload photo
                 <UploadCloud className="ml-2" />

@@ -23,7 +23,9 @@ export const usePatch = (url: string) => {
     onSuccess: (data) => {
       console.log(data);
       handleInfoToast(data?.message);
-      queryClient.invalidateQueries({ queryKey: ["userDetails"] });
+      queryClient.invalidateQueries({
+        queryKey: ["userDetails"],
+      });
     },
     onError: (error) => {
       console.error(error);
