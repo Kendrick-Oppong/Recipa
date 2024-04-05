@@ -11,7 +11,7 @@ export const LoadingSkeleton = ({
         <div
           key={skeleton}
           role="status"
-          className="max-w-sm p-4 border border-gray-200 rounded-lg animate-pulse md:p-6 dark:border-gray-700 shadow-2xl"
+          className="max-w-sm p-4 border border-gray-400 rounded-lg shadow-2xl animate-pulse md:p-6 dark:border-gray-700"
         >
           <div className="flex items-center justify-center h-48 mb-4 bg-gray-400 rounded dark:bg-gray-700">
             <svg

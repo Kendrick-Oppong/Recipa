@@ -5,7 +5,7 @@ import { MapLocation } from "./MapLocation";
 export const ContactUs = () => {
   usePageTitle("Contact Us")
   return (
-    <div className="text-lg max-w-[90%] mx-auto">
+    <div className="text-lg max-w-[93%] sm:max-w-[90%] mx-auto">
       <section className="text-center dark:pt-0 pb-10">
         <h2>
           Get in {""}

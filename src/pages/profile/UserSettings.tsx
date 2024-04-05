@@ -4,19 +4,29 @@ import { usePageTitle } from "@/hooks";
 import { useFetch as useGetUserProfile } from "@/hooks";
 import { UserDetails } from "@/types/types";
 import { User } from "lucide-react";
+import { useAppDispatch } from "@/redux/store";
+import { useEffect } from "react";
+import { storeUserProfileImage } from "@/redux/userProfileImageSlice";
 
 export const UserSettings = () => {
   usePageTitle("Profile - Settings");
+  const dispatch = useAppDispatch();
 
   const {
     data: user,
     isLoading,
     error,
-    refetch
+    refetch,
   } = useGetUserProfile<UserDetails>(
     "http://localhost:5000/user/profile",
     "userDetails"
   );
+
+  useEffect(() => {
+    dispatch(
+      storeUserProfileImage(user?.profileImage ? user.profileImage : "")
+    );
+  }, [dispatch, user?.profileImage]);
 
   if (error)
     return (
@@ -80,7 +90,7 @@ export const UserSettings = () => {
             </form>
           </div>
         ) : (
-          <UserSettingsForm user={user}  />
+          <UserSettingsForm user={user} />
         )}
       </div>
     </main>

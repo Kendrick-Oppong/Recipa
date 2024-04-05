@@ -26,8 +26,7 @@ interface ErrorMessageProps {
 }
 
 export const ErrorMessage = ({ message, refetch }: ErrorMessageProps) => {
-  if (message) handleFetchErrorToast("Failed to get user info");
-
+  if (message) handleFetchErrorToast(message);
   const handleRetry = () => {
     refetch();
   };

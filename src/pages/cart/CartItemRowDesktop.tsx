@@ -5,7 +5,6 @@ import { useCartItemSubtotal } from "@/hooks";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/redux/store";
 
-
 interface CartProps {
   itemInCart: CartItem;
   setSumSubtotal: React.Dispatch<React.SetStateAction<number[]>>;
@@ -13,7 +12,6 @@ interface CartProps {
 export const CartItemRowDesktop = ({
   itemInCart,
   setSumSubtotal,
-  
 }: CartProps) => {
   const dispatch = useAppDispatch();
   const cartItemSubtotal = useCartItemSubtotal(itemInCart);

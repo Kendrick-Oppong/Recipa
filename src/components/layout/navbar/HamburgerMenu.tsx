@@ -49,7 +49,7 @@ export const HamburgerMenu = () => {
           <Link to="/">
             <li className="mb-4 p-1 pl-2">Home</li>
           </Link>
-          <div className="mb-4 -ml-2">
+          <div className="mb-4 ml-1">
             <AllRecipesDropDownLinks />
           </div>
           <Link to="/shop">
@@ -58,7 +58,6 @@ export const HamburgerMenu = () => {
 
           {isAuthenticated ? (
             <li className="cursor-pointer ml-2 mb-4" onClick={handleSignOut}>
-              {" "}
               Sign Out
             </li>
           ) : (
@@ -67,7 +66,9 @@ export const HamburgerMenu = () => {
             </Link>
           )}
 
-          <UserProfileMenuDropDown />
+          <div className="ml-1">
+            <UserProfileMenuDropDown />
+          </div>
 
           <Link to="all-menus/about-us">
             <li className="my-4 p-1 pl-2"> About Us</li>

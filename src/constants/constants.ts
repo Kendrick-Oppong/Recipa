@@ -110,3 +110,13 @@ export const menu = [
   { title: "Beverages", src: "/strawberry-smoothie-svgrepo-com.svg" },
   { title: "Fries", src: "/french-fries-svgrepo-com.svg" },
 ];
+
+export const globalSearchCategory = [
+  "Burger",
+  "Pizza",
+  "Sushi",
+  "Salad",
+  "Burrito",
+  "Beverage",
+  "Fries",
+];

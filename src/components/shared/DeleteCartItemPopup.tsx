@@ -29,14 +29,18 @@ export function DeleteCartItemPopup({ children, itemInCart }: DeleteCartProps) {
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent className="text-lg">
         <AlertDialogHeader>
-          <AlertDialogTitle className="my-1">Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle className="my-1">
+            Are you absolutely sure?
+          </AlertDialogTitle>
           <AlertDialogDescription className="text-lg">
             This action cannot be undone. This will permanently delete the
             selected item in cart
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter >
-          <AlertDialogCancel className="text-base focus-visible:ring-0">Cancel</AlertDialogCancel>
+        <AlertDialogFooter>
+          <AlertDialogCancel className="text-base focus-visible:ring-0">
+            Cancel
+          </AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDeleteItem}
             className="text-base border border-red-500 bg-red-500 text-white  hover:bg-red-500  hover:!text-white"

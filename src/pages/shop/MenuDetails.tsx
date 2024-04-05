@@ -30,6 +30,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
   const { data, isLoading, error, refetch } = useFetch<MenuDetailsProps>(
     url,
     queryKey,
+    false,
     id
   );
 

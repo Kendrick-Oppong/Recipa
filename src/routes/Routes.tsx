@@ -24,6 +24,7 @@ import {
   AboutUs,
   CheckOut,
   UserSettings,
+  GlobalSearch,
 } from "@/pages";
 import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoutes";
@@ -67,6 +68,7 @@ export const AllRoutes = () => {
         </Route>
         <Route path="signup" element={<SignUp />} />
         <Route path="signin" element={<SignIn />} />
+        <Route path="search" element={<GlobalSearch />} />
 
         <Route
           path="profile"

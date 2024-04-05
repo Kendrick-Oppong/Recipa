@@ -19,26 +19,26 @@ export const Navbar = () => {
   const cartLength = useAppSelector(getAllCartData)?.length;
   const isAuthenticated = useAppSelector(getIsAuthenticated);
 
-    const navigate = useNavigate();
-    const dispatch = useAppDispatch();
-    const {
-      error: signOutError,
-      isError: isSignOutError,
-      mutate: signOutMutation,
-    } = useSignOut("http://localhost:5000/user/signout");
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const {
+    error: signOutError,
+    isError: isSignOutError,
+    mutate: signOutMutation,
+  } = useSignOut("http://localhost:5000/user/signout");
 
-    if (isSignOutError) console.log(signOutError?.message);
+  if (isSignOutError) console.log(signOutError?.message);
 
-    const handleSignOut = () => {
-      signOutMutation(undefined);
-      dispatch(signOut());
-      navigate("/");
-    };
+  const handleSignOut = () => {
+    signOutMutation(undefined);
+    dispatch(signOut());
+    navigate("/");
+  };
 
   return (
     <>
       <header className="text-lg z-[10001]">
-        <nav className="flex justify-between items-center px-3 py-4 shadow-lg dark:on-dark-shadow">
+        <nav className="flex items-center justify-between px-3 py-4 shadow-lg dark:on-dark-shadow">
           <Logo />
           <div className="flex items-center gap-5">
             <NavLink to="/" end className=" max-[820px]:hidden">
@@ -56,7 +56,7 @@ export const Navbar = () => {
             <Search onClick={() => setShowSearchBar((prev) => !prev)} />
           </div>
 
-          <div className="flex gap-5 items-center">
+          <div className="flex items-center gap-5">
             {isAuthenticated ? (
               <li className="cursor-pointer" onClick={handleSignOut}>
                 Sign Out
@@ -74,13 +74,12 @@ export const Navbar = () => {
               <li className="relative">
                 <ShoppingBasket className="w-7 h-7" />
                 {cartLength > 0 && (
-                  <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-1 border-white rounded-full -top-3 -end-4 dark:border-gray-900">
+                  <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-white rounded-full border-1 -top-3 -end-4 dark:border-gray-900">
                     {cartLength}
                   </div>
                 )}
               </li>
             </NavLink>
-            {/* <DropDownMenu /> */}
           </div>
 
           <div className="max-[550px]:hidden">
@@ -99,7 +98,7 @@ export const Navbar = () => {
             </NavLink>
           </div>
         </nav>
-        {showSearchBar && <SearchBar />}
+        {showSearchBar && <SearchBar setShowSearchBar={setShowSearchBar} />}
       </header>
       {/* create space beneath search bar */}
       {showSearchBar && (

@@ -1,9 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "../navbar";
 import { categories, menu, navigationLinks } from "@/constants/constants";
-import { Input } from "@/components/ui/input";
-import { Rocket } from "lucide-react";
-import { ButtonLink } from "@/components/shared";
+import { NewsletterForm } from "./";
 
 export const Footer = () => {
   const location = useLocation();
@@ -38,17 +36,9 @@ export const Footer = () => {
             </svg>
             Subscribe to the newsletter for exclusive promos
           </li>
-          <div className="flex flex-wrap gap-4 sm:flex-nowrap w-full max-w-5xl mx-auto mt-8 items-center space-x-2">
-            <Input
-              type="email"
-              required
-              placeholder="Enter Your Email Address..."
-              className="p-[1.3rem] text-base shadow-md border border-green600"
-            />
-            <ButtonLink className="w-full !ml-0 mt-3 sm:mt-0 sm:w-auto rounded-sm">
-              Subscribe <Rocket className="ml-2" />
-            </ButtonLink>
-          </div>
+        
+            <NewsletterForm />
+        
         </section>
       )}
       <footer className=" !bg-[#aeafb42b] dark:!bg-[#030c22c9] dark:on-dark-shadow px-5 pb-10">

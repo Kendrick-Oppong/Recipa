@@ -11,6 +11,7 @@ export const CategoryMealDetail = () => {
   const { data, isLoading, error, refetch } = useFetch<Meal_ID_Prop>(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
     "categoryMealDetail",
+    false,
     id
   );
 

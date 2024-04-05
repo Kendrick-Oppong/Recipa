@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
 interface ProfileImage {
-  profileImage: string;
+  profileImage: string | undefined;
 }
 
 const initialState: ProfileImage = {

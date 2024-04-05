@@ -42,13 +42,14 @@ export const SignUp = () => {
   } = form;
 
   const {
-    data: signUpData,
     error: signUpError,
     isError: isPostError,
     isPending,
     isSuccess,
     mutate: signUpMutation,
   } = useSignUp("http://localhost:5000/user/signup");
+
+  if (isPostError) console.log(signUpError?.message);
 
   function onSubmit(data: z.infer<typeof signUpSchema>) {
     console.log(data);
@@ -60,8 +61,6 @@ export const SignUp = () => {
     <main className="max-w-5xl mx-auto text-lg">
       <div className="border border-green600 w-[90%] md:w-[70%] px-5  md:px-10  pb-10 rounded-lg mx-auto mt-5 mb-10 shadow-2xl">
         <div className="text-center ">
-          {signUpData?.data}
-          {signUpError?.message}
           <h2>
             Create an {""}
             <span>

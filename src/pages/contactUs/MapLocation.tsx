@@ -1,6 +1,7 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+
 const customMarker = L.icon({
   iconUrl: "/location.svg",
   iconSize: [40, 40],

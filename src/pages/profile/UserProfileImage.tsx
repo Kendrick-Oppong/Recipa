@@ -1,3 +1,14 @@
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { UploadCloud, RotateCw } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -58,10 +69,7 @@ export const UserProfileImage = () => {
     setShowUpload(false);
   };
 
-  const handleImageDelete = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
+  const handleImageDelete = async () => {
     deleteMutation();
   };
 
@@ -78,7 +86,7 @@ export const UserProfileImage = () => {
             {isUploading ? (
               <>
                 Updating photo
-                <RotateCw className="animate-spin w-5 h-5 ml-1" />
+                <RotateCw className="w-5 h-5 ml-1 animate-spin" />
               </>
             ) : (
               "Change photo"
@@ -86,21 +94,46 @@ export const UserProfileImage = () => {
           </ButtonLink>
         </div>
         <div>
-          <ButtonLink
-            type="button"
-            className="border px-4 !border-red-500 hover:!bg-red-500 hover:border-red-600 !text-red-500 hover:!text-white"
-            disable={isDeleting}
-            onClick={(e) => handleImageDelete(e)}
-          >
-            {isDeleting ? (
-              <>
-                Deleting photo
-                <RotateCw className="animate-spin w-5 h-5 ml-1" />
-              </>
-            ) : (
-              "Delete photo"
-            )}
-          </ButtonLink>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <ButtonLink
+                type="button"
+                className="border px-4 !border-red-500 hover:!bg-red-500 hover:border-red-600 !text-red-500 hover:!text-white"
+                disable={isDeleting}
+              >
+                {isDeleting ? (
+                  <>
+                    Deleting photo
+                    <RotateCw className="w-5 h-5 ml-1 animate-spin" />
+                  </>
+                ) : (
+                  "Delete photo"
+                )}
+              </ButtonLink>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="text-lg">
+              <AlertDialogHeader>
+                <AlertDialogTitle className="my-1">
+                  Are you absolutely sure?
+                </AlertDialogTitle>
+                <AlertDialogDescription className="text-lg">
+                  This action cannot be undone. This will permanently delete
+                  your profile image
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel className="text-base focus-visible:ring-0">
+                  Cancel
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={handleImageDelete}
+                  className="text-base border border-red-500 bg-red-500 text-white  hover:bg-red-500  hover:!text-white"
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
 
@@ -108,7 +141,7 @@ export const UserProfileImage = () => {
         {showUpload && (
           <>
             <div className="flex items-center justify-center max-w-2xl mx-auto mt-4">
-              <label className="flex flex-col items-center justify-center w-full h-48 px-3 mx-3 border border-green600 border-dashed rounded-md cursor-pointer shadow-lg">
+              <label className="flex flex-col items-center justify-center w-full h-48 px-3 mx-3 border border-dashed rounded-md shadow-lg cursor-pointer border-green600">
                 <div className="flex flex-col items-center justify-center pb-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

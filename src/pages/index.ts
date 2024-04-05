@@ -1,3 +1,5 @@
+export { GlobalSearch } from "./search";
+
 export { CheckOut } from "./checkout";
 
 export { AboutUs } from "./about";

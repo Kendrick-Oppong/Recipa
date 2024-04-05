@@ -32,8 +32,8 @@ export const RecipesPage: React.FC = () => {
       </div>
     );
   return (
-    <main className=" px-4 sm:px-10  my-10">
-      <div className="flex flex-wrap place-items-center gap-4 py-10 justify-center  border-green600 rounded-lg border shadow-2xl">
+    <main className="px-4 my-10 sm:px-10">
+      <div className="flex flex-wrap justify-center gap-4 py-10 border rounded-lg shadow-2xl place-items-center border-green600">
         <div>
           <img
             src="/pasta.png"
@@ -41,11 +41,11 @@ export const RecipesPage: React.FC = () => {
             height={350}
             loading="lazy"
             alt=""
-            className="transition spin-image"
+            className="spin-image"
           />
         </div>
 
-        <div className="pl-3 font-semibold text-lg my-6 ">
+        <div className="pl-3 my-6 text-lg font-semibold ">
           <img
             src="/featured.png"
             alt=""
@@ -56,7 +56,7 @@ export const RecipesPage: React.FC = () => {
           <h2>
             <span>Pasta</span>{" "}
           </h2>
-          <p className="text-2xl mb-5">
+          <p className="mb-5 text-2xl">
             Pasta is a staple food of traditional Italian cuisine,
           </p>
           <Link to="/recipes/Pasta">
@@ -73,7 +73,7 @@ export const RecipesPage: React.FC = () => {
           <img src="/twirl-layered.svg" alt="" width={30} height={30} />
         </span>
       </h2>
-      <section className="dark:pb-10 grid auto-fit-menu-skeleton gap-4">
+      <section className="grid gap-4 dark:pb-10 auto-fit-menu-skeleton">
         {recipes?.map((recipe: Recipe) => (
           <RecipesCard recipe={recipe} key={recipe.idCategory} />
         ))}

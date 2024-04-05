@@ -40,14 +40,14 @@ export const ContactForm = () => {
 
   return (
     <div className="max-w-6xl mx-auto text-lg">
-      <div className="border border-green600 md:w-[90%] px-5 md:px-10  pb-10 rounded-lg mx-auto mb-10 shadow-2xl">
+      <div className="border border-green600 md:w-[90%] px-3 md:px-10  pb-10 rounded-lg mx-auto mb-10 shadow-2xl">
         <Form {...form}>
           <form
             autoComplete="fff"
             onSubmit={handleSubmit(onSubmit)}
             className="mt-4"
           >
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 sm:gap-4">
               <FormField
                 control={control}
                 name="name"

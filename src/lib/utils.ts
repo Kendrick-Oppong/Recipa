@@ -73,3 +73,22 @@ export const handleFetchErrorToast = (message?: string) => {
     },
   });
 };
+
+export const validateGlobalSearchForm = (
+  categoryName: string,
+  searchValue: string
+) => {
+  if (!categoryName.length) {
+    handleFetchErrorToast("Please select a category");
+    return false;
+  }
+  if (!searchValue.length) {
+    handleFetchErrorToast("Search field cannot be empty");
+    return false;
+  }
+  if (searchValue.length < 2) {
+    handleFetchErrorToast("Value is too short");
+    return false;
+  }
+  return true;
+};
