@@ -1,11 +1,10 @@
 import { Cookie } from "lucide-react";
 import { ButtonLink } from "./ButtonLink";
 import { useState } from "react";
-import { useAuth } from "@/context/auth/isAuthenticated";
-
 
 export const CookieAnnouncementBanner = () => {
-  const {isAuthenticated} = useAuth()
+const storedAuthState = localStorage.getItem("isAuthenticated") as string;
+const isAuthenticated = JSON.parse(storedAuthState); 
   const [removeCookieBanner, setRemoveCookieBanner] = useState(false);
   
   return (
@@ -39,19 +38,19 @@ export const CookieAnnouncementBanner = () => {
           </div>
 
           <div className="w-full dark:text-background">
-            <h3 className=" flex items-center justify-center gap-2">
+            <h3 className="flex items-center justify-center gap-2 ">
               THIS WEBSITE USES COOKIES{" "}
               <Cookie color="#d28c14" className="hidden sm:inline-grid" />
             </h3>
-            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 w-full">
-              <p className=" leading-6 ">
+            <div className="flex flex-wrap items-center justify-between w-full gap-x-4 gap-y-2">
+              <p className="leading-6 ">
                 We use cookies to personalize your experience and improve our
                 website. <br /> By continuing to use our site, you consent to
                 our use of cookies.
               </p>
               <ButtonLink
                 onClick={() => setRemoveCookieBanner((prev) => !prev)}
-                className="w-full md:w-auto mx-auto"
+                className="w-full mx-auto md:w-auto"
               >
                 I understand
               </ButtonLink>

@@ -6,7 +6,6 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { useAuth } from "@/context/auth/isAuthenticated";
 import { usePost as useSignOut } from "@/hooks";
 import { useAppSelector } from "@/redux/store";
 import { getUserProfileImage } from "@/redux/userProfileImageSlice";
@@ -21,7 +20,6 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export function UserProfileMenuDropDown() {
-  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const profileImage = useAppSelector(getUserProfileImage);
@@ -36,9 +34,9 @@ export function UserProfileMenuDropDown() {
 
   useEffect(() => {
     if (isSuccess) {
-      logout();
+      localStorage.setItem("isAuthenticated", JSON.stringify(false));
     }
-  }, [isSuccess, logout]);
+  }, [isSuccess]);
 
   const handleSignOut = () => {
     signOutMutation(undefined);

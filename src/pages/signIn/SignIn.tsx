@@ -18,10 +18,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { isError, handleErrorToast } from "@/lib/utils";
 import { usePageTitle, usePost as useSignIn } from "@/hooks";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/context/auth/isAuthenticated";
 
 export const SignIn = () => {
-  const { login } = useAuth();
   const [revealPassword, setRevealPassword] = useState(false);
   const navigate = useNavigate();
   usePageTitle("Sign In");
@@ -51,10 +49,10 @@ export const SignIn = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      login();
+      localStorage.setItem("isAuthenticated", JSON.stringify(true));
       navigate("/profile");
     }
-  }, [isSuccess, login, navigate]);
+  }, [isSuccess, navigate]);
 
   function onSubmit(data: z.infer<typeof signInSchema>) {
     signInMutation(data);

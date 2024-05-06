@@ -10,12 +10,13 @@ import { AllRecipesDropDownLinks, Logo, UserProfileMenuDropDown } from ".";
 import { Link, useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/context/theme";
 import { usePost as useSignOut } from "@/hooks";
-import { useAuth } from "@/context/auth/isAuthenticated";
 import { useEffect } from "react";
 
 export const HamburgerMenu = () => {
-  const { logout, isAuthenticated } = useAuth();
+  const storedAuthState = localStorage.getItem("isAuthenticated") as string;
+  const isAuthenticated = JSON.parse(storedAuthState);
   const navigate = useNavigate();
+  
   const {
     isSuccess,
     error: signOutError,
@@ -27,9 +28,9 @@ export const HamburgerMenu = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      logout();
+      localStorage.setItem("isAuthenticated", JSON.stringify(false));
     }
-  }, [isSuccess, logout]);
+  }, [isSuccess]);
 
   const handleSignOut = () => {
     signOutMutation(undefined);

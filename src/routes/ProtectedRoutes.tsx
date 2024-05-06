@@ -1,8 +1,8 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "@/context/auth/isAuthenticated";
 
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAuth();
+  const storedAuthState = localStorage.getItem("isAuthenticated") as string;
+  const isAuthenticated= JSON.parse(storedAuthState) 
   const location = useLocation();
 
   return isAuthenticated ? (

@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 import { Toaster } from "@/components/ui/sonner";
 import axios from "axios";
-import { AuthProvider } from "./context/auth/isAuthenticated.tsx";
 
 const queryClient = new QueryClient();
 
@@ -35,22 +34,20 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <AuthProvider>
-          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <Provider store={store}>
-              <App />
-              <Toaster
-                position="top-center"
-                expand={false}
-                gap={5}
-                toastOptions={{
-                  duration: 3000,
-                  style: { border: "none", fontSize: "medium" },
-                }}
-              />
-            </Provider>
-          </ThemeProvider>
-        </AuthProvider>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Provider store={store}>
+            <App />
+            <Toaster
+              position="top-center"
+              expand={false}
+              gap={5}
+              toastOptions={{
+                duration: 3000,
+                style: { border: "none", fontSize: "medium" },
+              }}
+            />
+          </Provider>
+        </ThemeProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
     </QueryClientProvider>

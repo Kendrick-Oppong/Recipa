@@ -12,10 +12,10 @@ import { useAppSelector } from "@/redux/store";
 import { getAllCartData } from "@/redux/cartSlice";
 import { useEffect, useState } from "react";
 import { usePost as useSignOut } from "@/hooks";
-import { useAuth } from "@/context/auth/isAuthenticated";
 
 export const Navbar = () => {
-  const {isAuthenticated, logout} = useAuth();
+  const storedAuthState = localStorage.getItem("isAuthenticated") as string;
+  const isAuthenticated = JSON.parse(storedAuthState);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const cartLength = useAppSelector(getAllCartData)?.length;
 
@@ -31,13 +31,14 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      logout();
+      localStorage.setItem("isAuthenticated", JSON.stringify(false));
     }
-  }, [isSuccess, logout]);
+  }, [isSuccess]);
 
   const handleSignOut = () => {
     signOutMutation(undefined);
     navigate("/");
+     localStorage.setItem("isAuthenticated", JSON.stringify(false));
   };
 
   return (
