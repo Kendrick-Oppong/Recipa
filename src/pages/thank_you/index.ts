@@ -1,0 +1,2 @@
+export { ThankYou } from "./ThankYou";
+

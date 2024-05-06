@@ -17,14 +17,13 @@ import { ButtonLink } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
 import { isError, handleErrorToast } from "@/lib/utils";
 import { usePageTitle, usePost as useSignIn } from "@/hooks";
-import { useState } from "react";
-import { useAppDispatch } from "@/redux/store";
-import { storeAuthValue } from "@/redux/userAuthenticatedSlice";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/context/auth/isAuthenticated";
 
 export const SignIn = () => {
+  const { login } = useAuth();
   const [revealPassword, setRevealPassword] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   usePageTitle("Sign In");
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -49,11 +48,16 @@ export const SignIn = () => {
   } = useSignIn("http://localhost:5000/user/signin");
 
   if (isPostError) console.log(signInError?.message);
-  
+
+  useEffect(() => {
+    if (isSuccess) {
+      login();
+      navigate("/profile");
+    }
+  }, [isSuccess, login, navigate]);
+
   function onSubmit(data: z.infer<typeof signInSchema>) {
     signInMutation(data);
-    dispatch(storeAuthValue(true));
-    !isSuccess && navigate("/profile");
   }
 
   return (
@@ -69,7 +73,7 @@ export const SignIn = () => {
           </h2>
           <li className="flex items-center justify-center sm:text-lg">
             <svg
-              className="hidden sm:inline-grid flex-shrink-0 w-4 h-4 text-green-500 me-2 dark:text-green-400"
+              className="flex-shrink-0 hidden w-4 h-4 text-green-500 sm:inline-grid me-2 dark:text-green-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -97,9 +101,10 @@ export const SignIn = () => {
                   </FormLabel>
                   <FormControl className="">
                     <Input
+                      {...field}
+                      disabled={isPending}
                       placeholder="Enter your email"
                       type="email"
-                      {...field}
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
@@ -123,9 +128,10 @@ export const SignIn = () => {
                     </FormLabel>
                     <FormControl>
                       <Input
+                        {...field}
+                        disabled={isPending}
                         placeholder="Enter your password"
                         type={revealPassword ? "text" : "password"}
-                        {...field}
                         className={`${
                           isError(field.name, errors, form)
                             ? "border-red-500 focus-visible:ring-red-500"
@@ -133,7 +139,10 @@ export const SignIn = () => {
                         }`}
                       />
                     </FormControl>
-                    <div onClick={() => setRevealPassword((prev) => !prev)}>
+                    <div
+                      role="img"
+                      onClick={() => setRevealPassword((prev) => !prev)}
+                    >
                       {field.value.length > 0 &&
                         (revealPassword ? (
                           <EyeOff
@@ -153,6 +162,7 @@ export const SignIn = () => {
               />
             </div>
             <ButtonLink
+              disable={isPending}
               className="w-full mt-4"
               type="submit"
               onClick={() => handleErrorToast(isValid || isPostError)}
@@ -163,19 +173,12 @@ export const SignIn = () => {
         </Form>
         <div className="mt-6">
           <p className="inline-flex items-center justify-center w-full gap-4 mb-6 overflow-hidden text-center">
-            <Separator className="w-1/2" />
-            OR
-            <Separator className="w-1/2" />
+            <Separator className="w-full" />
           </p>
-          <ButtonLink className="w-full">
-            <img src="/google.svg" alt="" className="mr-2" />
-            {""}
-            Continue with Google
-          </ButtonLink>
         </div>
-        <p className="text-center mt-3">
+        <p className="mt-3 text-center">
           Don&apos;t have an account?{" "}
-          <Link to="/signup" className="underline text-green ml-1">
+          <Link to="/signup" className="ml-1 underline text-green">
             Sign Up
           </Link>
         </p>

@@ -52,7 +52,7 @@ interface MenuQuantityState {
 const initialState: MenuQuantityState = {
   quantity: {},
   subtotal: 0,
-  billingTotal: [],
+  billingTotal: JSON.parse(localStorage.getItem("_vdvdy3") || "[]"),
 };
 
 export const menuQuantitySlice = createSlice({
@@ -90,7 +90,9 @@ export const menuQuantitySlice = createSlice({
     },
     calculateBillingTotal: (state, action: PayloadAction<number[]>) => {
       state.billingTotal = action.payload;
+      localStorage.setItem("_vdvdy3", JSON.stringify(action.payload));
     },
+   
   },
 });
 
@@ -100,6 +102,7 @@ export const {
   decrementQuantity,
   calculateSubtotal,
   calculateBillingTotal,
+
 } = menuQuantitySlice.actions;
 
 export const getMenuItemQuantity = (state: RootState, itemId: string) =>
@@ -107,6 +110,7 @@ export const getMenuItemQuantity = (state: RootState, itemId: string) =>
 
 export const getTotalSubtotal = (state: RootState) =>
   state.menuQuantity.subtotal;
+
 export const getAllBillingTotal = (state: RootState) =>
   state.menuQuantity.billingTotal;
 

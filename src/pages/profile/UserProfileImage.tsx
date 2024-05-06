@@ -24,9 +24,12 @@ interface Props {
   data: File | string;
 }
 
-export const UserProfileImage = () => {
+export const UserProfileImage = ({
+  userImage,
+}: {
+  userImage: string | undefined;
+}) => {
   const [image, setImage] = useState<Props>({ preview: "", data: "" });
-
   const [showUpload, setShowUpload] = useState(false);
 
   const {
@@ -96,20 +99,22 @@ export const UserProfileImage = () => {
         <div>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <ButtonLink
-                type="button"
-                className="border px-4 !border-red-500 hover:!bg-red-500 hover:border-red-600 !text-red-500 hover:!text-white"
-                disable={isDeleting}
-              >
-                {isDeleting ? (
-                  <>
-                    Deleting photo
-                    <RotateCw className="w-5 h-5 ml-1 animate-spin" />
-                  </>
-                ) : (
-                  "Delete photo"
-                )}
-              </ButtonLink>
+              {userImage && (
+                <ButtonLink
+                  type="button"
+                  className="border px-4 !border-red-500 hover:!bg-red-500 hover:border-red-600 !text-red-500 hover:!text-white"
+                  disable={isDeleting}
+                >
+                  {isDeleting ? (
+                    <>
+                      Deleting photo
+                      <RotateCw className="w-5 h-5 ml-1 animate-spin" />
+                    </>
+                  ) : (
+                    "Delete photo"
+                  )}
+                </ButtonLink>
+              )}
             </AlertDialogTrigger>
             <AlertDialogContent className="text-lg">
               <AlertDialogHeader>
@@ -185,7 +190,6 @@ export const UserProfileImage = () => {
               >
                 Upload photo
                 <UploadCloud className="ml-2" />
-                {/* {isPending ? "Validating" : "Sign In"} */}
               </ButtonLink>
             </div>
           </>

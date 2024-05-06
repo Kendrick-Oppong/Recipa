@@ -130,7 +130,7 @@ export const AllMenus = () => {
             </Select>
           </div>
         </div>
-        <div className=" h-[28rem] overflow-y-scroll pb-10">
+        <div style={{scrollbarWidth:"none"}} className=" h-[28rem] overflow-y-scroll pb-10">
           <Outlet />
         </div>
       </div>

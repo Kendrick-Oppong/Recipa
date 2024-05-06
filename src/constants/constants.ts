@@ -71,7 +71,7 @@ export const carouselData = [
     name: "Juan Rodriguez",
     position: "Grill Master, Sizzle & Spice BBQ",
     quote:
-      "Tasty Treats is amazing; it's a flavor journey. Our grill master, Juan, brings the sizzle to every dish, delivering a barbecue experience like no other.",
+      "Recipa is amazing; it's a flavor journey. Our grill master, Juan, brings the sizzle to every dish, delivering a barbecue experience like no other.",
     imageSrc:
       "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
@@ -95,7 +95,7 @@ export const carouselData = [
     name: "Giovanna Rossi",
     position: "Gelato Artisan, Bella Gelateria",
     quote:
-      "Tasty Treats is one of the most popular and tasty Restaurant with unique & special test food menu made by our passionate more chefs with love and quality and love",
+      "Recipa is one of the most popular and tasty Restaurant with unique & special test food menu made by our passionate more chefs with love and quality and love",
     imageSrc:
       "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },

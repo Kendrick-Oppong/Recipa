@@ -18,7 +18,7 @@ import { ButtonLink } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
 import { isError, handleErrorToast } from "@/lib/utils";
 import { usePageTitle, usePost as useSignUp } from "@/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const SignUp = () => {
   const [revealPassword, setRevealPassword] = useState(false);
@@ -51,10 +51,15 @@ export const SignUp = () => {
 
   if (isPostError) console.log(signUpError?.message);
 
-  function onSubmit(data: z.infer<typeof signUpSchema>) {
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/signin");
+    }
+  }, [isSuccess, navigate]);
+
+  async function onSubmit(data: z.infer<typeof signUpSchema>) {
     console.log(data);
     signUpMutation(data);
-    !isSuccess && navigate("/signin");
   }
 
   return (
@@ -70,7 +75,7 @@ export const SignUp = () => {
           </h2>
           <li className="flex items-center justify-center sm:text-lg">
             <svg
-              className="hidden sm:inline-grid w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              className="flex-shrink-0 hidden w-4 h-4 text-green-500 sm:inline-grid me-2 dark:text-green-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -94,13 +99,14 @@ export const SignUp = () => {
                 <FormItem>
                   <FormLabel>
                     Username
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl className="">
                     <Input
+                      {...field}
+                      disabled={isPending}
                       placeholder="Enter your username"
                       type="text"
-                      {...field}
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
@@ -122,13 +128,14 @@ export const SignUp = () => {
                 <FormItem>
                   <FormLabel>
                     Name{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
+                      disabled={isPending}
                       placeholder="Enter your full name"
                       type="text"
-                      {...field}
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
@@ -147,13 +154,14 @@ export const SignUp = () => {
                 <FormItem>
                   <FormLabel>
                     Email
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
+                      disabled={isPending}
                       placeholder="Enter your email"
                       type="email"
-                      {...field}
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
@@ -173,13 +181,14 @@ export const SignUp = () => {
                   <FormItem>
                     <FormLabel>
                       Password
-                      <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                      <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                     </FormLabel>
                     <FormControl>
                       <Input
+                        {...field}
+                        disabled={isPending}
                         placeholder="Enter your password"
                         type={revealPassword ? "text" : "password"}
-                        {...field}
                         className={`${
                           isError(field.name, errors, form)
                             ? "border-red-500 focus-visible:ring-red-500"
@@ -187,7 +196,10 @@ export const SignUp = () => {
                         }`}
                       />
                     </FormControl>
-                    <div onClick={() => setRevealPassword((prev) => !prev)}>
+                    <div
+                      role="img"
+                      onClick={() => setRevealPassword((prev) => !prev)}
+                    >
                       {field.value.length > 0 &&
                         (revealPassword ? (
                           <EyeOff
@@ -213,13 +225,14 @@ export const SignUp = () => {
                 <FormItem>
                   <FormLabel>
                     Confirm Password
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
+                      disabled={isPending}
                       placeholder="confirm your password"
                       type={revealPassword ? "text" : "password"}
-                      {...field}
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
@@ -232,6 +245,7 @@ export const SignUp = () => {
               )}
             />
             <ButtonLink
+              disable={isPending}
               className="w-full mt-4"
               type="submit"
               onClick={() => handleErrorToast(isValid || isPostError)}
@@ -241,20 +255,13 @@ export const SignUp = () => {
           </form>
         </Form>
         <div className="mt-6">
-          <p className="text-center mb-6 inline-flex justify-center items-center w-full overflow-hidden gap-4">
-            <Separator className="w-1/2" />
-            OR
-            <Separator className="w-1/2" />
+          <p className="inline-flex items-center justify-center w-full gap-4 mb-6 overflow-hidden text-center">
+            <Separator className="w-full" />
           </p>
-          <ButtonLink className="w-full">
-            <img src="/google.svg" alt="" className="mr-2" />
-            {""}
-            Continue with Google
-          </ButtonLink>
         </div>
-        <p className="text-center mt-3">
+        <p className="mt-3 text-center">
           Already have an account?{" "}
-          <Link to="/signin" className="text-green underline ml-1">
+          <Link to="/signin" className="ml-1 underline text-green">
             Sign In
           </Link>
         </p>

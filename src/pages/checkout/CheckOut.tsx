@@ -1,8 +1,8 @@
 import { useAppSelector } from "@/redux/store";
 import { CartGrandTotal } from "../cart";
 import { CheckOutForm } from "./CheckOutForm";
-import { getAllBillingTotal } from "@/redux/menuQuantitySlice";
 import { usePageTitle } from "@/hooks";
+import { getAllBillingTotal } from "@/redux/menuQuantitySlice";
 
 export const CheckOut = () => {
   const sumSubtotal = useAppSelector(getAllBillingTotal);
@@ -16,7 +16,7 @@ export const CheckOut = () => {
           <img src="/twirl-layered.svg" alt="" width={30} height={30} />
         </span>
       </h2>
-      <CartGrandTotal sumSubtotal={sumSubtotal} />
+      <CartGrandTotal disableButton={true} sumSubtotal={sumSubtotal} />
       <CheckOutForm />
     </div>
   );

@@ -1,15 +1,15 @@
 import { Cookie } from "lucide-react";
 import { ButtonLink } from "./ButtonLink";
 import { useState } from "react";
-import { useAppSelector } from "@/redux/store";
-import { getIsAuthenticated } from "@/redux/userAuthenticatedSlice";
+import { useAuth } from "@/context/auth/isAuthenticated";
+
 
 export const CookieAnnouncementBanner = () => {
+  const {isAuthenticated} = useAuth()
   const [removeCookieBanner, setRemoveCookieBanner] = useState(false);
-  const isLoggedIn = useAppSelector(getIsAuthenticated);
   
   return (
-    !isLoggedIn &&
+    !isAuthenticated &&
     !removeCookieBanner && (
       <div className="fixed bottom-0 w-full z-[1000] text-lg">
         <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-5 py-4 sm:px-3.5 sm:before:flex-1">

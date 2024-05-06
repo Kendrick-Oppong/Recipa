@@ -1,15 +1,22 @@
 import { handleInfoToast, handlePostErrorToast } from "@/lib/utils";
-import { SignInFormData, SignUpFormData } from "@/types/types";
+import {
+  ContactUsFormData,
+  SignInFormData,
+  SignUpFormData,
+} from "@/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
-const fetcher = (url: string, data?: SignInFormData | SignUpFormData) =>
+const fetcher = (
+  url: string,
+  data?: SignInFormData | SignUpFormData | ContactUsFormData
+) =>
   axios
     .post(url, data)
     .then((res) => res.data)
     .catch((error) => {
       if (error instanceof AxiosError) {
-        console.error("Error creating new user:", error);
+        console.error("Error posting:", error);
         throw new Error(error.response?.data.message || error.message);
       }
       throw error;
@@ -18,8 +25,9 @@ const fetcher = (url: string, data?: SignInFormData | SignUpFormData) =>
 export const usePost = (url: string) => {
   const queryClient = useQueryClient();
   const { data, error, isError, isPending, isSuccess, mutate } = useMutation({
-    mutationFn: (field?: SignUpFormData | SignInFormData | undefined) =>
-      fetcher(url, field!),
+    mutationFn: (
+      field?: SignUpFormData | SignInFormData | ContactUsFormData | undefined
+    ) => fetcher(url, field!),
     onSuccess: (data) => {
       handleInfoToast(data?.message);
       queryClient.invalidateQueries({

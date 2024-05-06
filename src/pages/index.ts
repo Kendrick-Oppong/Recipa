@@ -1,3 +1,5 @@
+export { ThankYou } from "./thank_you";
+
 export { GlobalSearch } from "./search";
 
 export { CheckOut } from "./checkout";

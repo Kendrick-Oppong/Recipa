@@ -23,6 +23,9 @@ export const AllMenuLayout = () => {
     case "/all-menus/checkout":
       pageTitle = "Checkout";
       break;
+    case "/all-menus/thank_you":
+      pageTitle = "Delivery";
+      break;
     default:
       pageTitle = "";
   }

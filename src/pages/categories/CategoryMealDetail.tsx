@@ -1,9 +1,9 @@
-import { ButtonLink, ErrorMessage, ModalWindow } from "@/components/shared";
+import { ErrorMessage, ModalWindow } from "@/components/shared";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { usePageTitle } from "@/hooks";
 import { useFetch } from "@/hooks/useFetch";
 import { Meal_ID_Prop } from "@/types/types";
-import { MessageSquareText } from "lucide-react";
+
 import { useParams } from "react-router-dom";
 
 export const CategoryMealDetail = () => {
@@ -55,9 +55,9 @@ export const CategoryMealDetail = () => {
     );
 
   return (
-    <main className=" px-4 sm:px-10 my-10">
+    <main className="px-4 my-10 sm:px-10">
       <div className="max-w-[97%]  mx-auto">
-        <div className="md:grid grid-cols-2 gap-4 justify-center p-4 border-green600 rounded-lg border shadow-2xl ">
+        <div className="justify-center grid-cols-2 gap-4 p-4 border rounded-lg shadow-2xl md:grid border-green600 ">
           <div className="w-[250px] mx-auto  md:mx-0 rounded-2xl">
             <img
               src={mealDetail!.strMealThumb!}
@@ -65,8 +65,8 @@ export const CategoryMealDetail = () => {
               className={` rounded-lg mx-auto`}
             />
           </div>
-          <div className="relative font-semibold text-center md:text-left text-lg lg:ml-6 my-6 ml-4 sm:ml-0  px-3">
-            <div className="dark:text-black rounded-lg absolute shadow-md right-12 top-0 bg-green-100  px-4 mr-1 py-1">
+          <div className="relative px-3 my-6 ml-4 text-lg font-semibold text-center md:text-left lg:ml-6 sm:ml-0">
+            <div className="absolute top-0 px-4 py-1 mr-1 bg-green-100 rounded-lg shadow-md dark:text-black right-12">
               {mealDetail?.strCategory} / {mealDetail?.strArea}
             </div>
             <img
@@ -83,18 +83,12 @@ export const CategoryMealDetail = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center text-lg  gap-6 my-10 text-green ">
+        <div className="flex flex-wrap justify-center gap-6 my-10 text-lg text-green ">
           {mealDetail?.strYoutube && mealDetail?.strYoutube !== "" && (
-            <div className="cursor-pointer self-center">
+            <div className="self-center cursor-pointer">
               <ModalWindow url={mealDetail?.strYoutube} />
             </div>
           )}
-          <div>
-            <ButtonLink>
-              <MessageSquareText className="inline-flex mr-1" />
-              Add Comment
-            </ButtonLink>
-          </div>
         </div>
         <Tabs defaultValue="ingredients">
           <TabsList className="w-full gap-4 border border-green600">
@@ -113,7 +107,7 @@ export const CategoryMealDetail = () => {
                       ingredient.trim() !== ""
                     ) {
                       return (
-                        <li key={key} className="ml-6 my-2 list-disc">
+                        <li key={key} className="my-2 ml-6 list-disc">
                           {ingredient}
                         </li>
                       );
@@ -127,7 +121,7 @@ export const CategoryMealDetail = () => {
                 {mealDetail?.strInstructions?.split(".").map(
                   (instruction: string) =>
                     instruction.trim() && (
-                      <li key={instruction} className="ml-3 my-2 list-disc">
+                      <li key={instruction} className="my-2 ml-3 list-disc">
                         {instruction.trim()}
                       </li>
                     )
@@ -154,7 +148,7 @@ export const CategoryMealDetail = () => {
                 ingredient.trim() !== ""
               ) {
                 return (
-                  <li key={key} className="ml-6 my-2 list-disc">
+                  <li key={key} className="my-2 ml-6 list-disc">
                     {ingredient}
                   </li>
                 );
@@ -173,7 +167,7 @@ export const CategoryMealDetail = () => {
             {mealDetail?.strInstructions?.split(".").map(
               (instruction: string, index: Key | null | undefined) =>
                 instruction.trim() && (
-                  <li key={index} className="ml-6 my-2 list-disc">
+                  <li key={index} className="my-2 ml-6 list-disc">
                     {instruction.trim()}
                   </li>
                 )

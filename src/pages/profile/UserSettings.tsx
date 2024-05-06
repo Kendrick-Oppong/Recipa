@@ -1,7 +1,6 @@
 import { ErrorMessage } from "@/components/shared";
 import { UserProfileImage, UserSettingsForm } from "./";
-import { usePageTitle } from "@/hooks";
-import { useFetch as useGetUserProfile } from "@/hooks";
+import { usePageTitle, useFetch as useGetUserProfile } from "@/hooks";
 import { UserDetails } from "@/types/types";
 import { User } from "lucide-react";
 import { useAppDispatch } from "@/redux/store";
@@ -50,7 +49,7 @@ export const UserSettings = () => {
             ) : (
               <User
                 strokeWidth={1}
-                className=" w-24 h-24 p-1 mx-auto border border-gray-500 rounded-full"
+                className="w-24 h-24 p-1 mx-auto border border-gray-500 rounded-full "
               />
             )}
 
@@ -59,32 +58,32 @@ export const UserSettings = () => {
             </h3>
           </div>
         </div>
-        <UserProfileImage />
+        <UserProfileImage userImage={user && user?.profileImage} />
         {isLoading ? (
           <div className="animate-pulse">
             <form autoComplete="off" className="px-5 mt-12 mb-12">
-              <div className="grid-cols-2 mb-4 sm:grid gap-4">
+              <div className="grid-cols-2 gap-4 mb-4 sm:grid">
                 <div className="mb-4 sm:mb-0">
-                  <div className="h-10  border border-gray-500  bg-gray-400 rounded dark:bg-gray-700"></div>
+                  <div className="h-10 bg-gray-400 border border-gray-500 rounded dark:bg-gray-700"></div>
                 </div>
                 <div>
-                  <div className="h-10  border border-gray-500  bg-gray-400 rounded dark:bg-gray-700"></div>
+                  <div className="h-10 bg-gray-400 border border-gray-500 rounded dark:bg-gray-700"></div>
                 </div>
               </div>
-              <div className="grid-cols-2 mb-4 sm:grid gap-4">
+              <div className="grid-cols-2 gap-4 mb-4 sm:grid">
                 <div className="mb-4 sm:mb-0">
-                  <div className="h-10  border border-gray-500  bg-gray-400 rounded dark:bg-gray-700"></div>
+                  <div className="h-10 bg-gray-400 border border-gray-500 rounded dark:bg-gray-700"></div>
                 </div>
                 <div>
-                  <div className="h-10  border border-gray-500  bg-gray-400 rounded dark:bg-gray-700"></div>
+                  <div className="h-10 bg-gray-400 border border-gray-500 rounded dark:bg-gray-700"></div>
                 </div>
               </div>
-              <div className="grid-cols-2 mb-4 sm:grid gap-4">
+              <div className="grid-cols-2 gap-4 mb-4 sm:grid">
                 <div className="mb-4 sm:mb-0">
-                  <div className="h-10  border border-gray-500  bg-gray-400 rounded dark:bg-gray-700"></div>
+                  <div className="h-10 bg-gray-400 border border-gray-500 rounded dark:bg-gray-700"></div>
                 </div>
                 <div>
-                  <div className="h-10  border border-gray-500  bg-gray-400 rounded dark:bg-gray-700"></div>
+                  <div className="h-10 bg-gray-400 border border-gray-500 rounded dark:bg-gray-700"></div>
                 </div>
               </div>
             </form>

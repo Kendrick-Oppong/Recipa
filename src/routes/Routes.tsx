@@ -25,6 +25,7 @@ import {
   CheckOut,
   UserSettings,
   GlobalSearch,
+  ThankYou,
 } from "@/pages";
 import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoutes";
@@ -54,6 +55,7 @@ export const AllRoutes = () => {
           </Route>
           <Route path=":category/:title/:id" element={<MenuDetails />} />
           <Route path="cart" element={<Cart />} />
+          thank_you
           <Route
             path="checkout"
             element={
@@ -62,7 +64,7 @@ export const AllRoutes = () => {
               </ProtectedRoute>
             }
           />
-          {/* <Route path="checkout" element={<CheckOut />} /> */}
+          <Route path="thank_you" element={<ThankYou />} />
           <Route path="contact-us" element={<ContactUs />} />
           <Route path="about-us" element={<AboutUs />} />
         </Route>

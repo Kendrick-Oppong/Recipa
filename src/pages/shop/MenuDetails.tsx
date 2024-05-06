@@ -240,7 +240,7 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
       {data?.data.map((menuDetail) => (
         <div key={menuDetail.title} className="mb-10">
           <Tabs defaultValue="description" className="max-w-[90%] mx-auto">
-            <TabsList className="w-full gap-10 border border-green600 flex-wrap">
+            <TabsList className="flex-wrap w-full gap-10 border border-green600">
               <TabsTrigger value="description">Description</TabsTrigger>
               <TabsTrigger value="additional_info">
                 Additional Information
@@ -274,8 +274,9 @@ export const MenuDetails = (url: string, queryKey: string, id?: string) => {
               </div>
             </TabsContent>
             <TabsContent value="reviews">
-              <div className="mt-3 text-lg">
+              <div className="flex justify-between mt-3 text-lg">
                 <p>Customer Reviews</p>
+                <p>No reviews found</p>
               </div>
             </TabsContent>
           </Tabs>

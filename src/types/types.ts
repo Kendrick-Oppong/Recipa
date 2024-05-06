@@ -154,6 +154,10 @@ export interface SettingsFormData {
   profileImage?: string ;
 }
 
+export interface SignInFormData {
+  email: string;
+  password: string;
+}
 export interface UserDetails {
   _id: string;
   username: string;
@@ -176,10 +180,7 @@ export interface CheckOutFormData {
   city: string;
   address: string;
 }
-export interface SignInFormData {
-  email: string;
-  password: string;
-}
+
 
 //cart
 export interface CartItem {

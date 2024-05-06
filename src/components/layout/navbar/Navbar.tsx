@@ -8,20 +8,20 @@ import {
 } from ".";
 import { ModeToggle } from "@/context/theme";
 import { ShoppingBasket, Search } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { useAppSelector } from "@/redux/store";
 import { getAllCartData } from "@/redux/cartSlice";
-import { useState } from "react";
-import { getIsAuthenticated, signOut } from "@/redux/userAuthenticatedSlice";
+import { useEffect, useState } from "react";
 import { usePost as useSignOut } from "@/hooks";
+import { useAuth } from "@/context/auth/isAuthenticated";
 
 export const Navbar = () => {
+  const {isAuthenticated, logout} = useAuth();
   const [showSearchBar, setShowSearchBar] = useState(false);
   const cartLength = useAppSelector(getAllCartData)?.length;
-  const isAuthenticated = useAppSelector(getIsAuthenticated);
 
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const {
+    isSuccess,
     error: signOutError,
     isError: isSignOutError,
     mutate: signOutMutation,
@@ -29,9 +29,14 @@ export const Navbar = () => {
 
   if (isSignOutError) console.log(signOutError?.message);
 
+  useEffect(() => {
+    if (isSuccess) {
+      logout();
+    }
+  }, [isSuccess, logout]);
+
   const handleSignOut = () => {
     signOutMutation(undefined);
-    dispatch(signOut());
     navigate("/");
   };
 

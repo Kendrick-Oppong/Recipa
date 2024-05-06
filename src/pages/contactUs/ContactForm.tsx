@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import {
   Form,
   FormControl,
@@ -12,10 +11,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { contactUsSchema } from "@/validators/formSchema";
-import { Asterisk, SendHorizontal } from "lucide-react";
+import { Asterisk, RotateCw, SendHorizontal } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
-import { isError, handleErrorToast } from "@/lib/utils";
+import { handleErrorToast, isError } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
+import { usePost as useSendEmail } from "@/hooks";
+import { useEffect } from "react";
 
 export const ContactForm = () => {
   const form = useForm<z.infer<typeof contactUsSchema>>({
@@ -31,11 +32,27 @@ export const ContactForm = () => {
   const {
     control,
     handleSubmit,
-    formState: { isValid, errors },
+    reset,
+    formState: { isValid, errors, isSubmitSuccessful },
   } = form;
 
+  const {
+    error,
+    isError: isSendingError,
+    isPending: isSending,
+    mutate: sendMail,
+  } = useSendEmail("http://localhost:5000/api/send_email");
+
+  if (isSendingError) console.log(error?.message);
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [reset, isSubmitSuccessful]);
+
   function onSubmit(data: z.infer<typeof contactUsSchema>) {
-    console.log(data);
+    sendMail(data);
   }
 
   return (
@@ -55,13 +72,14 @@ export const ContactForm = () => {
                   <FormItem>
                     <FormLabel>
                       Name
-                      <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                      <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                     </FormLabel>
                     <FormControl className="">
                       <Input
+                        {...field}
+                        disabled={isSending}
                         placeholder="Enter your name"
                         type="text"
-                        {...field}
                         className={`${
                           isError(field.name, errors, form)
                             ? "border-red-500 focus-visible:ring-red-500"
@@ -80,13 +98,14 @@ export const ContactForm = () => {
                   <FormItem>
                     <FormLabel>
                       Email{" "}
-                      <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                      <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                     </FormLabel>
                     <FormControl>
                       <Input
+                        {...field}
+                        disabled={isSending}
                         placeholder="Enter your email"
                         type="email"
-                        {...field}
                         className={`${
                           isError(field.name, errors, form)
                             ? "border-red-500 focus-visible:ring-red-500"
@@ -106,13 +125,14 @@ export const ContactForm = () => {
                 <FormItem>
                   <FormLabel>
                     Subject{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
+                      disabled={isSending}
                       placeholder="Title of message"
                       type="text"
-                      {...field}
                       className={`${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
@@ -131,14 +151,15 @@ export const ContactForm = () => {
                 <FormItem>
                   <FormLabel>
                     Message{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Textarea
+                      {...field}
+                      disabled={isSending}
                       placeholder="Write to us..."
                       rows={5}
                       maxLength={200}
-                      {...field}
                       className={`w-full resize-none ${
                         isError(field.name, errors, form)
                           ? "border-red-500 focus-visible:ring-red-500"
@@ -166,12 +187,21 @@ export const ContactForm = () => {
               )}
             />
             <ButtonLink
+              disable={isSending}
               className="w-full mt-4"
               type="submit"
               onClick={() => handleErrorToast(isValid)}
             >
-              Send message <SendHorizontal className="ml-2" />
-              {/* {isPending ? "Validating" : "Sign In"} */}
+              {isSending ? (
+                <>
+                  Sending message
+                  <RotateCw className="w-5 h-5 ml-1 animate-spin" />
+                </>
+              ) : (
+                <>
+                  Send message <SendHorizontal className="ml-2" />
+                </>
+              )}
             </ButtonLink>
           </form>
         </Form>

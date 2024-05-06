@@ -52,14 +52,14 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
       </div>
     );
 
-  console.log(error?.message);
-
-  if (error)
+  if (error) {
+    console.log(error?.message);
     return (
       <div className="mt-10 m-[3rem]">
         <ErrorMessage refetch={refetch} message={error?.message} />
       </div>
     );
+  }
 
   return (
     <>

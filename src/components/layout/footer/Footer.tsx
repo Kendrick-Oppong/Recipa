@@ -11,6 +11,7 @@ export const Footer = () => {
     "/profile",
     "/all-menus/contact-us",
     "/all-menus/about-us",
+    "/all-menus/thank_you",
   ];
 
   return (
@@ -26,7 +27,7 @@ export const Footer = () => {
           </h2>
           <li className="flex items-center justify-center sm:text-lg">
             <svg
-              className="hidden sm:inline w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+              className="flex-shrink-0 hidden w-4 h-4 text-green-500 sm:inline me-2 dark:text-green-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -36,13 +37,12 @@ export const Footer = () => {
             </svg>
             Subscribe to the newsletter for exclusive promos
           </li>
-        
-            <NewsletterForm />
-        
+
+          <NewsletterForm />
         </section>
       )}
       <footer className=" !bg-[#aeafb42b] dark:!bg-[#030c22c9] dark:on-dark-shadow px-5 pb-10">
-        <div className=" pt-10 grid auto-fit gap-5 text-lg">
+        <div className="grid gap-5 pt-10 text-lg auto-fit">
           <div>
             <Logo />
             <p className="mt-3">
@@ -51,7 +51,7 @@ export const Footer = () => {
             </p>
           </div>
           <div className=" md:ml-12">
-            <h3 className="text-green mt-0">Navigation</h3>
+            <h3 className="mt-0 text-green">Navigation</h3>
             {navigationLinks.map((link) => (
               <Link
                 to={link.path}
@@ -63,7 +63,7 @@ export const Footer = () => {
             ))}
           </div>
           <div>
-            <h3 className="text-green mt-0">Recipes</h3>
+            <h3 className="mt-0 text-green">Recipes</h3>
             <ul className="space-y-4">
               {categories.map((category) => (
                 <Link to={`/categories/${category.name}`} key={category.id}>
@@ -84,7 +84,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-green mt-0">Shop(Menu)</h3>
+            <h3 className="mt-0 text-green">Shop(Menu)</h3>
             <ul className="space-y-4">
               {menu.map((menu) => (
                 <Link
@@ -94,7 +94,7 @@ export const Footer = () => {
                   <li
                     className={`text-lg mb-2 hover:text-green-700 cursor-pointer`}
                   >
-                    <img className="mr-2 inline-flex" src={menu.src} alt="" />
+                    <img className="inline-flex mr-2" src={menu.src} alt="" />
                     {menu.title}
                   </li>
                 </Link>
@@ -102,8 +102,8 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-green mt-0">Opening Hours</h3>
-            <div className="flex justify-between border-b border-gray-400 pb-1 mb-2">
+            <h3 className="mt-0 text-green">Opening Hours</h3>
+            <div className="flex justify-between pb-1 mb-2 border-b border-gray-400">
               <p>Mon - Tue </p>
               <p>09:00 am - 4:00 pm</p>
             </div>
@@ -113,7 +113,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-center mt-8 text-lg ">
+        <p className="mt-8 text-lg text-center ">
           Copyright &copy; {new Date().getFullYear()}
         </p>
       </footer>

@@ -1,32 +1,25 @@
 import { ButtonLink } from "@/components/shared";
 import { getAllCartData } from "@/redux/cartSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { useAppSelector } from "@/redux/store";
 import { ShoppingBasket } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartItem } from "@/types/types";
 import { CartGrandTotal, CartItemRowDesktop, CartItemRowMobile } from ".";
 import { usePageTitle } from "@/hooks";
-import { calculateBillingTotal } from "@/redux/menuQuantitySlice";
 
 export const Cart = () => {
   const cartItems = useAppSelector(getAllCartData);
   const [sumSubtotal, setSumSubtotal] = useState<number[]>([]);
-  const dispatch = useAppDispatch();
-  
+
   usePageTitle("Cart");
-
-  useEffect(() => {
-    dispatch(calculateBillingTotal(sumSubtotal));
-  }, [dispatch, sumSubtotal]);
-
 
   if (!cartItems.length)
     return (
       <div className="max-w-[95%] mx-auto text-center text-lg ">
         <img
           src="/shopping-basket-svgrepo-com.svg"
-          className="mx-auto border border-green600 p-3 rounded-full"
+          className="p-3 mx-auto border rounded-full border-green600"
           alt=""
         />
         <div className="mt-2 mb-14">
@@ -75,7 +68,7 @@ export const Cart = () => {
 
         {cartItems.map((cartItem: CartItem) => (
           <div
-            className="md:hidden border border-green600 rounded-lg px-2 pb-2 mb-5"
+            className="px-2 pb-2 mb-5 border rounded-lg md:hidden border-green600"
             key={cartItem._id}
           >
             <CartItemRowMobile itemInCart={cartItem} />

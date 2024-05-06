@@ -15,8 +15,10 @@ import { checkOutSchema } from "@/validators/formSchema";
 import { Asterisk, PackageCheck } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
 import { isError, handleErrorToast } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 export const CheckOutForm = () => {
+  const navigate  = useNavigate()
   const form = useForm<z.infer<typeof checkOutSchema>>({
     resolver: zodResolver(checkOutSchema),
     defaultValues: {
@@ -36,11 +38,18 @@ export const CheckOutForm = () => {
   } = form;
 
   function onSubmit(data: z.infer<typeof checkOutSchema>) {
-    console.log(data);
+   navigate("/all-menus/thank_you");
   }
 
   return (
     <div className="max-w-6xl mx-auto text-lg">
+      <h2 className="text-center">
+        Pay on{" "}
+        <span>
+          Delivery.{" "}
+          <img src="/twirl-layered.svg" alt="" width={30} height={30} />
+        </span>
+      </h2>
       <div className="border border-green600 md:w-[90%] px-5 md:px-10  pb-10 rounded-lg mx-auto mb-10 shadow-2xl">
         <Form {...form}>
           <form
@@ -55,7 +64,7 @@ export const CheckOutForm = () => {
                 <FormItem>
                   <FormLabel>
                     Name
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl className="">
                     <Input
@@ -80,7 +89,7 @@ export const CheckOutForm = () => {
                 <FormItem>
                   <FormLabel>
                     Email{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -105,11 +114,11 @@ export const CheckOutForm = () => {
                 <FormItem>
                   <FormLabel>
                     Phone number{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="+233 552199577"
+                      placeholder="+233 55..."
                       type="tel"
                       {...field}
                       className={`${
@@ -130,7 +139,7 @@ export const CheckOutForm = () => {
                 <FormItem>
                   <FormLabel>
                     Town{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -155,7 +164,7 @@ export const CheckOutForm = () => {
                 <FormItem>
                   <FormLabel>
                     City{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -180,7 +189,7 @@ export const CheckOutForm = () => {
                 <FormItem>
                   <FormLabel>
                     Address{" "}
-                    <Asterisk className="w-4 h-4 inline-flex text-red-600" />
+                    <Asterisk className="inline-flex w-4 h-4 text-red-600" />
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -204,7 +213,6 @@ export const CheckOutForm = () => {
               onClick={() => handleErrorToast(isValid)}
             >
               Place order <PackageCheck className="ml-2" />
-              {/* {isPending ? "Validating" : "Sign In"} */}
             </ButtonLink>
           </form>
         </Form>

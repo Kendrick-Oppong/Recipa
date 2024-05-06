@@ -6,9 +6,9 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import { useAuth } from "@/context/auth/isAuthenticated";
 import { usePost as useSignOut } from "@/hooks";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { signOut } from "@/redux/userAuthenticatedSlice";
+import { useAppSelector } from "@/redux/store";
 import { getUserProfileImage } from "@/redux/userProfileImageSlice";
 import {
   User,
@@ -17,13 +17,16 @@ import {
   LogOut,
   UserCogIcon,
 } from "lucide-react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export function UserProfileMenuDropDown() {
+  const { logout } = useAuth();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+
   const profileImage = useAppSelector(getUserProfileImage);
   const {
+    isSuccess,
     error: signOutError,
     isError: isSignOutError,
     mutate: signOutMutation,
@@ -31,9 +34,14 @@ export function UserProfileMenuDropDown() {
 
   if (isSignOutError) console.log(signOutError?.message);
 
+  useEffect(() => {
+    if (isSuccess) {
+      logout();
+    }
+  }, [isSuccess, logout]);
+
   const handleSignOut = () => {
     signOutMutation(undefined);
-    dispatch(signOut());
     navigate("/");
   };
 
@@ -46,7 +54,7 @@ export function UserProfileMenuDropDown() {
               role="button"
               src={profileImage}
               alt=""
-              className=" border dark:border-white w-8 h-8 rounded-full"
+              className="w-8 h-8 border rounded-full dark:border-white"
             />
           ) : (
             <UserCogIcon />
