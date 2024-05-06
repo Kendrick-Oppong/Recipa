@@ -38,6 +38,7 @@ export const CheckOutForm = () => {
   } = form;
 
   function onSubmit(data: z.infer<typeof checkOutSchema>) {
+    console.log(data.town);
    navigate("/all-menus/thank_you");
   }
 
