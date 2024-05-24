@@ -12,7 +12,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { signInSchema } from "@/validators/formSchema";
-import { Asterisk, Eye, EyeOff } from "lucide-react";
+import { Asterisk, Eye, EyeOff, Loader } from "lucide-react";
 import { ButtonLink } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
 import { isError, handleErrorToast } from "@/lib/utils";
@@ -165,7 +165,13 @@ export const SignIn = () => {
               type="submit"
               onClick={() => handleErrorToast(isValid || isPostError)}
             >
-              {isPending ? "Validating" : "Sign In"}
+              {isPending ? (
+                <>
+                  Validating <Loader className="animate-spin ml-2" />
+                </>
+              ) : (
+                "Sign In"
+              )}
             </ButtonLink>
           </form>
         </Form>

@@ -14,7 +14,7 @@ export const FeaturedRecipes: React.FC = () => {
 
   const slicedData = data?.categories.slice(0, 4);
 
-  if (error) return <ErrorMessage refetch={refetch} message={error?.message} />;
+  if (error) return <ErrorMessage refetch={refetch} />;
   if (isLoading) return <LoadingSkeleton />;
 
   return (

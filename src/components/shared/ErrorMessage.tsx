@@ -19,7 +19,7 @@ type UseQueryResultsProps =
   | MenuDetailsProps
   | UserDetails;
 interface ErrorMessageProps {
-  message: string;
+  message?: string;
   refetch: (
     options?: RefetchOptions | undefined
   ) => Promise<UseQueryResult<UseQueryResultsProps, Error>>;

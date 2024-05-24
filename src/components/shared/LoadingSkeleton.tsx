@@ -30,6 +30,8 @@ export const LoadingSkeleton = ({
           <div className="h-2 bg-gray-400 rounded-full dark:bg-gray-700 mb-2.5"></div>
           <div className="h-2 bg-gray-400 rounded-full dark:bg-gray-700"></div>
         </div>
+
+      
       ))}
     </div>
   );

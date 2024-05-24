@@ -1,3 +1,5 @@
+export { FallBackUi } from "./FallBackUi";
+
 export { CookieAnnouncementBanner } from "./CookieAnnouncementBanner";
 
 export { DeleteCartItemPopup } from "./DeleteCartItemPopup";

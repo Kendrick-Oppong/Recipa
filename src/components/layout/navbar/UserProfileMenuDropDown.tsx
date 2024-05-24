@@ -35,12 +35,14 @@ export function UserProfileMenuDropDown() {
   useEffect(() => {
     if (isSuccess) {
       localStorage.setItem("isAuthenticated", JSON.stringify(false));
+     
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate]);
 
   const handleSignOut = () => {
     signOutMutation(undefined);
     navigate("/");
+        localStorage.setItem("isAuthenticated", JSON.stringify(false));
   };
 
   return (

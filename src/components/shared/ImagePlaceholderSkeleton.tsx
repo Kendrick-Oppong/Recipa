@@ -1,10 +1,16 @@
-export const ImagePlaceholderSkeleton = ({className="h-48"}:{className?:string}) => {
+export const ImagePlaceholderSkeleton = ({
+  className = "h-48",
+}: {
+  className?: string;
+}) => {
   return (
     <div
       role="status"
-      className="w-full border border-gray-200 rounded-lg animate-pulse dark:border-gray-700 shadow-2xl"
+      className="w-full border border-gray-200 rounded-lg shadow-2xl animate-pulse dark:border-gray-700"
     >
-      <div className={`flex items-center justify-center ${className} bg-gray-400 rounded dark:bg-gray-700`}>
+      <div
+        className={`flex items-center justify-center ${className} bg-gray-400 rounded dark:bg-gray-700`}
+      >
         <svg
           className="w-10 h-10 text-gray-200 dark:text-gray-600"
           aria-hidden="true"
@@ -18,4 +24,4 @@ export const ImagePlaceholderSkeleton = ({className="h-48"}:{className?:string})
       </div>
     </div>
   );
-}
+};

@@ -1,4 +1,4 @@
-import { Layout } from "@/components/layout";
+// import { Layout } from "@/components/layout";
 import {
   AllBeverages,
   AllBurgers,
@@ -12,7 +12,6 @@ import {
   BurgerMenuDetails as MenuDetails,
   CategoryMealDetail,
   CategoryPage,
-  HomePage,
   PageNotFound,
   RecipeCategory,
   RecipesPage,
@@ -26,14 +25,26 @@ import {
   UserSettings,
   GlobalSearch,
   ThankYou,
+  HomePage
 } from "@/pages";
 import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoutes";
+import React, { Suspense } from "react";
+import { FallBackUi } from "@/components/shared";
+
+const Layout = React.lazy(() => import("@/components/layout/Layout"));
 
 export const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<FallBackUi />}>
+            <Layout />
+          </Suspense>
+        }
+      >
         <Route index element={<HomePage />} />
         <Route path="recipes" element={<RecipesPage />} />
         <Route path="recipes/:id" element={<RecipeCategory />} />

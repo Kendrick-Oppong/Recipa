@@ -16,7 +16,7 @@ export const HamburgerMenu = () => {
   const storedAuthState = localStorage.getItem("isAuthenticated") as string;
   const isAuthenticated = JSON.parse(storedAuthState);
   const navigate = useNavigate();
-  
+
   const {
     isSuccess,
     error: signOutError,
@@ -30,11 +30,12 @@ export const HamburgerMenu = () => {
     if (isSuccess) {
       localStorage.setItem("isAuthenticated", JSON.stringify(false));
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate]);
 
   const handleSignOut = () => {
     signOutMutation(undefined);
     navigate("/");
+    localStorage.setItem("isAuthenticated", JSON.stringify(false));
   };
 
   return (

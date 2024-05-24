@@ -3,7 +3,7 @@ import { Navbar } from "./navbar";
 import { Footer } from "./footer";
 import { CookieAnnouncementBanner, ScrollToTop } from "../shared";
 
-export const Layout = () => {
+ const Layout = () => {
   return (
     <div>
       <Navbar />
@@ -14,3 +14,5 @@ export const Layout = () => {
     </div>
   );
 };
+
+export default Layout

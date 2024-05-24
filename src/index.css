@@ -178,15 +178,18 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Archivo", sans-serif;
+
+    /* scrollbar style */
+    --sb-track-color: #596063;
+    --sb-thumb-color: #4be047;
+    --sb-size: 6px;
   }
 
   nav li {
     @apply list-none hover:text-green-600;
   }
 
-  /* main {
-    @apply mt-20;
-  } */
+
 
   span {
     @apply inline-flex text-green-600;
@@ -227,34 +230,26 @@
     border-bottom-right-radius: 7px;
   }
 
-  
-body {
-  --sb-track-color: #596063;
-  --sb-thumb-color: #4be047;
-  --sb-size: 6px;
-}
-
-body::-webkit-scrollbar {
-  width: var(--sb-size)
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 6px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 6px;
-  
-}
-
-@supports not selector(::-webkit-scrollbar) {
-  body,.scroll-width {
-    scrollbar-color: var(--sb-thumb-color)
-                     var(--sb-track-color);
+  body::-webkit-scrollbar {
+    width: var(--sb-size);
   }
-}
+
+  body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 6px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 6px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    body,
+    .scroll-width {
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  }
 
   @media screen and (max-width: 680px) {
     .dropDownLinksMediaQuery {
@@ -262,3 +257,5 @@ body::-webkit-scrollbar-thumb {
     }
   }
 }
+
+

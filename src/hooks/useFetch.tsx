@@ -71,9 +71,6 @@ export const useFetch = <T,>(
   });
 
   const fetchNextPage = () => {
-    // Implement logic to fetch next batch of items
-    // You may need to keep track of the current number of items fetched
-    // and fetch the next batch accordingly
   };
 
   return { data, isLoading, isError, error, refetch, fetchNextPage };

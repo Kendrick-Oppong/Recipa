@@ -33,12 +33,12 @@ export const Navbar = () => {
     if (isSuccess) {
       localStorage.setItem("isAuthenticated", JSON.stringify(false));
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate]);
 
   const handleSignOut = () => {
     signOutMutation(undefined);
     navigate("/");
-     localStorage.setItem("isAuthenticated", JSON.stringify(false));
+        localStorage.setItem("isAuthenticated", JSON.stringify(false));
   };
 
   return (
