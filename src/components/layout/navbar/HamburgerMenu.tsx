@@ -61,18 +61,18 @@ export const HamburgerMenu = () => {
             <li className="p-1 pl-2 mb-4"> Shop</li>
           </Link>
 
-          {isAuthenticated ? (
+            {isAuthenticated ? (
             <li className="mb-4 ml-2 cursor-pointer" onClick={handleSignOut}>
               Sign Out
             </li>
           ) : (
-            <Link to="/signin" className="max-[820px]:hidden">
-              <li> Sign In</li>
+            <Link to="/signin">
+              <li className="p-1 pl-2 mb-4"> Sign In</li>
             </Link>
           )}
 
           <div className="ml-1">
-            <UserProfileMenuDropDown />
+            {isAuthenticated && <UserProfileMenuDropDown />}
           </div>
 
           <Link to="all-menus/about-us">
