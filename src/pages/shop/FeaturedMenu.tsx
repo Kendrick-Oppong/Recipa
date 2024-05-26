@@ -31,6 +31,8 @@ export const FeaturedMenu = (url: string, queryKey: string, id?: string) => {
   const [searchParams] = useSearchParams();
   const queries = Object.fromEntries([...searchParams]);
 
+  console.log(url);
+
   const { data, isLoading, error, refetch } = useFetch<MenuProps>(
     url,
     queryKey,

@@ -10,17 +10,13 @@ import { store } from "./redux/store.ts";
 import { Toaster } from "@/components/ui/sonner";
 import axios from "axios";
 import App from "./App.tsx";
-
-
-
+import { BACKEND_URL } from "./constants/constants.ts";
 
 const queryClient = new QueryClient();
 
-const BACKEND_URL = "http://localhost:5000";
-
 axios.interceptors.request.use(
   (config) => {
-    if (config?.url?.startsWith(BACKEND_URL)) {
+    if (config?.url?.startsWith(BACKEND_URL!)) {
       config.withCredentials = true;
     } else {
       config.withCredentials = false; // Explicitly set to false for other requests
@@ -39,9 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
           <Provider store={store}>
-           
-              <App />
-            
+            <App />
             <Toaster
               position="top-center"
               expand={false}

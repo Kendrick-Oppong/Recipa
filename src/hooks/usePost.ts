@@ -1,3 +1,4 @@
+import { BACKEND_URL } from "@/constants/constants";
 import { handleInfoToast, handlePostErrorToast } from "@/lib/utils";
 import {
   ContactUsFormData,
@@ -7,12 +8,14 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
+
+
 const fetcher = (
   url: string,
   data?: SignInFormData | SignUpFormData | ContactUsFormData
 ) =>
   axios
-    .post(url, data)
+    .post(`${BACKEND_URL}${url}`, data)
     .then((res) => res.data)
     .catch((error) => {
       if (error instanceof AxiosError) {

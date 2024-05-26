@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
+
 const fetcher = (url: string) =>
   axios
     .get(url)
@@ -16,34 +17,6 @@ const fetcher = (url: string) =>
       }
       throw error;
     });
-
-// export const useFetch = <T,>(
-//   url: string,
-//   queryKey: string,
-//   refetch_Interval: boolean = false,
-//   id?: string
-// ): {
-//   data: T | undefined;
-//   isLoading: boolean;
-//   isError: boolean;
-//   error: Error | null;
-//   refetch: (
-//     options?: RefetchOptions | undefined
-//   ) => Promise<UseQueryResult<T, Error>>;
-// } => {
-//   const { isLoading, error, isError, data, refetch } = useQuery<T>({
-//     queryKey: [queryKey, id],
-//     queryFn: () => fetcher(url),
-//     retry: 3,
-//     staleTime: 0,
-//     refetchOnWindowFocus: false,
-//     refetchInterval: refetch_Interval ? 3000 : false,
-//     refetchIntervalInBackground: true,
-//   });
-
-//   return { isLoading, isError, error, data, refetch };
-// };
-
 
 export const useFetch = <T,>(
   url: string,
@@ -70,8 +43,7 @@ export const useFetch = <T,>(
     refetchIntervalInBackground: true,
   });
 
-  const fetchNextPage = () => {
-  };
+  const fetchNextPage = () => {};
 
   return { data, isLoading, isError, error, refetch, fetchNextPage };
 };

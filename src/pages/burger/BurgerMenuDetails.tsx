@@ -5,7 +5,7 @@ export const BurgerMenuDetails = () => {
   const { category, title, id } = useParams();
 
   return FullMenuDetails(
-    `http://localhost:5000/api/${category}/${id}`,
+    `/api/${category}/${id}`,
     title!,
     id
   );

@@ -44,7 +44,7 @@ export const UserSettingsForm = ({ user }: UserSettingsFormProps) => {
     isPending: isUpdating,
     mutate: updateProfileMutation,
   } = useUpdateProfileSettings(
-    "http://localhost:5000/user/profile/update_details"
+    "/user/profile/update_details"
   );
 
   if (isUpdateProfileError) console.log(updateProfileError?.message);

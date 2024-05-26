@@ -1,10 +1,11 @@
+import { BACKEND_URL } from "@/constants/constants";
 import { handleInfoToast, handlePostErrorToast } from "@/lib/utils";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
 const fetcher = (url: string) =>
   axios
-    .delete(url)
+    .delete(`${BACKEND_URL}${url}`)
     .then((res) => res.data)
     .catch((error) => {
       if (error instanceof AxiosError) {

@@ -37,7 +37,7 @@ export const UserProfileImage = ({
     isPending: isUploading,
     isError,
     mutate: updateProfile,
-  } = useUpdateProfilePicture("http://localhost:5000/user/profile");
+  } = useUpdateProfilePicture("/user/profile");
 
   if (isError) console.log(error?.message);
 
@@ -46,7 +46,7 @@ export const UserProfileImage = ({
     isPending: isDeleting,
     isError: isDeleteError,
     mutate: deleteMutation,
-  } = useDeleteProfilePicture("http://localhost:5000/user/profile");
+  } = useDeleteProfilePicture("/user/profile");
 
   if (isDeleteError) console.log(deleteError?.message);
 

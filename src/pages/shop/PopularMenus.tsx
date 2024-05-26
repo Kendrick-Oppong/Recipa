@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FeaturedMenu } from ".";
-import { menu } from "@/constants/constants";
+import { BACKEND_URL, menu } from "@/constants/constants";
 
 export function PopularMenus() {
   return (
@@ -8,53 +8,35 @@ export function PopularMenus() {
       <TabsList className="grid auto-fit-tabs px-5 mx-auto gap-5 max-w-full  sm:max-w-[95%]  border border-green600">
         {menu.map((menu) => (
           <TabsTrigger key={menu.title} value={menu.title.toLowerCase()}>
-            <img className="mr-1 hidden md:inline" src={menu.src} alt="" />
+            <img className="hidden mr-1 md:inline" src={menu.src} alt="" />
             {menu.title}
           </TabsTrigger>
         ))}
       </TabsList>
       <div className="md:px-10">
         <TabsContent value="burgers">
-          {FeaturedMenu(
-            "http://localhost:5000/api/specialBurger",
-            "specialBurger"
-          )}
+          {FeaturedMenu(`${BACKEND_URL}/api/specialBurger`, "specialBurger")}
         </TabsContent>
         <TabsContent value="pizzas">
-          {FeaturedMenu(
-            "http://localhost:5000/api/specialPizza",
-            "specialPizza"
-          )}
+          {FeaturedMenu(`${BACKEND_URL}/api/specialPizza`, "specialPizza")}
         </TabsContent>
         <TabsContent value="sushis">
-          {FeaturedMenu(
-            "http://localhost:5000/api/specialSushi",
-            "specialSushi"
-          )}
+          {FeaturedMenu(`${BACKEND_URL}/api/specialSushi`, "specialSushi")}
         </TabsContent>
         <TabsContent value="salads">
-          {FeaturedMenu(
-            "http://localhost:5000/api/specialSalad",
-            "specialSalad"
-          )}
+          {FeaturedMenu(`${BACKEND_URL}/api/specialSalad`, "specialSalad")}
         </TabsContent>
         <TabsContent value="burritos">
-          {FeaturedMenu(
-            "http://localhost:5000/api/specialBurrito",
-            "specialBurrito"
-          )}
+          {FeaturedMenu(`${BACKEND_URL}/api/specialBurrito`, "specialBurrito")}
         </TabsContent>
         <TabsContent value="beverages">
           {FeaturedMenu(
-            "http://localhost:5000/api/specialBeverage",
+            `${BACKEND_URL}/api/specialBeverage`,
             "specialBeverage"
           )}
         </TabsContent>
         <TabsContent value="fries">
-          {FeaturedMenu(
-            "http://localhost:5000/api/specialFries",
-            "specialFries"
-          )}
+          {FeaturedMenu(`${BACKEND_URL}/api/specialFries`, "specialFries")}
         </TabsContent>
       </div>
     </Tabs>

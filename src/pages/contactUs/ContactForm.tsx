@@ -41,7 +41,7 @@ export const ContactForm = () => {
     isError: isSendingError,
     isPending: isSending,
     mutate: sendMail,
-  } = useSendEmail("http://localhost:5000/api/send_email");
+  } = useSendEmail("/api/send_email");
 
   if (isSendingError) console.log(error?.message);
 

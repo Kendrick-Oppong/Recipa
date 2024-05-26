@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const ThankYou = () => {
   return (
-    <div className="mb-10">
+    <div className="p-10 mx-auto mb-10 border rounded-lg border-green600 size-fit">
       <div className="text-center">
         <Truck size={80} strokeWidth={1} className="mx-auto text-green" />
       </div>

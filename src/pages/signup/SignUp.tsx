@@ -47,7 +47,7 @@ export const SignUp = () => {
     isPending,
     isSuccess,
     mutate: signUpMutation,
-  } = useSignUp("http://localhost:5000/user/signup");
+  } = useSignUp("/user/signup");
 
   if (isPostError) console.log(signUpError?.message);
 
@@ -252,7 +252,7 @@ export const SignUp = () => {
             >
               {isPending ? (
                 <>
-                  Creating account <Loader className="animate-spin ml-2" />
+                  Creating account <Loader className="ml-2 animate-spin" />
                 </>
               ) : (
                 "Create account"

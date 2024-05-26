@@ -43,7 +43,7 @@ export const SignIn = () => {
     isPending,
     isSuccess,
     mutate: signInMutation,
-  } = useSignIn("http://localhost:5000/user/signin");
+  } = useSignIn("/user/signin");
 
   if (isPostError) console.log(signInError?.message);
 
@@ -167,7 +167,7 @@ export const SignIn = () => {
             >
               {isPending ? (
                 <>
-                  Validating <Loader className="animate-spin ml-2" />
+                  Validating <Loader className="ml-2 animate-spin" />
                 </>
               ) : (
                 "Sign In"

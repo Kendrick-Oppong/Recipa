@@ -25,7 +25,7 @@ export const Navbar = () => {
     error: signOutError,
     isError: isSignOutError,
     mutate: signOutMutation,
-  } = useSignOut("http://localhost:5000/user/signout");
+  } = useSignOut("/user/signout");
 
   if (isSignOutError) console.log(signOutError?.message);
 
@@ -38,7 +38,7 @@ export const Navbar = () => {
   const handleSignOut = () => {
     signOutMutation(undefined);
     navigate("/");
-        localStorage.setItem("isAuthenticated", JSON.stringify(false));
+    localStorage.setItem("isAuthenticated", JSON.stringify(false));
   };
 
   return (
@@ -54,7 +54,11 @@ export const Navbar = () => {
               <AllRecipesDropDownLinks />
             </div>
             <NavLink to="/shop">
-              <li> Shop</li>
+              <li className="relative">
+                {" "}
+                Shop{" "}
+                <span className="absolute w-3 h-3 rounded-full -right-6 top-1 animate-pulse bg-destructive"></span>
+              </li>
             </NavLink>
           </div>
 

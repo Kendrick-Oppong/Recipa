@@ -6,6 +6,7 @@ import { User } from "lucide-react";
 import { useAppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { storeUserProfileImage } from "@/redux/userProfileImageSlice";
+import { BACKEND_URL } from "@/constants/constants";
 
 export const UserSettings = () => {
   usePageTitle("Profile - Settings");
@@ -17,7 +18,7 @@ export const UserSettings = () => {
     error,
     refetch,
   } = useGetUserProfile<UserDetails>(
-    "http://localhost:5000/user/profile",
+    `${BACKEND_URL}/user/profile`,
     "userDetails"
   );
 

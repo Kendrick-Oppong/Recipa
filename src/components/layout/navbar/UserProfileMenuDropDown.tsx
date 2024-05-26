@@ -28,7 +28,7 @@ export function UserProfileMenuDropDown() {
     error: signOutError,
     isError: isSignOutError,
     mutate: signOutMutation,
-  } = useSignOut("http://localhost:5000/user/signout");
+  } = useSignOut("/user/signout");
 
   if (isSignOutError) console.log(signOutError?.message);
 
