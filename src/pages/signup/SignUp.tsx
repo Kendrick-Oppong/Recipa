@@ -58,7 +58,6 @@ export const SignUp = () => {
   }, [isSuccess, navigate]);
 
   async function onSubmit(data: z.infer<typeof signUpSchema>) {
-    console.log(data);
     signUpMutation(data);
   }
 
