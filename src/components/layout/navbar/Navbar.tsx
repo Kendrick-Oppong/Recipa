@@ -57,7 +57,7 @@ export const Navbar = () => {
               <li className="relative">
                 {" "}
                 Shop{" "}
-                <span className="absolute w-3 h-3 rounded-full -right-6 top-1 animate-pulse bg-destructive"></span>
+                <span className="hidden md:inline-flex absolute w-3 h-3 rounded-full -right-6 top-1 animate-pulse bg-destructive"></span>
               </li>
             </NavLink>
           </div>
