@@ -52,6 +52,7 @@ export const UserProfileImage = ({
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
+    console.log(file)
     if (file) {
       const img = {
         preview: URL.createObjectURL(file),
@@ -67,10 +68,13 @@ export const UserProfileImage = ({
     e.preventDefault();
     const formData = new FormData();
     formData.append("profileImage", image.data);
+    console.log(formData)
+    console.log(image.data)
     updateProfile(formData as never);
     setImage({ data: "", preview: "" });
     setShowUpload(false);
   };
+
 
   const handleImageDelete = async () => {
     deleteMutation();

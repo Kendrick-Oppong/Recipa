@@ -57,7 +57,7 @@ export const Navbar = () => {
               <li className="relative">
                 {" "}
                 Shop{" "}
-                <span className="hidden md:inline-flex absolute w-3 h-3 rounded-full -right-6 top-1 animate-pulse bg-destructive"></span>
+                <span className="absolute hidden w-3 h-3 rounded-full md:inline-flex -right-6 top-1 animate-pulse bg-destructive"></span>
               </li>
             </NavLink>
           </div>
@@ -68,7 +68,10 @@ export const Navbar = () => {
 
           <div className="flex items-center gap-5">
             {isAuthenticated ? (
-              <li className="cursor-pointer" onClick={handleSignOut}>
+              <li
+                className="cursor-pointer hidden min-[1000px]:flex"
+                onClick={handleSignOut}
+              >
                 Sign Out
               </li>
             ) : (

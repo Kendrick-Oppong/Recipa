@@ -63,7 +63,7 @@ export const SignUp = () => {
 
   return (
     <main className="max-w-5xl mx-auto text-lg">
-      <div className="border border-green600 w-[90%] md:w-[70%] px-5  md:px-10  pb-10 rounded-lg mx-auto mt-5 mb-10 shadow-2xl">
+      <div className="border border-green600 w-[95%] md:w-[70%] px-3  md:px-10 pb-10 rounded-lg mx-auto mt-5 mb-10 shadow-2xl">
         <div className="text-center ">
           <h2>
             Create an {""}
