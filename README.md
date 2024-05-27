@@ -21,7 +21,7 @@
 
 ## Technology Stack
 
-- **Frontend:** React, Vite, Typescript
+- **Frontend:** React, Vite, Typescript, TailwindCSS
 - **Backend:** Node.js, Express
 - **Database:** MongoDB
 - **Other:** Cloudinary (for image upload), Axios (for API requests), Redux (for state management), React Query (for server state management)
@@ -29,7 +29,12 @@
 
 ## Screenshots
 
-![Recipa Screenshot](./recipa_screenshot.png)
+
+![Recipa Screenshot](./assets/images/recipa-screenshot.png)
+![Recipa Screenshot](./assets/images/recipa-screenshot.png-2)
+![Recipa Screenshot](./assets/images/recipa-screenshot.png-3)
+![Recipa Screenshot](./assets/images/recipa-screenshot.png-4)
+
 
 
 ## Contact
