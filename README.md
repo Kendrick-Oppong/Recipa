@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# Recipa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
 
-Currently, two official plugins are available:
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Screenshots](#screenshots)
+- [Contact](#contact)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
 
-## Expanding the ESLint configuration
+**Recipa** is an innovative food ordering web app built with React, Node.js, Express, and MongoDB. It offers users a seamless experience in browsing recipes and ordering meals. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+### Explore Recipa
+- **Free Recipes:** Browse a diverse range of recipes, each with detailed instructions and accompanying videos from YouTube.
+- **Meal Ordering:** Order delicious meals for delivery, with options to pay online or upon delivery. Enjoy the convenience of adding items to your cart and having them delivered to your doorstep.
+- **User Profiles:** Manage profiles, upload images, and adjust settings, all with robust validation.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Technology Stack
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Frontend:** React, Vite, Typescript
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
+- **Other:** Cloudinary (for image upload), Axios (for API requests), Redux (for state management), React Query (for server state management)
+
+
+## Screenshots
+
+![Recipa Screenshot](./recipa_screenshot.png)
+
+
+## Contact
+
+If you want to contact me, you can reach me at [kendrickoppong94@gmail.com](mailto:kendrickoppong94@gmail.com).
