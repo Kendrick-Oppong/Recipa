@@ -30,10 +30,10 @@
 ## Screenshots
 
 
-![Recipa Screenshot](./assets/images/recipa-screenshot.png)
-![Recipa Screenshot](./assets/images/recipa-screenshot.png-2)
-![Recipa Screenshot](./assets/images/recipa-screenshot.png-3)
-![Recipa Screenshot](./assets/images/recipa-screenshot.png-4)
+![Recipa Screenshot](./recipa_screenshot-1.png)
+![Recipa Screenshot](./recipa_screenshot-2.png)
+![Recipa Screenshot](./recipa_screenshot-3.png)
+![Recipa Screenshot](./recipa_screenshot-4.png)
 
 
 
