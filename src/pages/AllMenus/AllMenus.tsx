@@ -5,6 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SheetClose
 } from "@/components/ui/select";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -71,14 +72,16 @@ export const AllMenus = () => {
               <aside className="px-2 mt-10 border rounded-lg border-green600 ">
                 <div className="flex flex-col gap-4 py-4">
                   {menu.map((menu) => (
-                    <Link
-                      key={menu.title}
-                      to={`/all-menus/${menu.title.toLowerCase()}`}
-                      className="inline-flex items-center p-1 pl-2 rounded-sm hover:bg-green-600 "
-                    >
-                      <img className="mr-2 md:inline" src={menu.src} alt="" />
-                      {menu.title}
-                    </Link>
+                    <SheetClose asChild key={menu.title}>
+                      <Link
+                        key={menu.title}
+                        to={`/all-menus/${menu.title.toLowerCase()}`}
+                        className="inline-flex items-center p-1 pl-2 rounded-sm hover:bg-green-600 "
+                      >
+                        <img className="mr-2 md:inline" src={menu.src} alt="" />
+                        {menu.title}
+                      </Link>
+                    </SheetClose>
                   ))}
                 </div>
               </aside>
