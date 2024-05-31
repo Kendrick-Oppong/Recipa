@@ -4,6 +4,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { AllRecipesDropDownLinks, Logo, UserProfileMenuDropDown } from ".";
@@ -50,37 +51,50 @@ export const HamburgerMenu = () => {
             <ModeToggle />
           </SheetTitle>
         </SheetHeader>
-        <nav className="p-2 border rounded-lg border-green600">
-          <Link to="/">
-            <li className="p-1 pl-2 mb-4">Home</li>
-          </Link>
+           <nav className="p-2 border rounded-lg border-green600">
+          <SheetClose asChild>
+            <Link to="/">
+              <li className="p-1 pl-2 mb-4">Home</li>
+            </Link>
+          </SheetClose>
+
           <div className="mb-4 ml-1">
             <AllRecipesDropDownLinks />
           </div>
-          <Link to="/shop">
-            <li className="p-1 pl-2 mb-4"> Shop</li>
-          </Link>
 
-            {isAuthenticated ? (
+          <SheetClose asChild>
+            <Link to="/shop">
+              <li className="p-1 pl-2 mb-4"> Shop</li>
+            </Link>
+          </SheetClose>
+
+          {isAuthenticated ? (
             <li className="mb-4 ml-2 cursor-pointer" onClick={handleSignOut}>
               Sign Out
             </li>
           ) : (
-            <Link to="/signin">
-              <li className="p-1 pl-2 mb-4"> Sign In</li>
-            </Link>
+            <SheetClose asChild>
+              <Link to="/signin">
+                <li className="p-1 pl-2 mb-4"> Sign In</li>
+              </Link>
+            </SheetClose>
           )}
 
           <div className="ml-1">
             {isAuthenticated && <UserProfileMenuDropDown />}
           </div>
 
-          <Link to="all-menus/about-us">
-            <li className="p-1 pl-2 my-4"> About Us</li>
-          </Link>
-          <Link to="all-menus/contact-us">
-            <li className="p-1 pl-2 mb-4">Contact Us</li>
-          </Link>
+          <SheetClose asChild>
+            <Link to="all-menus/about-us">
+              <li className="p-1 pl-2 my-4"> About Us</li>
+            </Link>
+          </SheetClose>
+
+          <SheetClose asChild>
+            <Link to="all-menus/contact-us">
+              <li className="p-1 pl-2 mb-4">Contact Us</li>
+            </Link>
+          </SheetClose>
         </nav>
       </SheetContent>
     </Sheet>
