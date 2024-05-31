@@ -5,10 +5,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  SheetClose
 } from "@/components/ui/select";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose} from "@/components/ui/sheet";
 
 import { menu } from "@/constants/constants";
 import { usePageTitle } from "@/hooks";
